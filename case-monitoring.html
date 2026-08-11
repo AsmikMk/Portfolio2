@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alpha Smart — Designing a real-time monitoring system for underground operations</title>
+  <meta name="description" content="Asmik Mikaelian — Alpha Smart case study. Safety-critical enterprise UX for underground mine operations: real-time monitoring of 400+ workers, alert triage, and incident investigation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+
+    <a href="index.html" class="back-link">← Portfolio</a>
+
+    <h1 class="display-title">Alpha Smart</h1>
+
+    <p class="page-desc">
+      Alpha Smart is a real-time situational awareness system for underground mining operations — where missing information isn't a UX problem, it's a safety issue. Control-room operators monitor 400+ workers, 120+ sensors, vehicles, and communication nodes across multiple underground levels. Their primary job: detect safety incidents the moment they occur and respond before situations escalate.
+    </p>
+
+    <div class="main-card">
+
+      <!-- ── ROLE AND OVERALL RESULT ───── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Role and overall result</h2>
+      <p class="muted mb-lg">UX/UI Designer. Redesigned the full monitoring workspace from research through to final screens — alert hierarchy, map priority, incident investigation, and check-in/out flow.</p>
+
+      <div class="impact-grid">
+        <div class="impact-item">
+          <p class="impact-number">&lt;5 sec</p>
+          <p class="impact-label">monitoring state readable</p>
+        </div>
+        <div class="impact-item">
+          <p class="impact-number">&lt;90 sec</p>
+          <p class="impact-label">check-in/out flow</p>
+        </div>
+        <div class="impact-item">
+          <p class="impact-number">+67%</p>
+          <p class="impact-label">operational coverage</p>
+        </div>
+      </div>
+
+      <!-- ── TOOLS AND METHODOLOGIES ───── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Tools and methodologies</h2>
+      <p class="muted mb-lg">Figma — all screen design and component system. Research across four methods: user interviews and surveys, direct observation of the existing system in use, usability testing, and empathy mapping across three operational roles.</p>
+
+      <!-- ── RESEARCH VISUAL ────────────── -->
+      <img src="img/MonitoringSys_Portfolio/Monitoring_6.png" alt="Research overview" class="case-img">
+      <p class="img-caption">Research — 4 methods across 3 operational roles: interviews & surveys, direct observation, usability testing, and empathy mapping</p>
+
+      <!-- ── RESEARCH SYNTHESIS TABLE ───── -->
+      <div style="background:var(--inner); border-radius:var(--radius-md); padding:1.25rem; margin-bottom:0.6rem; overflow-x:auto;">
+        <table class="research-table">
+          <thead>
+            <tr>
+              <th>Research theme</th>
+              <th>What was found</th>
+              <th>Design response</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Critical information detection</td>
+              <td>Safety incidents competed visually with routine operational data at the same weight</td>
+              <td>Alerts lead the Events panel, sorted by severity — Critical above Warnings above routine</td>
+            </tr>
+            <tr>
+              <td>Complexity under pressure</td>
+              <td>Dense interface slowed navigation and decision-making during time-sensitive situations</td>
+              <td>Competing controls reduced; high-frequency information placed in predictable, persistent locations</td>
+            </tr>
+            <tr>
+              <td>Experience-level support</td>
+              <td>New operators feared making mistakes; experienced operators frustrated by unnecessary complexity</td>
+              <td>Expert workflows kept fast; contextual guidance surfaces only when needed</td>
+            </tr>
+            <tr>
+              <td>Decision support</td>
+              <td>System showed raw data — counts, IDs, timestamps — without communicating operational health meaning</td>
+              <td>Raw data translated into operational states: healthy / degraded / warning / critical</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="img-caption">Research synthesis — four themes that drove redesign priorities</p>
+
+      <!-- ── INSIGHTS ───────────────────── -->
+      <p class="meta-label" style="color:var(--accent); margin-bottom:0.5rem; margin-top:0.75rem;">Key insights from research</p>
+      <ul class="insights-list mb-lg">
+        <li>Users worried about missing critical issues — a fire alarm and a routine personnel entry read identically in the original interface</li>
+        <li>Users struggled to find relevant information during incidents — entity and personnel views buried safety status behind badge numbers and professions</li>
+        <li>Complex interfaces created cognitive load — secondary map data and redundant controls competed with the information operators actually needed</li>
+        <li>New operators needed guidance, experienced operators needed speed — a single rigid interface served neither</li>
+        <li>Real-time monitoring was the core need — raw counts said nothing about whether the operational state was healthy or critical</li>
+      </ul>
+
+      <!-- ── WORKSPACE ANATOMY (SCHEME) ── -->
+      <img src="img/MonitoringSys_Portfolio/Monitoring_1.png" alt="Monitoring workspace anatomy" class="case-img">
+      <p class="img-caption" style="margin-bottom:1.75rem;">Monitoring workspace anatomy — Global Monitoring Bar, live underground map, Event/Alert panel, map layers, entity markers, and marker legend</p>
+
+      <!-- ── BEFORE / AFTER ─────────────── -->
+      <img src="img/MonitoringSys_Portfolio/Monitoring_2.png" alt="Alert panel — before and after" class="case-img">
+      <p class="img-caption">Alert panel — before (left) and after (right). Old: a flat, undifferentiated list with no severity hierarchy. Redesign: structured by severity — Critical incidents lead, Warnings follow, each with entity, location, and event type.</p>
+
+      <!-- ── WHAT IMPROVED ──────────────── -->
+      <div class="pid-block">
+        <p class="pid-label">What changed and why</p>
+        <p class="pid-text">The Events panel was restructured with explicit severity tiers — Critical at the top, Warnings below — each entry showing the affected person, location, event type, and timestamp. Map markers were given semantic color: green for healthy, orange for warning, red for critical, grey for offline. The engineering drawing was visually subdued so monitoring markers could carry higher contrast. The global monitoring bar was redesigned to show health ratios and alert states, not just counts. Entity popups were simplified to the information needed to make a decision — not every available field.</p>
+      </div>
+      <p class="note mb-lg">* Alert triage flow: alert detected → identify severity → select alert → locate entity on map → inspect details → acknowledge → mark resolved.</p>
+
+      <hr class="divider">
+
+      <!-- ── REDESIGNED SYSTEM ───────────── -->
+      <h2 class="section-heading" style="margin-bottom:1rem;">Redesigned system</h2>
+
+      <img src="img/MonitoringSys_Portfolio/Monitoring_3.png" alt="Alert management — detail" class="case-img">
+      <p class="img-caption">Alert panel detail — Critical events lead with the affected person, location, event type, and time. A selected alert surfaces device ID, connection state, battery level, and clear Acknowledge / Mark Resolved actions.</p>
+
+      <img src="img/MonitoringSys_Portfolio/Monitoring_4.png" alt="Incident investigation — alert connected to map" class="case-img">
+      <p class="img-caption">Incident investigation — selecting an alert connects directly to the affected entity on the live map. Operators immediately see who, where, and what — without switching screens or searching manually.</p>
+
+      <img src="img/MonitoringSys_Portfolio/Monitoring_5.png" alt="Full monitoring workspace" class="case-img" style="margin-bottom:0;">
+      <p class="img-caption">Complete monitoring workspace — Global Monitoring Bar with health ratios, live underground map with entity markers, and persistent Events panel. A single view covering everything an operator needs to assess the current state of underground operations.</p>
+
+      <hr class="divider">
+
+      <p class="meta-label">Contact</p>
+      <div class="hero-links" style="margin-top:0.5rem; margin-bottom:1.5rem;">
+        <a href="mailto:asmikpod@gmail.com">asmikpod@gmail.com</a>
+        <a href="https://www.linkedin.com/in/asmik-mikaelian-69164b322/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <a href="index.html" class="back-link" style="margin-bottom:0;">← Portfolio</a>
+
+    </div>
+
+  </div>
+</body>
+</html>

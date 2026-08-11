@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tickeron — Simplifying a complex investment platform for mobile</title>
+  <meta name="description" content="Asmik Mikaelian — Tickeron case study. FinTech product design: 3-year product ownership across 6 teams, design system 0→1, and a self-directed mobile redesign concept.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+
+    <a href="index.html" class="back-link">← Portfolio</a>
+
+    <h1 class="display-title">Tickeron</h1>
+
+    <p class="page-desc">
+      Tickeron is an AI-powered investment platform for active retail investors — people making frequent, data-driven decisions across stocks, crypto, and ETFs. Users monitor markets, manage watchlists, review portfolio performance, and configure price and condition-based alerts.
+    </p>
+
+    <div class="main-card">
+
+      <!-- ── ROLE AND OVERALL RESULT ───── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Role and overall result</h2>
+      <p class="muted mb-md">Product Designer · 3 years across 6 product teams. Owned design end-to-end — from discovery and journey mapping to component system and handoff.</p>
+
+      <div class="impact-grid">
+        <div class="impact-item">
+          <p class="impact-number">−41%</p>
+          <p class="impact-label">checkout abandonment</p>
+        </div>
+        <div class="impact-item">
+          <p class="impact-number">×2</p>
+          <p class="impact-label">subscriptions in 90 days</p>
+        </div>
+        <div class="impact-item">
+          <p class="impact-number">−47%</p>
+          <p class="impact-label">onboarding drop-off</p>
+        </div>
+        <div class="impact-item">
+          <p class="impact-number">200+</p>
+          <p class="impact-label">design system components</p>
+        </div>
+        <div class="impact-item">
+          <p class="impact-number">−60%</p>
+          <p class="impact-label">design handoff time</p>
+        </div>
+      </div>
+      <p class="img-caption" style="margin-top:0; margin-bottom:1.5rem;">Shipped results — Tickeron.com, 2021–2024</p>
+
+
+      <!-- ── TOOLS AND METHODOLOGIES ───── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Tools and methodologies</h2>
+      <p class="muted mb-lg">Figma — all screen design and component system. Customer journey mapping of the core monitoring and alert-creation flow. Competitive benchmarking against Robinhood, TradingView, and Revolut Investing. Mobile-first layout, progressive disclosure.</p>
+
+      <!-- ── RESEARCH VISUAL ────────────── -->
+      <a href="#lightbox-journey" style="display:block;cursor:zoom-in;">
+        <img src="img/Tickeron_Portfolio/Tickeron_1.png" alt="Customer journey map" class="case-img" style="margin-bottom:0;">
+      </a>
+      <p class="img-caption">Customer journey map — core monitoring and alert-creation workflow &nbsp;&#x2197; click to enlarge</p>
+
+      <div id="lightbox-journey" class="lightbox-overlay">
+        <a href="#" class="lightbox-close"></a>
+        <img src="img/Tickeron_Portfolio/Tickeron_1.png" alt="Customer journey map — full size">
+      </div>
+
+      <!-- ── INSIGHTS ───────────────────── -->
+      <p class="meta-label" style="color:var(--accent); margin-bottom:0.5rem; margin-top:0.25rem;">Key insights from journey mapping and benchmarking</p>
+      <ul class="insights-list mb-lg">
+        <li>Competing navigation models — side drawer alongside other patterns — made it impossible to build a consistent mental map of the app</li>
+        <li>Watchlist rows showed too much data at the same visual weight: price, volume, % change, mini-charts all competing equally</li>
+        <li>Alert setup exposed every configuration option at once — users either misconfigured or abandoned the form entirely</li>
+        <li>Crypto-dominant visual direction created distrust among users expecting a professional investment tool</li>
+        <li>No design system meant visual drift across 6 teams — inconsistent buttons, states, and typography throughout the product</li>
+      </ul>
+
+      <!-- ── USER FLOW (SCHEME) ─────────── -->
+      <img src="img/Tickeron_Portfolio/Tickeron_8.png" alt="User flow" class="case-img">
+      <p class="img-caption" style="margin-bottom:1.75rem;">User flow — Watchlist → Stock Detail → Alert creation → Notification → Return to Stock Detail</p>
+
+      <!-- ── BEFORE / AFTER ─────────────── -->
+      <img src="img/Tickeron_Portfolio/Tickeron_2.png" alt="Watchlist — before and after" class="case-img">
+      <p class="img-caption">Watchlist — before (left) and after (right). Old: crypto-dominant layout, inconsistent rows, competing navigation patterns. Redesign: clean hierarchy, consistent ticker rows, persistent bottom tab bar.</p>
+
+      <!-- ── WHAT IMPROVED ──────────────── -->
+      <div class="pid-block">
+        <p class="pid-label">What changed and why</p>
+        <p class="pid-text">Navigation consolidated to a single persistent bottom tab bar — one model, one mental map. Financial data rows restructured around a clear priority hierarchy: ticker and name, then price, then daily movement with a mini-trend chart. Alert configuration redesigned into a 3-step progressive flow: choose type → set condition → review and save. A unified component system established consistent buttons, status states, typography, and semantic color (green for positive, red for negative) across all screens.</p>
+      </div>
+
+      <hr class="divider">
+
+      <!-- ── KEY REDESIGN AREAS ─────────── -->
+      <h2 class="section-heading" style="margin-bottom:1rem;">Key redesign areas</h2>
+
+      <img src="img/Tickeron_Portfolio/Tickeron_3.png" alt="Home — portfolio overview" class="case-img">
+      <p class="img-caption">Home — portfolio value, market status, items needing attention, and Watchlist preview consolidated in a single view</p>
+
+      <img src="img/Tickeron_Portfolio/Tickeron_4.png" alt="Portfolio screen" class="case-img">
+      <p class="img-caption">Portfolio — total value, daily performance, allocation bar, and individual holdings in one scannable screen</p>
+
+      <img src="img/Tickeron_Portfolio/Tickeron_7.png" alt="Watchlist and Stock Detail" class="case-img">
+      <p class="img-caption">Watchlist and Stock Detail — clean ticker rows with price and mini-chart; asset detail with price history and key metrics</p>
+
+      <p class="muted" style="margin-bottom:0.65rem;">The original alert setup exposed all configuration options simultaneously in a dense checkbox form. The redesign breaks this into three focused steps — each handles a single decision, making it significantly harder to misconfigure an alert.</p>
+      <img src="img/Tickeron_Portfolio/Tickeron_6.png" alt="Alert creation — 3-step flow" class="case-img">
+      <p class="img-caption">Alert creation — 3-step progressive disclosure flow: choose alert type → set condition → review and save</p>
+
+      <img src="img/Tickeron_Portfolio/Tickeron_5.png" alt="Alerts screen" class="case-img">
+      <p class="img-caption" style="margin-bottom:1.75rem;">Alerts — active conditions and triggered states, clear status separation, toggle-based management</p>
+
+      <hr class="divider">
+
+      <!-- ── COMPLETE SCREEN SET ────────── -->
+      <h2 class="section-heading" style="margin-bottom:1rem;">Complete screen set</h2>
+      <img src="img/Tickeron_Portfolio/Tickeron_9.png" alt="Final design — all screens" class="case-img" style="margin-bottom:0;">
+      <p class="img-caption">Home, Watchlist, Portfolio, Alerts, Account — full mobile screen set</p>
+
+      <hr class="divider">
+
+      <p class="meta-label">Contact</p>
+      <div class="hero-links" style="margin-top:0.5rem; margin-bottom:1.5rem;">
+        <a href="mailto:asmikpod@gmail.com">asmikpod@gmail.com</a>
+        <a href="https://www.linkedin.com/in/asmik-mikaelian-69164b322/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <a href="index.html" class="back-link" style="margin-bottom:0;">← Portfolio</a>
+
+    </div>
+
+  </div>
+</body>
+</html>
