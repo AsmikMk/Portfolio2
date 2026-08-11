@@ -38,7 +38,7 @@
       <hr class="divider">
 
       <!-- ── PROJECT 1 — TICKERON ──────── -->
-      <img src="img/Tickeron_Portfolio/Tickeron_main.gif" alt="Tickeron mobile app redesign" class="case-img">
+      <img src="img/Tickeron_Portfolio/Tickeron_main.png" data-gif="img/Tickeron_Portfolio/Tickeron_main.gif" data-still="img/Tickeron_Portfolio/Tickeron_main.png" alt="Tickeron mobile app redesign" class="case-img gif-scroll">
 
       <div class="project-row">
         <div>
@@ -162,5 +162,17 @@
     <!-- end .main-card -->
 
   </div>
+  <script>
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        var img = entry.target;
+        img.src = entry.isIntersecting ? img.dataset.gif : img.dataset.still;
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.gif-scroll').forEach(function(img) {
+      observer.observe(img);
+    });
+  </script>
 </body>
 </html>
