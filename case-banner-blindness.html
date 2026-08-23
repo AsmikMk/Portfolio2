@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netology — Fighting Banner Blindness</title>
+  <meta name="description" content="Asmik Mikaelian — Netology case study. Fixing banner blindness at scale: a design system of 52 base images and 82 color variations to redesign 16,000 video thumbnails, validated through usability testing and block-type experiments.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+
+    <a href="index.html" class="back-link">← Portfolio</a>
+
+    <h1 class="display-title">Banner<br>Blindness</h1>
+
+    <p class="page-desc">
+      Netology had 16,000 videos and a problem: users were opening the platform, scrolling, and leaving. Not because the content was bad — because everything looked identical. I owned this project as product designer working with Product, Analytics, and a team of graphic designers. The outcome: a scalable design system that covers 16,000 thumbnails, validated through usability testing, now live in production.
+    </p>
+
+    <div class="main-card">
+
+      <!-- ── ROLE AND OVERALL RESULT ───── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Role and overall result</h2>
+      <p class="muted mb-md">Product Designer — led research, wireframing, usability testing, and design system creation. Coordinated the graphic designers team on base image production.</p>
+
+      <div class="impact-grid">
+        <div class="impact-item">
+          <p class="impact-number">16,000</p>
+          <p class="impact-label">videos covered by the new system</p>
+        </div>
+        <div class="impact-item">
+          <p class="impact-number">52 × 82</p>
+          <p class="impact-label">base images × colour variations</p>
+        </div>
+        <div class="impact-item">
+          <p class="impact-number">Live</p>
+          <p class="impact-label">in production — engagement up, drop-off down</p>
+        </div>
+      </div>
+      <p class="img-caption" style="margin-top:0; margin-bottom:1.75rem;">Content feed redesign — Netology subscription platform</p>
+
+      <!-- ── TOOLS AND METHODOLOGIES ───── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Tools and methodologies</h2>
+      <p class="muted mb-lg">Figma — all design, prototyping, and design system documentation. Discovery via competitive analysis across YouTube, Coursera, Udemy, and three further content-heavy platforms. 5-second test on the existing platform. Moderated usability study across four block-type prototypes. A/B thumbnail testing — abstract 3D visuals vs. instructor faces.</p>
+
+      <!-- ── RESEARCH SYNTHESIS TABLE ───── -->
+      <div style="background:var(--inner); border-radius:var(--radius-md); padding:1.25rem; margin-bottom:0.6rem; overflow-x:auto;">
+        <table class="research-table">
+          <thead>
+            <tr>
+              <th>Problem identified</th>
+              <th>What the evidence showed</th>
+              <th>Design response</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Visual repetition</td>
+              <td>Every thumbnail used the same template — same layout, same weight, same feel. The brain stops processing identical stimuli</td>
+              <td>Introduce variety at both the thumbnail and block level without breaking brand consistency</td>
+            </tr>
+            <tr>
+              <td>Abstract thumbnails don't build trust</td>
+              <td>Usability test: users skipped 3D abstract thumbnails — they were visually interesting but gave no signal that a real person was teaching</td>
+              <td>Add the instructor face to every thumbnail as a non-negotiable element</td>
+            </tr>
+            <tr>
+              <td>Not enough context to click</td>
+              <td>A title alone wasn't enough. Users couldn't tell what they'd actually learn — description and hook were absent</td>
+              <td>Mandate a short description and a strong hook line on every thumbnail</td>
+            </tr>
+            <tr>
+              <td>Scale constraint</td>
+              <td>16,000 videos — manual redesign was impossible. Without a system, any improvement would be a one-off</td>
+              <td>Build a template system: 4 base images per category × 13 categories × 82 colour variations</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="img-caption">Research synthesis — four problems confirmed before any design work began</p>
+
+      <!-- ── KEY INSIGHTS ────────────────── -->
+      <p class="meta-label" style="color:var(--accent); margin-bottom:0.5rem; margin-top:0.75rem;">Key insights from research and testing</p>
+      <ul class="insights-list mb-lg">
+        <li>Banner blindness is a perceptual response, not a preference — when everything looks the same, the eye skips it automatically. Variety is functional, not decorative</li>
+        <li>5-second test result: almost no user could name a specific video or category after viewing the homepage. The page was visually forgettable at the page level, not just the thumbnail level</li>
+        <li>Competitive review consistent finding: strong platforms maintain variety at the block level and consistency at the brand level — different treatment per content type, all clearly the same product</li>
+        <li>Users don't click what they can't picture. The instructor's face was the primary trust signal — it told users a real person was teaching them, not a category icon</li>
+      </ul>
+
+      <!-- ── THE STARTING POINT ──────────── -->
+      <img src="img/Banner_BlindnessCase/Banner_Blindness_Start.png" alt="Starting point — Netology platform with identical templated thumbnails across all content rows" class="case-img">
+      <p class="img-caption">The starting point. Every content row — Favourites, Popular, This Month, Learn in 30 Minutes, New — used the same thumbnail template. The same layout, the same visual weight, the same colour system repeated across every video. When there's no variation to stop on, users scroll straight through.</p>
+
+      <hr class="divider">
+
+      <!-- ── RESEARCH ────────────────────── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Research — how others solve it</h2>
+      <p class="muted mb-lg">Before designing anything, I mapped how content-heavy platforms keep variety without losing consistency. The pattern that came back from YouTube, Coursera, Udemy, and others: different visual treatment per content type, but a unified brand layer underneath. Each block type earns its own look. Nothing looks accidental.</p>
+
+      <img src="img/Banner_BlindnessCase/Banner_Blindness_benchmarks.png" alt="Competitive analysis board — how YouTube, Coursera, Udemy and others handle thumbnail and block variety" class="case-img">
+      <p class="img-caption">Competitive analysis — a wide survey of how content-heavy platforms handle thumbnail variety and block-level layout. The consistent finding: platforms with high engagement differentiate by content type at the block level, not just the thumbnail level. Variety is structural, not cosmetic.</p>
+
+      <hr class="divider">
+
+      <!-- ── WIREFRAMES & FIRST TEST ──────── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Wireframing — designing the block types</h2>
+      <p class="muted mb-lg">With the competitive insight as a foundation, I designed five block types to test how content should be grouped and displayed: Playlist, New, You'll Love This, Top 10, and For Yourself. Each block type has a different visual hierarchy and interaction model.</p>
+
+      <img src="img/Banner_BlindnessCase/Banner_Blindness_wierframes.png" alt="Wireframes — five block types: Playlist, New, You'll Love This, Top 10, For Yourself" class="case-img">
+      <p class="img-caption">Wireframes — the five block types at low fidelity. Playlist: three curated collections side by side. New: standard grid of recent content. You'll Love This: compact list with metadata. Top 10: wide grid with play-order hierarchy. For Yourself: tag-filtered browsing with a content panel on the right.</p>
+
+      <img src="img/Banner_BlindnessCase/Banner_Blindness_test1.png" alt="User test 1 — high-fidelity block designs with abstract 3D thumbnail visuals" class="case-img">
+      <p class="img-caption">User test 1 — the first high-fidelity prototype with abstract 3D visuals on the thumbnails. Bold, modern, visually varied. The content blocks were distinct and the page had rhythm. Users engaged with the layout — but the thumbnails themselves became the problem.</p>
+
+      <hr class="divider">
+
+      <!-- ── THUMBNAIL TESTING ───────────── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">What users actually needed from a thumbnail</h2>
+      <p class="muted mb-lg">The block structure tested well. The thumbnails didn't. I ran a direct comparison: abstract 3D visuals vs. real instructor faces. The finding was clear — and it changed the design direction more than any visual decision I made.</p>
+
+      <img src="img/Banner_BlindnessCase/Banner_Blindness_Thumbnail_test1.png" alt="Thumbnail test — abstract 3D visuals (top row) vs. instructor faces (bottom row)" class="case-img">
+      <p class="img-caption">The thumbnail test — two conditions side by side. Top row: abstract 3D visuals with bold graphic treatment. Bottom row: the same videos with the instructor visible. Users were asked to pick what they'd be more likely to click, and why.</p>
+
+      <img src="img/Banner_BlindnessCase/Banner_Blindness_Thumbnail_test_dizlike.png" alt="Finding: users don't respond well to abstract visuals" class="case-img">
+      <p class="img-caption">Abstract visuals — rejected. Users found them visually interesting but untrustworthy. Without a face, there was nothing to project onto. No signal that a real person with real knowledge was behind the video. Interesting to look at; not compelling enough to click.</p>
+
+      <img src="img/Banner_BlindnessCase/Banner_Blindness_Thumbnail_test_like.png" alt="Finding: users trust instructor faces — but still find titles alone insufficient" class="case-img">
+      <p class="img-caption">Instructor faces — trusted, but not enough. Users responded immediately to seeing the person who'd be teaching them. Trust went up. But the titles alone still weren't enough: users wanted a short description and a reason to click, not just a name and a face. The face got them to stop — the hook needed to make them stay.</p>
+
+      <hr class="divider">
+
+      <!-- ── BLOCK RESULTS ───────────────── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Block type findings</h2>
+      <p class="muted mb-lg">In parallel with the thumbnail tests, the moderated usability study produced clear verdicts on which block types worked and which didn't.</p>
+
+      <img src="img/Banner_BlindnessCase/Banner_Blindness_test1-result_like.png" alt="Blocks that users responded well to: Playlist, New, Top 10" class="case-img">
+      <p class="img-caption">What worked. Playlist, New, and Top 10 all performed well. Users understood the logic of each block immediately — playlists for structured learning, New for fresh content, Top 10 for social proof. The visual hierarchy in each block helped users make decisions quickly without scanning everything.</p>
+
+      <img src="img/Banner_BlindnessCase/Banner_Blindness_test1-result_dizlike.png" alt="Blocks that overwhelmed users: For Yourself with heavy tag filters, You'll Love This list view" class="case-img">
+      <p class="img-caption">What didn't. For Yourself was too heavy — too many filter tags, too many decisions before getting to any content. You'll Love This as a compact list was useful but low-engagement; without a thumbnail, there was no reason to stop scrolling. Both were either dropped or simplified.</p>
+
+      <div class="pid-block mb-lg">
+        <p class="pid-label">What we shipped based on the findings</p>
+        <p class="pid-text">Three block types made it: Playlist, New, and Top 10. For Yourself was redesigned to remove the sidebar filter panel — a simpler entry to personalised content. The multiple-choice block was dropped entirely. Every remaining block was updated with the thumbnail findings: instructor face forward, title, short description, and hook line. The full page was assembled in a deliberate sequence — block types alternating to give the eye variety without chaos.</p>
+      </div>
+
+      <hr class="divider">
+
+      <!-- ── THE DESIGN SYSTEM ───────────── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">The design system — solving for 16,000 videos</h2>
+      <p class="muted mb-lg">With the content and face requirements clear, I had to solve the scale problem. Redesigning thumbnails manually one by one was not an option. I worked with the graphic designers team to build a system: 4 base images per category, across 13 categories. Then I built the colour layer — 82 variations. Same base, different background, still on-brand, always distinct.</p>
+
+      <img src="img/Banner_BlindnessCase/Banner_Blindness_Thumbnail_solution1.png" alt="Design system — 52 base images across 13 categories with 82 colour background variations" class="case-img">
+      <p class="img-caption">The 16,000-video thumbnail system. Left: the 52 base images — 4 graphic illustrations per category, built to the platform's visual communication guidelines. Right: the colour palette of 82 variations. Any base image paired with any background colour produces a unique, on-brand thumbnail. The system generates variety automatically — no per-video design decisions required.</p>
+
+      <img src="img/Banner_BlindnessCase/Banner_Blindness_Thumbnail_idealThabmnail.png" alt="The ideal thumbnail — instructor face, bold title hook, short description, 3D graphic accent, consistent brand frame" class="case-img">
+      <p class="img-caption">The ideal thumbnail formula. Four non-negotiable elements: the instructor facing forward (trust), a bold hook in large type (reason to click), a one-line description below the title (context), and the category graphic as a supporting visual element (brand and variety). The bottom row shows how it looks in the actual grid — consistent at scale, distinct from row to row.</p>
+
+      <div class="pid-block mb-lg">
+        <p class="pid-label">What changed and why</p>
+        <p class="pid-text">Before: 16,000 videos, one template, no variation, no face, no hook. After: a system that any graphic designer on the team can apply independently — pick the category base, pick the colour variation, drop in the instructor and the hook. The design work is in the system, not in each individual thumbnail. That's what makes it scale. The face requirement came directly from the usability study — abstract visuals that test well in isolation fail when users ask themselves "who is this from?" A face answers that question before the title does.</p>
+      </div>
+
+      <hr class="divider">
+
+      <!-- ── RESULTS ─────────────────────── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Results</h2>
+      <p class="muted mb-lg">The redesign has been live in production for one month. Engagement is up, drop-off is down, and subscription conversion is moving in the right direction. Full analytics are still being collected — the numbers will sharpen over the coming weeks.</p>
+
+      <div class="concept-note mb-lg">
+        The most immediate signal: users are stopping on thumbnails they would have scrolled past before. The face + hook combination is doing what the 5-second test predicted — giving users a reason to pause and read. The playlist block in particular is showing strong time-on-platform numbers.
+      </div>
+
+      <hr class="divider">
+
+      <!-- ── FINAL OUTCOME — VIDEO ──────── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Final outcome</h2>
+      <p class="muted mb-lg">The platform live — the full content feed with the new block structure, thumbnail system, and layout in production.</p>
+
+      <video class="case-img" controls playsinline style="border-radius:var(--radius-md); background:#000; display:block; width:100%;">
+        <source src="img/Banner_BlindnessCase/Banner_Blindness_final.mov" type="video/mp4">
+        <source src="img/Banner_BlindnessCase/Banner_Blindness_final.mov" type="video/quicktime">
+      </video>
+      <p class="img-caption">Live platform walkthrough — the full Knowledge Base feed with the new block types, thumbnail system, and layout in production.</p>
+
+      <hr class="divider">
+
+      <!-- ── TAKEAWAY ─────────────────────── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">What I took away</h2>
+      <p class="muted mb-lg">The creative problem — making thumbnails more engaging — was the easy part. The hard part was solving it for 16,000 videos without creating 16,000 individual design decisions.</p>
+
+      <div class="concept-note">
+        Building the template system before touching a single thumbnail was the right call. It meant the improvement could scale without depending on my presence for every update. The graphic designers team can now generate new content independently and it stays consistent. The user study finding about faces was the other turning point — abstract visuals felt modern and clean in isolation. But users didn't trust them. They wanted to know who was teaching them. That one insight from 20 minutes of usability testing changed the design direction more than the entire competitive analysis did.
+      </div>
+
+      <hr class="divider">
+
+      <p class="meta-label">Contact</p>
+      <div class="hero-links" style="margin-top:0.5rem; margin-bottom:1.5rem;">
+        <a href="mailto:asmikpod@gmail.com">asmikpod@gmail.com</a>
+        <a href="https://www.linkedin.com/in/asmik-mikaelian-69164b322/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <a href="index.html" class="back-link" style="margin-bottom:0;">← Portfolio</a>
+
+    </div>
+
+  </div>
+</body>
+</html>
