@@ -110,6 +110,18 @@ a:hover { text-decoration: underline; }
   font-size: 0.9rem;
 }
 
+/* ── Hero layout: photo left, text right ── */
+.hero-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.hero-text {
+  flex: 1;
+}
+
 /* ── Hero photo circle ── */
 .photo-circle {
   width: 140px;
@@ -123,7 +135,7 @@ a:hover { text-decoration: underline; }
   font-weight: 500;
   color: var(--muted);
   text-align: center;
-  margin-bottom: 1.25rem;
+  flex-shrink: 0;
 }
 
 /* ── Hero bio text ── */
@@ -135,17 +147,26 @@ a:hover { text-decoration: underline; }
   margin-bottom: 0.5rem;
 }
 
-/* ── CV / Contacts row ── */
+/* ── Photo + links column ── */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* ── CV / Contacts stack ── */
 .hero-links {
   display: flex;
-  gap: 1.75rem;
-  margin-top: 1rem;
-  margin-bottom: 0.4rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .hero-links a {
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.875rem;
 }
 
 /* ── Image placeholder blocks ── */
@@ -561,6 +582,12 @@ a:hover { text-decoration: underline; }
 
 /* ── Responsive ── */
 @media (max-width: 600px) {
+  .hero-layout {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
   .project-row,
   .annotation-block {
     grid-template-columns: 1fr;
