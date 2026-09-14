@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netology — Growing an EdTech platform from first click to daily habit</title>
+  <meta name="description" content="Asmik Mikaelian — Netology. Activation, search, content discovery, and retention on Russia's largest online learning platform.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .hero-metric {
+      font-size: clamp(4rem, 12vw, 8rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--accent);
+      margin: 0;
+    }
+    .hero-metric-label {
+      font-size: 1.1rem;
+      color: var(--muted-text, #888);
+      margin-top: 0.4rem;
+      font-weight: 500;
+    }
+    .big-metric-block {
+      text-align: center;
+      padding: 3rem 1rem;
+      border-radius: var(--radius-md);
+      background: var(--inner);
+      margin-bottom: 1.5rem;
+    }
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .before-after-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+    .before-after-grid .ba-item {
+      position: relative;
+    }
+    .ba-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted-text, #888);
+      margin-bottom: 0.4rem;
+    }
+    .before-after-grid img {
+      width: 100%;
+      border-radius: var(--radius-md);
+      display: block;
+    }
+    .flow-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      padding: 2.5rem 1rem;
+      background: var(--inner);
+      border-radius: var(--radius-md);
+    }
+    .flow-step {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--fg, #fff);
+    }
+    .flow-arrow {
+      font-size: 1.25rem;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+    .thumbnail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+    .thumbnail-grid img {
+      width: 100%;
+      border-radius: var(--radius-md);
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .before-after-grid,
+      .thumbnail-grid {
+        grid-template-columns: 1fr;
+      }
+      .onboarding-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <a href="index.html" class="back-link">← Portfolio</a>
+
+    <h1 class="display-title">Netology</h1>
+    <p class="page-desc">EdTech · 1.5M users · 130K graduates · Senior Product Designer · Jan 2025 – Aug 2026</p>
+
+    <div class="main-card">
+
+      <!-- ── HERO METRIC ──────────────────── -->
+      <div class="big-metric-block" style="margin-bottom: 1.5rem;">
+        <p class="hero-metric">+17%</p>
+        <p class="hero-metric-label">activation on the subscription video platform</p>
+      </div>
+
+      <!-- ── HERO IMAGE ──────────────────── -->
+      <video class="case-img" controls playsinline style="border-radius:var(--radius-md); background:#000; display:block; width:100%; margin-bottom:0;">
+        <source src="img/Banner_BlindnessCase/Banner_Blindness_final.mov" type="video/mp4">
+        <source src="img/Banner_BlindnessCase/Banner_Blindness_final.mov" type="video/quicktime">
+      </video>
+      <p class="img-caption">Live platform — new content feed in production</p>
+
+      <hr class="divider">
+
+      <!-- ── ONBOARDING ──────────────────── -->
+      <p class="section-label">Onboarding</p>
+
+      <div class="big-metric-block" style="padding: 2rem 1rem; margin-bottom: 1.25rem;">
+        <p style="font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; margin: 0;">3 questions.<br>That's it.</p>
+        <p class="hero-metric-label" style="margin-top: 0.75rem;">The platform finds your videos. You just answer 3 questions.</p>
+      </div>
+
+      <p class="muted mb-lg" style="max-width:36rem;">There was no onboarding. Users landed on a blank feed and had to figure out the platform themselves. We built it from zero — a 3-question flow at signup that personalizes the entire content feed before you watch a single video.</p>
+
+      <div class="onboarding-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 0.6rem;">
+        <div>
+          <p class="ba-label">Question 1</p>
+          <div class="img-block medium" style="margin-bottom: 0; min-height: 220px;">What do you want to learn?</div>
+        </div>
+        <div>
+          <p class="ba-label">Question 2</p>
+          <div class="img-block medium" style="margin-bottom: 0; min-height: 220px;">What's your level?</div>
+        </div>
+        <div>
+          <p class="ba-label">Question 3</p>
+          <div class="img-block medium" style="margin-bottom: 0; min-height: 220px;">How much time per week?</div>
+        </div>
+      </div>
+      <p class="img-caption">3 screens. Each handles one decision. After the third answer — a personalized feed, ready to watch.</p>
+
+      <hr class="divider">
+
+      <!-- ── SEARCH ──────────────────────── -->
+      <p class="section-label">Search</p>
+      <p class="muted mb-lg" style="max-width:36rem;">The search bar existed. Nobody used it. Session recordings showed users scrolling past it without registering it was there. Three phases over 18 months — from invisible to indispensable.</p>
+
+      <div class="before-after-grid">
+        <div class="ba-item">
+          <p class="ba-label">Before</p>
+          <img src="img/Search_Case/Search_Case_0.png" alt="Search before — small input hidden in corner">
+        </div>
+        <div class="ba-item">
+          <p class="ba-label">After</p>
+          <img src="img/Search_Case/Search_Case_3.png" alt="Search after — full panel with categories and personalised suggestions">
+        </div>
+      </div>
+      <p class="img-caption">Search redesign — Phase 1 (visible) → Phase 2 (categories) → Phase 3 (full discovery panel) · +42% users finding search unaided · +32% satisfaction</p>
+
+      <img src="img/Search_Case/Search_Case_2.png" alt="Search phase 2 — visual category widgets" class="case-img">
+      <p class="img-caption">Phase 2 — visual category shortcuts ranked by real query frequency. Card sorting validated the taxonomy before any design work began.</p>
+
+      <hr class="divider">
+
+      <!-- ── THUMBNAILS ──────────────────── -->
+      <p class="section-label">Content Discovery</p>
+      <p class="muted mb-lg" style="max-width:36rem;">16,000 videos. Every thumbnail looked identical. Users scrolled past without stopping. A 5-second test confirmed the page was visually forgettable. The fix had to scale.</p>
+
+      <div class="before-after-grid" style="margin-bottom:0.75rem;">
+        <div class="ba-item">
+          <p class="ba-label">Before</p>
+          <img src="img/Banner_BlindnessCase/Banner_Blindness_Start.png" alt="Before — identical thumbnails, no variety, no faces">
+        </div>
+        <div class="ba-item">
+          <p class="ba-label">After</p>
+          <img src="img/Banner_BlindnessCase/Banner_Blindness_Thumbnail_idealThabmnail.png" alt="After — instructor face, hook, description, brand variety">
+        </div>
+      </div>
+
+      <img src="img/Banner_BlindnessCase/Banner_Blindness_Thumbnail_solution1.png" alt="Design system — 52 base images × 82 colour variations" class="case-img" style="margin-bottom:0;">
+      <p class="img-caption">The system — 52 base images × 82 colour variations. Any combination produces a unique, on-brand thumbnail. 16,000 videos covered without a single per-video design decision.</p>
+
+      <hr class="divider">
+
+      <!-- ── BIG METRIC 1 ─────────────────── -->
+      <div class="big-metric-block">
+        <p class="hero-metric">+17%</p>
+        <p class="hero-metric-label">activation — users who open the platform and start watching</p>
+      </div>
+
+      <hr class="divider">
+
+      <!-- ── ACHIEVEMENT DASHBOARD ──────── -->
+      <p class="section-label">Retention</p>
+      <p class="muted mb-lg" style="max-width:36rem;">Activation improved. D7 retention was 21%. Users were arriving, watching once, and not coming back. The platform had no mechanism for habit. We built one.</p>
+
+      <div class="img-block tall" style="margin-bottom:0.75rem;">
+        Achievement dashboard — add Figma screens here
+        <br><span style="font-size:0.8rem;">Streaks · Learning goals · Milestone badges · Progress summary</span>
+      </div>
+      <p class="img-caption">Achievement dashboard — visible progress, daily streaks, and completion milestones surfaced in main navigation</p>
+
+      <hr class="divider">
+
+      <!-- ── BIG METRIC 2 ─────────────────── -->
+      <div class="big-metric-block">
+        <p class="hero-metric">21%<span style="color:var(--fg, #fff); opacity:0.3; font-weight:400;"> → </span>40%</p>
+        <p class="hero-metric-label">D7 retention — users returning 7 days after activation</p>
+      </div>
+
+      <hr class="divider">
+
+
+      <p class="meta-label">Contact</p>
+      <div class="hero-links" style="margin-top:0.5rem; margin-bottom:1.5rem;">
+        <a href="mailto:asmikpod@gmail.com">asmikpod@gmail.com</a>
+        <a href="https://www.linkedin.com/in/asmik-mikaelian-69164b322/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <a href="index.html" class="back-link" style="margin-bottom:0;">← Portfolio</a>
+
+    </div>
+
+  </div>
+</body>
+</html>

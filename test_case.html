@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netology — Full Case Study</title>
+  <meta name="description" content="Asmik Mikaelian — Netology full case study. Onboarding, search, achievement system, banner blindness, and 16,000-video thumbnail system.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── White background for this page ── */
+    body {
+      background: #FFFFFF;
+    }
+
+    /* ── Widen page for this case ── */
+    .page {
+      max-width: 1100px;
+    }
+
+    /* ── Hero: full-width dark image at top ── */
+    .tc-hero {
+      margin-bottom: 2rem;
+    }
+
+    /* ── Dark image frame ── */
+    .dark-frame {
+      background: #1C2334;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .dark-frame img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ── 2-column section row ── */
+    .tc-section {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Full-width section (Components, Figma) ── */
+    .tc-section-full {
+      margin-bottom: 2rem;
+    }
+
+    /* ── Small label above image ── */
+    .tc-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    /* ── Right-column text ── */
+    .tc-text {
+      padding-top: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .tc-text p.muted {
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+
+    /* ── Small inline note box in text column ── */
+    .tc-note {
+      background: var(--inner);
+      border-radius: var(--radius-md);
+      padding: 0.7rem 0.9rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Contact footer block ── */
+    .tc-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ── Metrics block overrides ── */
+    .impact-item {
+      background: #343f48;
+    }
+
+    .impact-number {
+      color: #ffffff;
+    }
+
+    .impact-label {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      .tc-section {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .tc-text {
+        padding-top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <a href="index.html" class="back-link">← Portfolio</a>
+
+    <h1 class="display-title">Netology</h1>
+
+    <p class="page-desc">
+      B2C EdTech platform for professional growth — 1.5M+ users, 130K graduates. I was embedded in the subscription product team alongside Product, Engineering, and Analytics. Grew activation by 17% by redesigning onboarding and content discovery, improved D7 retention from 21% to 40% through gamification and an achievement dashboard, and cut expert onboarding time by 50% by simplifying profile setup from a multi-step form to a guided flow.
+    </p>
+
+    <!-- ── METRICS ───────────────────────────────────────────────── -->
+    <div class="impact-grid" style="margin-bottom:2rem;">
+      <div class="impact-item">
+        <p class="impact-number">+17%</p>
+        <p class="impact-label">activation after onboarding &amp; content discovery redesign</p>
+      </div>
+      <div class="impact-item">
+        <p class="impact-number">21→40%</p>
+        <p class="impact-label">D7 retention after gamification &amp; achievement dashboard</p>
+      </div>
+      <div class="impact-item">
+        <p class="impact-number">−50%</p>
+        <p class="impact-label">expert onboarding time after simplifying profile setup</p>
+      </div>
+    </div>
+
+    <!-- ── HERO IMAGE ─────────────────────────────────────────────── -->
+    <div class="tc-hero">
+      <div class="dark-frame">
+        <img src="Netology_full_Case/Main_Top_Tittle.png" alt="Netology platform overview">
+      </div>
+    </div>
+
+
+    <!-- ── ONBOARDING ──────────────────────────────────────────────── -->
+    <div class="tc-section">
+      <div>
+        <div class="dark-frame">
+          <img src="Netology_full_Case/Onbording.png" alt="Onboarding screens">
+        </div>
+      </div>
+      <div class="tc-text">
+        <p class="tc-label">Onboarding</p>
+        <div class="pid-block">
+          <p class="pid-label">Problem</p>
+          <p class="pid-text">There was no onboarding. Users landed on a blank feed and had to figure out the platform themselves.</p>
+        </div>
+        <div class="pid-block">
+          <p class="pid-label">How I solved it</p>
+          <p class="pid-text">Added a short question flow at signup that personalizes the entire content feed before the user watches a single video.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── SEARCH ──────────────────────────────────────────────────── -->
+    <div class="tc-section">
+      <div>
+        <div class="dark-frame">
+          <img src="Netology_full_Case/Search_Case_1.png" alt="Search redesign">
+        </div>
+      </div>
+      <div class="tc-text">
+        <p class="tc-label">Search</p>
+        <div class="pid-block">
+          <p class="pid-label">Problem</p>
+          <p class="pid-text">Users did not use the previous version of search — they did not see it or notice it.</p>
+        </div>
+        <div class="pid-block">
+          <p class="pid-label">How I solved it</p>
+          <p class="pid-text">After redesign it got better, especially the top selection of the most popular content.</p>
+        </div>
+        <div class="pid-block">
+          <p class="pid-label">Difficulty</p>
+          <p class="pid-text">We did not have a good working technology of autocompletion, so had to classify by popularity until the algorithms improve. In the future, search should be the main feature.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── ACHIEVEMENT DASHBOARD ──────────────────────────────────── -->
+    <div class="tc-section">
+      <div>
+        <div class="dark-frame">
+          <img src="Netology_full_Case/Achievement_dashboard.png" alt="Achievement dashboard">
+        </div>
+      </div>
+      <div class="tc-text">
+        <p class="tc-label">Achievement dashboard</p>
+        <div class="pid-block">
+          <p class="pid-label">Problem</p>
+          <p class="pid-text">D7 retention was 21%. Users were arriving, watching one video, and not coming back. The platform had no mechanism for habit.</p>
+        </div>
+        <div class="pid-block">
+          <p class="pid-label">How I solved it</p>
+          <p class="pid-text">Added gamification features and an achievement dashboard to create engagement loops and drive return visits. D7 retention grew from 21% to 40%.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── BANNER BLINDNESS ────────────────────────────────────────── -->
+    <div class="tc-section">
+      <div>
+        <div class="dark-frame">
+          <img src="Netology_full_Case/Banner%20Blindness.png" alt="Banner blindness study">
+        </div>
+      </div>
+      <div class="tc-text">
+        <p class="tc-label">Banner Blindness</p>
+        <div class="pid-block">
+          <p class="pid-label">Problem</p>
+          <p class="pid-text">5-second test result: almost no user could name a specific video or category after viewing the homepage. The page was visually forgettable at the page level, not just the thumbnail level.</p>
+        </div>
+        <div class="pid-block">
+          <p class="pid-label">How I solved it</p>
+          <p class="pid-text">Introduced different shapes and forms of cards to break visual patterns and increase activation.</p>
+        </div>
+        <div class="pid-block">
+          <p class="pid-label">Difficulty</p>
+          <p class="pid-text">Some blocks were really hard for users to understand, so I had to make wireframes of different designs and keep the ones users liked best.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── 16,000-VIDEO THUMBNAIL ─────────────────────────────────── -->
+    <div class="tc-section">
+      <div>
+        <div class="dark-frame">
+          <img src="Netology_full_Case/Banner_Blindness_Thumbnail_solution1.png" alt="Thumbnail system — 82 variations across 13 categories">
+        </div>
+      </div>
+      <div class="tc-text">
+        <p class="tc-label">16,000-Video Thumbnail</p>
+        <div class="pid-block">
+          <p class="pid-label">Problem</p>
+          <p class="pid-text">With 16,000 videos, redesigning thumbnails manually one by one was not an option.</p>
+        </div>
+        <div class="pid-block">
+          <p class="pid-label">How I solved it</p>
+          <p class="pid-text">Built a system: 4 base images per category across 13 categories, then a colour layer — 82 variations. Same base, different background, still on-brand, always distinct.</p>
+        </div>
+        <div class="pid-block">
+          <p class="pid-label">Difficulty</p>
+          <p class="pid-text">Users did not like the generated abstract looks. We had to change the approach — combining a 3D element, a real face, and a hook text so users immediately understand what the video is about.</p>
+        </div>
+        <img src="Netology_full_Case/Perfect_Thambnail.png" alt="Final thumbnail design — face + 3D + hook text" style="width:50%; border-radius:var(--radius-md); display:block; margin-top:0.5rem;">
+      </div>
+    </div>
+
+
+    <!-- ── COMPONENTS ─────────────────────────────────────────────── -->
+    <div class="tc-section-full">
+      <p class="tc-label">Components</p>
+      <div class="dark-frame">
+        <img src="Netology_full_Case/Components.png" alt="Component library">
+      </div>
+    </div>
+
+
+    <!-- ── FIGMA ──────────────────────────────────────────────────── -->
+    <div class="tc-section-full">
+      <p class="tc-label">Figma</p>
+      <div class="dark-frame">
+        <img src="Netology_full_Case/FigmaFile.png" alt="Figma workspace">
+      </div>
+    </div>
+
+
+    <!-- ── CONTACT ────────────────────────────────────────────────── -->
+    <div class="tc-footer">
+      <p class="meta-label" style="margin-bottom:0.5rem;">Contact</p>
+      <div class="hero-links" style="align-items:flex-start; margin-bottom:1.5rem;">
+        <a href="mailto:asmikpod@gmail.com">asmikpod@gmail.com</a>
+        <a href="https://www.linkedin.com/in/asmik-mikaelian-69164b322/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <a href="index.html" class="back-link" style="margin-bottom:0;">← Portfolio</a>
+    </div>
+
+  </div>
+</body>
+</html>
