@@ -263,30 +263,6 @@
       });
     });
 
-    /* Scramble-decode effect for "Designer" */
-    var POOL = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ#@!%/\\·×';
-    var mainEl = titleEl.querySelector('.hero__title-main');
-
-    function scrambleMain() {
-      if (!mainEl) return;
-      Array.from(mainEl.querySelectorAll('.char')).forEach(function(c, i) {
-        setTimeout(function() {
-          var orig = c.dataset.orig;
-          var ticks = 0;
-          var max = 12 + Math.floor(Math.random() * 8);
-          var iv = setInterval(function() {
-            if (ticks++ >= max) {
-              c.textContent = orig;
-              clearInterval(iv);
-            } else {
-              c.textContent = POOL[Math.floor(Math.random() * POOL.length)];
-            }
-          }, 80);
-        }, i * 90);
-      });
-    }
-
-    titleEl.addEventListener('mouseenter', function() { scrambleMain(); });
 
     /* Per-word magnetic parallax via RAF lerp */
     var hMults  = [-26, 14, 30];
