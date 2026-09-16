@@ -267,13 +267,13 @@
     var POOL = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ#@!%/\\·×';
     var mainEl = titleEl.querySelector('.hero__title-main');
 
-    function scrambleMain(extraDelay) {
+    function scrambleMain() {
       if (!mainEl) return;
       Array.from(mainEl.querySelectorAll('.char')).forEach(function(c, i) {
         setTimeout(function() {
           var orig = c.dataset.orig;
           var ticks = 0;
-          var max = 8 + Math.floor(Math.random() * 5);
+          var max = 12 + Math.floor(Math.random() * 8);
           var iv = setInterval(function() {
             if (ticks++ >= max) {
               c.textContent = orig;
@@ -281,21 +281,12 @@
             } else {
               c.textContent = POOL[Math.floor(Math.random() * POOL.length)];
             }
-          }, 52);
-        }, (extraDelay || 0) + i * 60);
+          }, 80);
+        }, i * 90);
       });
     }
 
-    titleEl.addEventListener('mouseenter', function() { scrambleMain(0); });
-
-    /* Auto-play on page entry — fires after loader clears (~900 ms) */
-    setTimeout(function() {
-      titleEl.classList.add('is-animating');
-      scrambleMain(120);
-      setTimeout(function() {
-        titleEl.classList.remove('is-animating');
-      }, 3200);
-    }, 900);
+    titleEl.addEventListener('mouseenter', function() { scrambleMain(); });
 
     /* Per-word magnetic parallax via RAF lerp */
     var hMults  = [-26, 14, 30];

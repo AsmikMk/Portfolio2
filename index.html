@@ -409,29 +409,26 @@
 
     .hero__title .char {
       display: inline-block;
-      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                  color 0.65s ease;
-      transition-delay: calc(var(--i) * 0.048s);
-    }
-
-    .hero__title:hover .hero__title-top .char,
-    .hero__title.is-animating .hero__title-top .char {
-      transform: translateY(-9px) rotate(-1.5deg);
-      color: var(--accent, #ff75c3);
-      transition-delay: calc(var(--i) * 0.042s);
-    }
-
-    .hero__title:hover .hero__title-main .char,
-    .hero__title.is-animating .hero__title-main .char {
-      transform: translateY(-14px) skewX(-2deg);
+      transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                  color 0.8s ease;
       transition-delay: calc(var(--i) * 0.06s);
     }
 
-    .hero__title:hover .hero__title-bottom .char,
-    .hero__title.is-animating .hero__title-bottom .char {
+    .hero__title:hover .hero__title-top .char {
+      transform: translateY(-9px) rotate(-1.5deg);
+      color: var(--accent, #ff75c3);
+      transition-delay: calc(var(--i) * 0.055s);
+    }
+
+    .hero__title:hover .hero__title-main .char {
+      transform: translateY(-14px) skewX(-2deg);
+      transition-delay: calc(var(--i) * 0.075s);
+    }
+
+    .hero__title:hover .hero__title-bottom .char {
       transform: translateY(-9px) rotate(1.5deg);
       color: var(--accent, #ff75c3);
-      transition-delay: calc((4 - var(--i)) * 0.055s);
+      transition-delay: calc((4 - var(--i)) * 0.07s);
     }
   </style>
 </head>
