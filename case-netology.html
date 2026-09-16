@@ -459,27 +459,9 @@
       transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     .linkedin-banner:hover img { transform: scale(1.03); }
-    .linkedin-banner__cta {
-      position: absolute; bottom: 28px; right: 32px;
-      display: flex; align-items: center; gap: 10px;
-      background: rgba(10, 102, 194, 0.92);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      border-radius: 50px; padding: 12px 22px 12px 16px;
-      font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 15px;
-      color: #fff; letter-spacing: 0.02em;
-      transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease;
-    }
-    .linkedin-banner:hover .linkedin-banner__cta { transform: translateY(-4px); background: rgba(10, 102, 194, 1); }
-    .linkedin-banner__icon {
-      display: flex; align-items: center; justify-content: center;
-      width: 28px; height: 28px; border-radius: 6px;
-      background: #fff; color: #0a66c2;
-      font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 14px; flex-shrink: 0;
-    }
     @media (max-width: 640px) {
       .linkedin-banner-wrap { padding: 0 20px 60px; }
       .linkedin-banner { border-radius: 20px; }
-      .linkedin-banner__cta { bottom: 16px; right: 16px; font-size: 13px; padding: 10px 16px 10px 12px; }
     }
   </style>
 </head>
@@ -822,12 +804,8 @@
 
   <!-- ── LinkedIn Banner ── -->
   <div class="linkedin-banner-wrap" data-reveal="up">
-    <a href="https://www.linkedin.com/in/asmik-mikaelian-69164b322/" target="_blank" rel="noopener" class="linkedin-banner" aria-label="View Asmik Mikaelian on LinkedIn">
+    <a href="https://www.linkedin.com/in/asmik-mikaelian-69164b322/" target="_blank" rel="noopener" class="linkedin-banner" data-case-card aria-label="View Asmik Mikaelian on LinkedIn">
       <img src="LInkedIN.png" alt="Asmik Mikaelian — LinkedIn Profile" />
-      <span class="linkedin-banner__cta">
-        <span class="linkedin-banner__icon">in</span>
-        Connect on LinkedIn
-      </span>
     </a>
   </div>
 
