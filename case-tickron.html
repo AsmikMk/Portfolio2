@@ -116,6 +116,11 @@
       grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
+    .gallery-col-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
 
     /* ── Story grid (12-col) ── */
     .story-grid {
@@ -419,6 +424,9 @@
       .case-hero__grid { column-gap: 40px; row-gap: 60px; }
       .story-grid { column-gap: 8px; }
     }
+    @media (max-width: 809px) {
+      .case-page { gap: 80px; }
+    }
     @media (max-width: 860px) {
       .case-hero__title-wrap, .case-hero__rails,
       .case-hero__description, .case-hero__metrics { grid-column: 1 / -1; }
@@ -717,7 +725,7 @@
 
     <!-- ── Gallery ────────────────────────────────────────────────────── -->
     <div class="gallery-section" data-reveal="up">
-      <div class="gallery-col-3" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <div class="gallery-col-3">
         <div class="img-cell" style="aspect-ratio:1/1;">
           <img src="MobileApp/Phome1.png" alt="App screen 1" loading="lazy" />
         </div>
@@ -800,6 +808,7 @@
     <div class="site-footer__links">
       <a href="mailto:asmikpod@gmail.com" class="site-footer__link">asmikpod@gmail.com</a>
     </div>
+    <span class="site-footer__copy">© 2026 Asmik Mikaelian</span>
   </footer>
 
   <script src="motion.js"></script>
