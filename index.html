@@ -1,167 +1,583 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background:#0e0f14">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Asmik Mikaelian — Product Designer</title>
-  <meta name="description" content="Asmik Mikaelian — Product Designer. Case studies in FinTech, safety-critical enterprise UX, and spatial computing. Discovery, design systems, and work that moves metrics.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Senior Product Designer specialising in FinTech, EdTech and B2B. 8+ years turning complex flows into clear, measurable experiences." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&family=Raleway:wght@400;500;600&family=Unbounded:wght@400;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="motion.css" />
+
+  <style>
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 140px 80px 40px;
+      overflow: hidden;
+    }
+
+    /* Ambient background blobs */
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero__orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .hero__orb--1 {
+      width: 900px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(255, 117, 195, 0.10) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: orb-float-1 14s ease-in-out infinite alternate;
+    }
+
+    .hero__orb--2 {
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(112, 226, 255, 0.07) 0%, transparent 70%);
+      top: 30%;
+      left: 20%;
+      transform: translate(-50%, -50%);
+      animation: orb-float-2 18s ease-in-out infinite alternate;
+    }
+
+    .hero__orb--3 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(159, 255, 91, 0.04) 0%, transparent 70%);
+      top: 70%;
+      left: 75%;
+      transform: translate(-50%, -50%);
+      animation: orb-float-3 22s ease-in-out infinite alternate;
+    }
+
+    /* Subtle grid overlay */
+    .hero__grid {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cpath d='M 64 0 L 0 0 0 64' fill='none' stroke='rgba(255,255,255,0.025)' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 64px 64px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+    }
+
+    @keyframes orb-float-1 {
+      0%   { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+      100% { transform: translate(-45%, -55%) scale(1.15); opacity: 1; }
+    }
+    @keyframes orb-float-2 {
+      0%   { transform: translate(-50%, -50%) scale(0.9); opacity: 0.5; }
+      100% { transform: translate(-40%, -60%) scale(1.1); opacity: 0.8; }
+    }
+    @keyframes orb-float-3 {
+      0%   { transform: translate(-50%, -50%) scale(1.1); opacity: 0.4; }
+      100% { transform: translate(-60%, -40%) scale(0.85); opacity: 0.7; }
+    }
+
+    /* Stacked title, centred */
+    .hero__title {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      pointer-events: none;
+    }
+
+    .hero__title-top {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: var(--display-hero-side-size);
+      line-height: var(--display-hero-side-line-height);
+      color: var(--headline-text);
+      white-space: nowrap;
+    }
+
+    .hero__title-main {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: var(--display-hero-main-size);
+      line-height: var(--display-hero-main-line-height);
+      color: var(--headline-text);
+      white-space: nowrap;
+    }
+
+    .hero__title-bottom {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: var(--display-hero-side-size);
+      line-height: var(--display-hero-side-line-height);
+      color: var(--headline-text);
+      white-space: nowrap;
+      align-self: flex-end;
+    }
+
+    /* Footer row */
+    .hero__footer {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .hero__desc {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 400;
+      font-size: var(--display-hero-body-size);
+      line-height: var(--display-hero-body-line-height);
+      color: var(--main-text);
+      max-width: 480px;
+    }
+
+    .hero__divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 106px;
+    }
+
+    .hero__divider-line {
+      width: 2px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero__divider-line::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      top: -50%;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.9) 50%, transparent);
+      animation: hero-scroll-sweep 2400ms ease-in infinite;
+    }
+
+    @keyframes hero-scroll-sweep {
+      0%   { top: -50%; }
+      67%  { top: 100%; }
+      100% { top: 100%; }
+    }
+
+    .hero__socials {
+      flex: 1;
+      display: flex;
+      gap: var(--space-40);
+      justify-content: flex-end;
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 500;
+      font-size: var(--display-social-size);
+      color: var(--headline-text);
+    }
+
+    .hero__socials a {
+      transition: opacity 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .hero__socials a:hover { opacity: 0.6; }
+
+    /* ── Cases Section ── */
+    .cases-section {
+      padding: 120px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+      width: 100%;
+    }
+
+    .cases-section__title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: var(--display-page-title-size);
+      line-height: var(--display-page-title-line-height);
+      letter-spacing: var(--display-page-title-letter-spacing);
+      color: var(--headline-text);
+      white-space: nowrap;
+    }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px 40px;
+      width: 100%;
+    }
+
+    /* Card placeholder gradient fills */
+    .card__picture--fintech {
+      background: linear-gradient(135deg, #1a1b2e 0%, #0f1729 40%, #16203a 100%);
+    }
+    .card__picture--fintech::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 70% 40%, rgba(112, 181, 255, 0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 20% 70%, rgba(255, 117, 195, 0.08) 0%, transparent 70%);
+    }
+
+    .card__picture--edtech {
+      background: linear-gradient(135deg, #1a2a1a 0%, #0f1f10 40%, #162416 100%);
+    }
+    .card__picture--edtech::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 30% 40%, rgba(159, 255, 91, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 70% 70%, rgba(255, 232, 63, 0.06) 0%, transparent 70%);
+    }
+
+    .card__picture--b2b {
+      background: linear-gradient(135deg, #1e1a2a 0%, #160f22 40%, #1c1630 100%);
+    }
+    .card__picture--b2b::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 50% 40%, rgba(255, 117, 195, 0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 20% 70%, rgba(112, 226, 255, 0.07) 0%, transparent 70%);
+    }
+
+    .card__picture--enterprise {
+      background: linear-gradient(135deg, #1a1e2a 0%, #0f1320 40%, #141929 100%);
+    }
+    .card__picture--enterprise::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 60% 40%, rgba(255, 166, 71, 0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 60%, rgba(112, 226, 255, 0.07) 0%, transparent 70%);
+    }
+
+    /* Placeholder text centred in the card */
+    .card__placeholder-label {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.15);
+      pointer-events: none;
+    }
+
+    /* ── Locked / Coming-soon cards ── */
+    .card--locked {
+      pointer-events: none;
+      opacity: 1;
+    }
+    .card--locked .card__picture {
+      position: relative;
+    }
+    .card--locked .card__picture::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(14, 15, 20, 0.55);
+      z-index: 3;
+      border-radius: inherit;
+    }
+    .card__lock-badge {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .card__lock-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .card__lock-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      white-space: nowrap;
+    }
+    .card--locked .card__title {
+      color: var(--tertiary-text);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1200px) {
+      .hero { padding: 120px 40px 32px; }
+      .cases-section { padding: var(--space-40); gap: var(--space-48); }
+    }
+
+    @media (max-width: 809px) {
+      .hero { padding: 110px 16px calc(32px + env(safe-area-inset-bottom, 0px)); height: 100svh; min-height: 480px; }
+      .hero__title {
+        width: min(447px, calc(100% - 32px));
+        max-width: 447px;
+        top: calc(50% - 40px);
+      }
+      .cases-section { padding: 48px var(--space-16) var(--space-40); gap: var(--space-40); }
+      .cases-grid { grid-template-columns: 1fr; gap: var(--space-40); }
+      .cases-section__title { white-space: normal; }
+    }
+
+    @media (max-width: 480px) {
+      .navbar__link { display: none; }
+      .navbar__right { gap: 8px; }
+      .navbar__btn { padding: 8px 12px; font-size: 13px; }
+    }
+
+    @media (max-width: 395px) {
+      .hero { padding: 90px 16px calc(24px + env(safe-area-inset-bottom, 0px)); }
+      .hero__title-main { font-size: clamp(48px, 15.5vw, 70px); }
+    }
+
+    /* ── Hero text hover motion ── */
+    .hero__title {
+      pointer-events: auto !important;
+      cursor: default;
+    }
+
+    .hero__title-top,
+    .hero__title-main,
+    .hero__title-bottom {
+      will-change: transform;
+    }
+
+    .hero__title .char {
+      display: inline-block;
+      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                  color 0.65s ease;
+      transition-delay: calc(var(--i) * 0.048s);
+    }
+
+    .hero__title:hover .hero__title-top .char,
+    .hero__title.is-animating .hero__title-top .char {
+      transform: translateY(-9px) rotate(-1.5deg);
+      color: var(--accent, #ff75c3);
+      transition-delay: calc(var(--i) * 0.042s);
+    }
+
+    .hero__title:hover .hero__title-main .char,
+    .hero__title.is-animating .hero__title-main .char {
+      transform: translateY(-14px) skewX(-2deg);
+      transition-delay: calc(var(--i) * 0.06s);
+    }
+
+    .hero__title:hover .hero__title-bottom .char,
+    .hero__title.is-animating .hero__title-bottom .char {
+      transform: translateY(-9px) rotate(1.5deg);
+      color: var(--accent, #ff75c3);
+      transition-delay: calc((4 - var(--i)) * 0.055s);
+    }
+  </style>
 </head>
 <body>
-  <div class="page">
 
-    <h1 class="display-title">Asmik Mikaelian</h1>
-
-    <!-- ════════════════════════════════════
-         ONE MAIN CARD — wraps everything
-    ════════════════════════════════════ -->
-    <div class="main-card">
-
-      <!-- ── HERO ──────────────────────── -->
-
-      <div class="hero-layout">
-        <div class="hero-left">
-          <img src="img/photo.png" alt="Asmik Mikaelian" class="photo-circle" style="object-fit:cover;">
-        </div>
-        <div class="hero-text">
-          <p class="page-desc">I am a Product Designer with experience across FinTech, EdTech, SaaS, and complex industrial systems. I've owned end-to-end projects in both startups and large companies — and I know how to move fast in one and navigate complexity in the other.</p>
-          <p class="hero-meta">FinTech · EdTech · Enterprise · Emerging Tech · Dubai, UAE</p>
-          <div style="display:flex; flex-direction:row; gap:1.25rem; margin-top:0.75rem;">
-            <a href="Asmik_CV.pdf" target="_blank" rel="noopener" class="link-strong">CV</a>
-            <a href="mailto:asmikpod@gmail.com" class="link-strong">asmikpod@gmail.com</a>
-            <a href="https://www.linkedin.com/in/asmik-mikaelian-69164b322/" target="_blank" rel="noopener" class="link-strong">LinkedIn</a>
-          </div>
-        </div>
-      </div>
-
-      <hr class="divider">
-
-      <!-- ── PROJECT 1 — NETOLOGY ──────── -->
-      <img src="Netology_full_Case/Main_Top_Tittle.png" alt="Netology — growing an EdTech platform from first click to daily habit" class="case-img">
-
-      <div class="project-row">
-        <div>
-          <p class="project-company">Netology</p>
-          <p class="project-desc">B2C EdTech · Professional Growth Platform · Senior Product Designer</p>
-          <p class="meta-value" style="margin-top:0.75rem;">B2C EdTech platform for professional growth — 1.5M+ users, 130K graduates. Redesigned onboarding and content discovery, added gamification and an achievement dashboard, and simplified expert onboarding from a multi-step form to a guided flow.</p>
-          <a class="link-strong" href="test_case.html">View case →</a>
-        </div>
-        <div class="project-right">
-          <div>
-            <p class="meta-label">Results</p>
-            <p class="meta-value">+17% activation · D7 retention 21%→40% · −50% expert onboarding time</p>
-          </div>
-          <div>
-            <p class="meta-label">Industry</p>
-            <p class="meta-value">EdTech / Online learning</p>
-          </div>
-        </div>
-      </div>
-
-      <hr class="divider">
-
-      <!-- ── PROJECT 3 — TICKERON ──────── -->
-      <img src="img/Tickeron_Portfolio/Tickeron_main.png" data-gif="img/Tickeron_Portfolio/Tickeron_main.gif" data-still="img/Tickeron_Portfolio/Tickeron_main.png" alt="Tickeron mobile app redesign" class="case-img gif-scroll">
-
-      <div class="project-row">
-        <div>
-          <p class="project-company">Tickeron</p>
-          <p class="project-desc">FinTech / Investment platform · Product Designer</p>
-          <p class="meta-value" style="margin-top:0.75rem;">AI-powered investment platform for active retail investors — stocks, crypto, and ETFs. 3 years as product designer across 6 teams.</p>
-          <a class="link-strong" href="case-tickeron.html">View case →</a>
-        </div>
-        <div class="project-right">
-          <div>
-            <p class="meta-label">Result</p>
-            <p class="meta-value">Subscriptions ×2, checkout 8→4 steps, mobile drop-off −20%, alert setup +32%, +12% annual revenue</p>
-          </div>
-        </div>
-      </div>
-
-      <hr class="divider">
-
-      <!-- ── PROJECT 4 — ALPHA SMART ─────── -->
-      <img src="img/MonitoringSys_Portfolio/Monitoring_main.gif" alt="MinePass underground monitoring system" class="case-img">
-
-      <div class="project-row">
-        <div>
-          <p class="project-company">MinePass</p>
-          <p class="project-desc">Industrial / Mining / Enterprise B2B · UX/UI Designer</p>
-          <p class="meta-value" style="margin-top:0.75rem;">Real-time safety monitoring for underground mining — 400+ workers, 120+ sensors, vehicles, and communication nodes across multiple levels.</p>
-          <a class="link-strong" href="case-monitoring.html">View case →</a>
-        </div>
-        <div class="project-right">
-          <div>
-            <p class="meta-label">Result</p>
-            <p class="meta-value">UI readable in under 5 seconds. Check-in/out flow under 90 seconds. Operational coverage +67%.</p>
-          </div>
-          <div>
-            <p class="meta-label">Industry</p>
-            <p class="meta-value">Industrial / Mining enterprise software</p>
-          </div>
-        </div>
-      </div>
-
-      <hr class="divider">
-
-      <!-- ── PROJECT 5 — CAPTIC ─────────── -->
-      <img src="img/CapticIO_portfolio/CapticIO_main.png" alt="Captic — browser-based virtual worlds" class="case-img">
-
-      <div class="project-row">
-        <div>
-          <p class="project-company">Captic / w3dge</p>
-          <p class="project-desc">Spatial Computing / Immersive Web · Product Design Consultant</p>
-          <p class="meta-value" style="margin-top:0.75rem;">Browser-based virtual worlds platform for multiplayer social spaces — 3D environments entered directly in the browser, no downloads.</p>
-          <a class="link-strong" href="case-captic.html">View case →</a>
-        </div>
-        <div class="project-right">
-          <div>
-            <p class="meta-label">Result</p>
-            <p class="meta-value">12+ dead ends found, 32 growth opportunities surfaced. Reports adopted as Q1 2025 product roadmap.</p>
-          </div>
-          <div>
-            <p class="meta-label">NDA</p>
-            <p class="meta-value">Screens shown with permission. Confidential details omitted.</p>
-          </div>
-        </div>
-      </div>
-
-      <hr class="divider">
-
-      <!-- ── CONTACT CTA ────────────────── -->
-      <div class="contact-cta">
-        <p class="contact-cta-heading">Have a complex product problem?</p>
-        <p class="contact-cta-body">I work with product teams on discovery, UX audit, and design strategy — from early-stage definition to shipped product.</p>
-        <div class="hero-links" style="margin-top:0; margin-bottom:0;">
-          <a href="mailto:asmikpod@gmail.com">asmikpod@gmail.com</a>
-          <a href="https://www.linkedin.com/in/asmik-mikaelian-69164b322/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-      </div>
-
-      <hr class="divider">
-
-      <!-- ── EDUCATION ─────────────────── -->
-      <p class="meta-label">Education</p>
-      <p class="meta-value" style="margin-top:0.25rem;">Bachelor's in Information Systems — ITMO University, Russia · 2012–2016</p>
-
-    </div>
-    <!-- end .main-card -->
-
+  <!-- ── Page Loader ── -->
+  <div id="pageLoader" class="page-loader">
+    <div class="loader-mark">AM<span>.</span></div>
   </div>
   <script>
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        var img = entry.target;
-        img.src = entry.isIntersecting ? img.dataset.gif : img.dataset.still;
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.gif-scroll').forEach(function(img) {
-      observer.observe(img);
-    });
+    (function() {
+      var loader = document.getElementById('pageLoader');
+      if (sessionStorage.getItem('am_visited')) {
+        loader.style.transition = 'none';
+        loader.classList.add('is-hidden');
+      } else {
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            loader.classList.add('is-hidden');
+            sessionStorage.setItem('am_visited', '1');
+          }, 700);
+        });
+      }
+    })();
   </script>
+
+  <!-- ── Navbar ── -->
+  <div id="navbarWrap" class="navbar-wrap">
+    <nav class="navbar">
+      <a href="index.html" class="navbar__logo" aria-label="Home">AM</a>
+      <div class="navbar__right">
+        <a href="#cases" class="navbar__link">Cases</a>
+        <a href="https://asmikmk.github.io/Portfolio2/Asmik_CV.pdf" class="navbar__btn navbar__btn--cv" target="_blank" rel="noopener">Open CV</a>
+        <a href="mailto:asmikpod@gmail.com" class="navbar__btn" data-magnetic>Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    (function() {
+      var wrap      = document.getElementById('navbarWrap');
+      var ticking   = false;
+      var compact   = false;
+      var SHRINK_AT = 60;   /* scrollY to shrink */
+      var GROW_AT   = 30;   /* scrollY to restore (hysteresis) */
+
+      function update() {
+        var y = window.scrollY;
+        if (!compact && y > SHRINK_AT) {
+          compact = true;
+          wrap.classList.add('is-compact');
+        } else if (compact && y < GROW_AT) {
+          compact = false;
+          wrap.classList.remove('is-compact');
+        }
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
+    })();
+  </script>
+
+  <!-- Custom cursor for case cards -->
+  <div id="cardCursor" class="card-cursor" aria-hidden="true">
+    <span class="card-cursor__text">View</span>
+    <span class="card-cursor__arrow">→</span>
+  </div>
+
+  <button id="scrollTop" class="scroll-top" aria-label="Back to top">↑</button>
+
+  <div class="page">
+
+    <!-- ══ HERO ══════════════════════════════════════════════════════ -->
+    <section class="hero">
+
+      <!-- Ambient background -->
+      <div class="hero__bg">
+        <div class="hero__orb hero__orb--1"></div>
+        <div class="hero__orb hero__orb--2"></div>
+        <div class="hero__orb hero__orb--3"></div>
+        <div class="hero__grid"></div>
+      </div>
+
+      <!-- Stacked display title -->
+      <div class="hero__title">
+        <span class="hero__title-top">Product</span>
+        <span class="hero__title-main">Designer</span>
+        <span class="hero__title-bottom">Asmik</span>
+      </div>
+
+      <!-- Footer row -->
+      <footer class="hero__footer">
+        <p class="hero__desc">
+          8+ years turning complex digital products into clear, measurable experiences across FinTech, EdTech and B2B.<br>
+          Senior Product Designer. Dubai, UAE.
+        </p>
+      </footer>
+    </section>
+
+    <!-- ══ CASES ══════════════════════════════════════════════════════ -->
+    <section class="cases-section" id="cases">
+      <h2 class="cases-section__title" data-reveal="up">Cases</h2>
+
+      <div class="cases-grid">
+
+        <!-- Case 1 — Netology / EdTech -->
+        <a href="case-netology.html" class="card" data-case-card data-reveal="up" data-delay="1">
+          <div class="card__picture">
+            <img src="NetoCase/Main_Top_Tittle.png" alt="Netology — Activation and Retention" loading="lazy">
+          </div>
+          <div class="card__description">
+            <h3 class="card__title">How I increased activation by 17% and D7 retention from 21% to 40%.</h3>
+          </div>
+        </a>
+
+        <!-- Case 2 — Tickeron / Mobile -->
+        <a href="case-tickron.html" class="card" data-case-card data-reveal="up" data-delay="1">
+          <div class="card__picture">
+            <img src="MobileApp/Main_Top_Tittle.png" alt="Tickeron — Mobile experience redesign" loading="lazy">
+          </div>
+          <div class="card__description">
+            <h3 class="card__title">How user drop-off led us to redesign the entire mobile experience.</h3>
+          </div>
+        </a>
+
+        <!-- Case 3 — Coming soon -->
+        <div class="card card--locked" data-reveal="up" data-delay="1">
+          <div class="card__picture card__picture--b2b">
+            <div class="card__lock-badge">
+              <span class="card__lock-icon">✦</span>
+              <span class="card__lock-label">Coming soon</span>
+            </div>
+          </div>
+          <div class="card__description">
+            <h3 class="card__title">Next case is on its way.</h3>
+          </div>
+        </div>
+
+        <!-- Case 4 — Blocked / NDA -->
+        <div class="card card--locked" data-reveal="up" data-delay="1">
+          <div class="card__picture card__picture--enterprise">
+            <div class="card__lock-badge">
+              <span class="card__lock-icon">🔒</span>
+              <span class="card__lock-label">Under NDA</span>
+            </div>
+          </div>
+          <div class="card__description">
+            <h3 class="card__title">This case is currently restricted.</h3>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div><!-- /.page -->
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer" data-reveal="fade">
+
+    <span class="site-footer__name">Asmik Mikaelian</span>
+    <span class="site-footer__copy">© 2025 Asmik Mikaelian</span>
+  </footer>
+
+  <script src="motion.js"></script>
 </body>
 </html>

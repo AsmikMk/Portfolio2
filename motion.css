@@ -1,0 +1,492 @@
+/* ===========================
+   Reduced Motion
+   =========================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html { scroll-behavior: smooth; }
+
+/* ===========================
+   Hero Load Animations
+   =========================== */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Start invisible — .is-loaded on body triggers the animations */
+.hero__title-top,
+.hero__title-main,
+.hero__title-bottom,
+.hero__footer { opacity: 0; }
+
+body.is-loaded .hero__title-main {
+  animation: hero-rise 1s cubic-bezier(0.16, 1, 0.3, 1) 0ms both;
+}
+body.is-loaded .hero__title-top {
+  animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+}
+body.is-loaded .hero__title-bottom {
+  animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
+}
+body.is-loaded .hero__footer {
+  animation: hero-fade-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) 260ms both;
+}
+
+/* Case study hero — stagger in on load */
+.case-hero-title,
+.case-hero-meta,
+.case-hero-desc,
+.case-hero-metrics { opacity: 0; }
+
+body.is-loaded .case-hero-title {
+  animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 160ms both;
+}
+body.is-loaded .case-hero-meta {
+  animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 280ms both;
+}
+body.is-loaded .case-hero-desc {
+  animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 380ms both;
+}
+body.is-loaded .case-hero-metrics {
+  animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 460ms both;
+}
+
+/* ===========================
+   Scroll Reveal System
+   =========================== */
+[data-reveal] {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+[data-reveal="up"]    { transform: translateY(48px); }
+[data-reveal="left"]  { transform: translateX(-48px); }
+[data-reveal="right"] { transform: translateX(48px); }
+[data-reveal="scale"] { transform: scale(0.95) translateY(20px); }
+[data-reveal="fade"]  { transform: none; }
+
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal][data-delay="1"].is-revealed { transition-delay: 80ms; }
+[data-reveal][data-delay="2"].is-revealed { transition-delay: 160ms; }
+[data-reveal][data-delay="3"].is-revealed { transition-delay: 240ms; }
+[data-reveal][data-delay="4"].is-revealed { transition-delay: 320ms; }
+[data-reveal][data-delay="5"].is-revealed { transition-delay: 400ms; }
+[data-reveal][data-delay="6"].is-revealed { transition-delay: 480ms; }
+
+/* ===========================
+   Custom Cursor
+   =========================== */
+.card-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1200;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: var(--accent, #ff75c3);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.4);
+  transition: opacity 200ms ease, transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, left, top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card-cursor.is-active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.card-cursor__text {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.card-cursor__arrow {
+  font-size: 15px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .card-cursor { display: none; }
+}
+
+/* ===========================
+   Navbar — wrapper-width approach
+   ===========================
+   The wrapper sits at left:50% + translateX(-50%), so animating
+   its WIDTH always shrinks/expands from the visual centre.
+   No max-width tricks, no overflow clipping, no jumps.
+
+   Choreography (scroll down):
+     0ms  — link fades out (opacity 0.2s)
+     0ms  — link width collapses (0.5s spring)
+     60ms — wrapper pill narrows (0.75s spring)
+
+   Choreography (scroll up):
+     0ms  — wrapper pill expands (0.75s spring)
+     280ms — link width reopens (0.5s spring, delayed)
+     280ms — link fades in (0.4s ease, delayed)
+*/
+
+/* 1 — Wrapper: this is the only thing that changes size */
+.navbar-wrap {
+  transition: width 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: width;
+}
+
+/* 2 — Links: collapse first, then reopen after wrapper expands */
+.navbar__link {
+  position: relative;
+  overflow: hidden;
+  max-width: 260px;
+  opacity: 1;
+  white-space: nowrap;
+}
+
+/* Collapsing — fast fade + space shrink */
+.navbar-wrap.is-compact .navbar__link {
+  max-width: 0;
+  opacity: 0;
+  pointer-events: none;
+  padding-left: 0;
+  padding-right: 0;
+  transition:
+    max-width  0.4s  cubic-bezier(0.55, 0, 1, 0.45) 0s,
+    opacity    0.18s ease                            0s,
+    padding    0.4s  cubic-bezier(0.55, 0, 1, 0.45) 0s;
+}
+
+/* Expanding — reopen after wrapper is mostly open */
+.navbar-wrap:not(.is-compact) .navbar__link {
+  transition:
+    max-width  0.5s  cubic-bezier(0.16, 1, 0.3, 1) 0.28s,
+    opacity    0.38s ease                           0.3s,
+    padding    0.5s  cubic-bezier(0.16, 1, 0.3, 1) 0.28s;
+}
+
+/* Underline slide on hover */
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--headline-text);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar__link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* CV button — muted variant so Contact reads as primary */
+.navbar__btn--cv {
+  border-color: var(--border-10);
+  color: var(--secondary-text);
+}
+
+.navbar__btn--cv:hover {
+  border-color: var(--border-20);
+  color: var(--headline-text);
+}
+
+/* 3 — CTA button: stays put, just hover states */
+.navbar__btn {
+  transition:
+    background   0.25s ease,
+    border-color 0.25s ease,
+    transform    0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow   0.25s ease;
+  will-change: transform;
+}
+
+.navbar__btn:hover {
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 28px rgba(255, 117, 195, 0.14);
+}
+
+.navbar__btn:active {
+  transform: scale(0.96);
+}
+
+/* ===========================
+   Case nav prev/next buttons
+   =========================== */
+.navbar__case-btn {
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar__case-btn:hover {
+  transform: scale(1.08);
+}
+
+.navbar__case-btn:active {
+  transform: scale(0.93);
+}
+
+/* ===========================
+   Card hover — lift + scale + date tint
+   =========================== */
+.card {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover { transform: translateY(-10px); }
+
+.card__picture img {
+  transition: transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .card__picture img { transform: scale(1.06); }
+
+.card__date {
+  transition: color 0.3s ease;
+}
+
+.card:hover .card__date { color: var(--accent); }
+
+/* ===========================
+   Other-card hover (case page)
+   =========================== */
+.other-card {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.other-card:hover { transform: translateY(-8px); }
+
+.other-card__img img {
+  transition: transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.other-card:hover .other-card__img img { transform: scale(1.05); }
+
+.other-card__date {
+  transition: color 0.3s ease;
+}
+
+.other-card:hover .other-card__date { color: var(--accent); }
+
+/* ===========================
+   Navbar logo pulse on hover
+   =========================== */
+.navbar__logo {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.navbar__logo:hover {
+  transform: scale(1.1) rotate(-4deg);
+  box-shadow: 0 0 32px rgba(255, 117, 195, 0.35);
+}
+
+/* ===========================
+   Social links hover
+   =========================== */
+.hero__socials a {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+
+.hero__socials a:hover {
+  opacity: 0.55;
+  transform: translateY(-3px);
+}
+
+/* ===========================
+   Footer links
+   =========================== */
+.site-footer__link {
+  transition: color 0.25s ease;
+}
+
+.site-footer__link:hover { color: var(--headline-text); }
+
+/* ===========================
+   Accent bar hover
+   =========================== */
+.accent-bar {
+  transition: border-left-color 0.4s ease;
+}
+
+.accent-bar:hover {
+  border-left-color: var(--headline-text);
+}
+
+/* ===========================
+   Tags hover
+   =========================== */
+.tag {
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.tag:hover {
+  background: rgba(255,255,255,0.12);
+  color: var(--headline-text);
+}
+
+/* ===========================
+   Page transition out
+   =========================== */
+@keyframes page-leave {
+  from { opacity: 1; transform: none; }
+  to   { opacity: 0; transform: translateY(-20px); filter: blur(4px); }
+}
+
+body.is-leaving {
+  animation: page-leave 0.35s cubic-bezier(0.55, 0, 1, 0.45) both;
+  pointer-events: none;
+}
+
+/* ===========================
+   Page transition in
+   =========================== */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+body.is-entering {
+  animation: page-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ===========================
+   Divider line reveal
+   =========================== */
+.divider {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.divider.is-revealed {
+  transform: scaleX(1);
+}
+
+/* ===========================
+   Quote block left-border reveal
+   =========================== */
+.quote-block::before {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.quote-block.is-revealed::before {
+  transform: scaleY(1);
+}
+
+/* ===========================
+   Image cell hover — subtle scale
+   =========================== */
+.img-cell {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+/* ===========================
+   Story card hover — lift
+   =========================== */
+.story-card {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s ease;
+}
+
+.story-card:hover { transform: translateY(-4px); }
+
+/* ===========================
+   Scroll-to-top button
+   =========================== */
+.scroll-top {
+  position: fixed;
+  bottom: 36px;
+  right: 36px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent, #ff75c3);
+  border: none;
+  cursor: pointer;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  opacity: 0;
+  transform: translateY(20px) scale(0.85);
+  pointer-events: none;
+  transition:
+    opacity    0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    transform  0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+  will-change: opacity, transform;
+  text-decoration: none;
+}
+
+.scroll-top.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.scroll-top:hover {
+  background: #fff;
+  color: var(--accent, #ff75c3);
+  box-shadow: 0 8px 32px rgba(255, 117, 195, 0.35);
+  transform: translateY(-4px) scale(1.08);
+}
+
+.scroll-top:active {
+  transform: scale(0.93);
+}
+
+@media (max-width: 600px) {
+  .scroll-top { bottom: 24px; right: 20px; width: 44px; height: 44px; font-size: 17px; }
+}

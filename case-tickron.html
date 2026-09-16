@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Netology — Increasing Activation by 17% and D7 Retention from 21% to 40% · Asmik Mikaelian</title>
+  <title>Tickron — Redesigning Task Flow for Speed and Clarity · Asmik Mikaelian</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Raleway:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet" />
@@ -13,7 +13,7 @@
   <style>
     body { font-family: 'Raleway', sans-serif; }
 
-    :root { --case-accent: #f8ff5b; }
+    :root { --case-accent: #9dff57; }
     .acc { color: var(--case-accent); }
 
     /* ── Page wrapper ── */
@@ -157,7 +157,6 @@
       object-fit: cover;
       object-position: top center;
     }
-    /* Gradient fade so text reads over the image */
     .story-card-left::after {
       content: '';
       position: absolute;
@@ -216,7 +215,7 @@
       gap: 20px;
     }
     .story-card-out {
-      background: rgba(192, 132, 252, 0.07);
+      background: rgba(157, 255, 87, 0.07);
       border-radius: 24px;
       padding: 32px;
       display: flex;
@@ -246,7 +245,7 @@
 
     /* Italic divider inside outcome card */
     .story-divider {
-      border-top: 1px solid rgba(192, 132, 252, 0.2);
+      border-top: 1px solid rgba(157, 255, 87, 0.25);
       padding-top: 20px;
     }
 
@@ -435,6 +434,7 @@
       .story-2col { grid-template-columns: 1fr; }
       .story-sep  { display: none; }
       .gallery-col-2 { grid-template-columns: 1fr; }
+      .gallery-col-3 { grid-template-columns: 1fr; }
       .other-grid { grid-template-columns: 1fr; }
       .case-page  { gap: 64px; }
     }
@@ -454,10 +454,10 @@
       <a href="index.html" class="navbar__logo" aria-label="Back to portfolio">AM</a>
       <div class="navbar__right">
         <a href="https://asmikmk.github.io/Portfolio2/Asmik_CV.pdf" class="navbar__btn navbar__btn--cv" target="_blank" rel="noopener">Open CV</a>
-        <span class="navbar__cases-label">Case 01 / 04</span>
+        <span class="navbar__cases-label">Case 02 / 04</span>
         <div class="navbar__case-btns">
-          <a class="navbar__case-btn navbar__case-btn--muted" aria-label="Previous case" aria-disabled="true">←</a>
-          <a href="case-tickron.html" class="navbar__case-btn" aria-label="Next case">→</a>
+          <a href="case-netology.html" class="navbar__case-btn" aria-label="Previous case">←</a>
+          <a class="navbar__case-btn navbar__case-btn--muted" aria-label="Next case — coming soon" aria-disabled="true">→</a>
         </div>
       </div>
     </nav>
@@ -495,9 +495,9 @@
     <section class="cs hero-section">
       <div class="case-hero-flex">
 
-        <!-- Character image -->
+        <!-- Character / product image -->
         <div class="case-hero-image">
-          <img src="NetoCase/ChatGPT%20Image%20Sep%2015%2C%202026%2C%2008_14_16%20PM%201.png"
+          <img src="MobileApp/face3.png"
                alt=""
                style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top;" />
         </div>
@@ -505,10 +505,10 @@
         <!-- Title + description -->
         <div class="case-hero-title" style="flex:1; padding-bottom:24px;">
           <h1 class="case-hero__title">
-            How I increased <span class="acc">activation by 17%</span> and D7 retention from 21% to 40%.
+            How user drop-off led us to redesign the <span class="acc">entire mobile experience.</span>
           </h1>
           <p style="margin-top:32px; font-family:'Raleway',sans-serif; font-size:18px; line-height:30px; color:var(--secondary-text); max-width:600px;">
-            My goal was to understand why users were ignoring content and improve discovery without creating visual chaos.
+            Using research, AI-assisted documentation, and a reusable design system to rebuild Tickeron around mobile-first behavior.
           </p>
         </div>
 
@@ -517,22 +517,22 @@
 
     <!-- ── Cover image ────────────────────────────────────────────────── -->
     <div class="gallery-section">
-      <div class="img-cell" style="aspect-ratio:1280/720;">
-        <img src="NetoCase/Main_Top_Tittle.png" alt="Netology platform — main screen" loading="lazy" />
+      <div class="img-cell" style="aspect-ratio:4262/2521;">
+        <img src="MobileApp/Main_Top_Tittle.png" alt="Tickron — main screen" loading="lazy" />
       </div>
     </div>
 
-    <!-- ══ STORY 01 — THE PROBLEM ════════════════════════════════════════ -->
+    <!-- ══ STEP 01 ═══════════════════════════════════════════════════════ -->
     <section class="cs" data-reveal="up">
       <div class="story-grid">
 
         <div class="story-card-left">
           <div class="story-card-left__content">
             <span class="c-cap">Step 01</span>
-            <h2 class="c-h2">Users logged in — but left before <span class="acc">finding value.</span></h2>
+            <h2 class="c-h2">Find why users <span class="acc">drop off.</span></h2>
           </div>
           <div class="story-card-left__bg">
-            <img src="NetoCase/Story_o1.png" alt="Story 01 illustration" loading="lazy" />
+            <img src="MobileApp/fase2.png" alt="Step 01 illustration" loading="lazy" />
           </div>
         </div>
 
@@ -540,9 +540,9 @@
 
           <div class="rail-sm">
             <span class="c-cap">Context</span>
-            <p class="c-lead">We saw a high drop-off shortly after users entered the platform.</p>
-            <p class="c-lead">The problem was not that users could not access content. They could. But after logging in, they were immediately shown a large feed of videos with no guidance and no personalization.</p>
-            <p class="c-lead">From user interviews, I learned that people did not clearly understand where to start or which content was relevant to them. The platform had a lot to offer, but the first experience felt like a wall of content.</p>
+            <p class="c-lead">We saw a high drop-off in the mobile app, but analytics only showed us where users were leaving — not why.</p>
+            <p class="c-lead">After talking to users, I found repeated confusion around navigation, hierarchy, and how different features were connected.</p>
+            <p class="c-lead">The problem was bigger than one screen. The app had grown feature by feature, and users had to understand too much before completing simple tasks.</p>
           </div>
 
           <div class="story-2col">
@@ -551,15 +551,15 @@
               <div class="bullets">
                 <div class="bullet">
                   <span class="bullet__icon">→</span>
-                  <span class="bullet__text">Focused on the first moments after sign-up.</span>
+                  <span class="bullet__text">Mapped every important screen, feature, and connection in the existing app.</span>
                 </div>
                 <div class="bullet">
                   <span class="bullet__icon">→</span>
-                  <span class="bullet__text">Added a short onboarding flow that asked users about their interests and preferences.</span>
+                  <span class="bullet__text">Connected separate screens into complete user journeys to see where users were getting lost.</span>
                 </div>
                 <div class="bullet">
                   <span class="bullet__icon">→</span>
-                  <span class="bullet__text">Instead of showing the same feed to everyone, the platform used these answers to make the first content recommendations more relevant.</span>
+                  <span class="bullet__text">Used the map as a source of truth so no feature, state, or important flow would be missed during the redesign.</span>
                 </div>
               </div>
             </div>
@@ -568,9 +568,10 @@
 
             <div class="story-card-out">
               <span class="c-cap" style="color:var(--case-accent);">Outcome &amp; I learned</span>
-              <p class="c-lead">The onboarding became the first step in personalization. Instead of asking users to explore a large library on their own, the product started guiding them from the beginning.</p>
+              <p class="c-lead">The map helped me see the product as one connected system instead of a collection of screens.</p>
+              <p class="c-lead">It also showed where the experience became fragmented and which journeys needed to become simpler on mobile.</p>
               <div class="story-divider">
-                <p class="c-lead" style="color:var(--case-accent); font-style:italic;">The first screen should not show everything the product has. It should help the user understand what is useful for them first.</p>
+                <p class="c-lead" style="color:var(--case-accent); font-style:italic;">When the problem exists across the whole product, redesigning one screen at a time will not solve it.</p>
               </div>
             </div>
           </div>
@@ -581,22 +582,22 @@
 
     <!-- ── Gallery ────────────────────────────────────────────────────── -->
     <div class="gallery-section" data-reveal="up">
-      <div class="img-cell" style="aspect-ratio:4262/1868;">
-        <img src="NetoCase/Onbording%20copy.png" alt="Onboarding flow" loading="lazy" />
+      <div class="img-cell" style="aspect-ratio:4262/1897;">
+        <img src="MobileApp/Map+Old.png" alt="App flow and screens overview" loading="lazy" />
       </div>
     </div>
 
-    <!-- ══ STORY 02 — RESEARCH ═══════════════════════════════════════════ -->
+    <!-- ══ STEP 02 ═══════════════════════════════════════════════════════ -->
     <section class="cs" data-reveal="up">
       <div class="story-grid">
 
         <div class="story-card-left">
           <div class="story-card-left__content">
             <span class="c-cap">Step 02</span>
-            <h2 class="c-h2">Search existed — but users <span class="acc">could not find it.</span></h2>
+            <h2 class="c-h2">I used AI to turn a complex product into <span class="acc">clear mobile-first rules.</span></h2>
           </div>
           <div class="story-card-left__bg">
-            <img src="NetoCase/Story_o2.png" alt="Story 02 illustration" loading="lazy" />
+            <img src="MobileApp/face4.png" alt="Step 02 illustration" loading="lazy" />
           </div>
         </div>
 
@@ -604,9 +605,9 @@
 
           <div class="rail-sm">
             <span class="c-cap">Context</span>
-            <p class="c-lead">Users wanted to find specific videos, but the search was too easy to miss.</p>
-            <p class="c-lead">Instead of using search, they were manually scrolling through the platform and looking through many videos one by one.</p>
-            <p class="c-lead">This made discovery slower and increased the chance that users would leave before finding something relevant.</p>
+            <p class="c-lead">Once the whole product was mapped, the next challenge was scale.</p>
+            <p class="c-lead">There were many screens, states, interactions, and edge cases to document. Doing everything manually would take a long time and make inconsistencies easy to miss.</p>
+            <p class="c-lead">I used AI to help transform the product map and research findings into structured mobile-first documentation.</p>
           </div>
 
           <div class="story-2col">
@@ -615,15 +616,15 @@
               <div class="bullets">
                 <div class="bullet">
                   <span class="bullet__icon">→</span>
-                  <span class="bullet__text">Made the search panel much more visible and gave it stronger visual priority on the page.</span>
+                  <span class="bullet__text">Gave AI the existing flows, screens, user problems, and mobile constraints as context.</span>
                 </div>
                 <div class="bullet">
                   <span class="bullet__icon">→</span>
-                  <span class="bullet__text">Added the most popular categories next to search — giving users two ways to move forward: search for something specific, or explore popular topics without knowing what to type.</span>
+                  <span class="bullet__text">Used it to document navigation logic, interaction behavior, component states, and edge cases.</span>
                 </div>
                 <div class="bullet">
                   <span class="bullet__icon">→</span>
-                  <span class="bullet__text">The goal was to reduce the effort needed to find useful content and give users a clear next step.</span>
+                  <span class="bullet__text">Reviewed and corrected the output so every rule matched the product logic and expected mobile behavior.</span>
                 </div>
               </div>
             </div>
@@ -632,10 +633,10 @@
 
             <div class="story-card-out">
               <span class="c-cap" style="color:var(--case-accent);">Outcome &amp; I learned</span>
-              <p class="c-lead">Search became a stronger part of the discovery experience. Users no longer had to rely only on manual browsing.</p>
-              <p class="c-lead">Popular categories also helped reduce the "empty search" problem by giving users ideas of what to explore.</p>
+              <p class="c-lead">Instead of keeping the redesign logic in scattered notes, I had one structured set of interaction rules that could guide the whole redesign.</p>
+              <p class="c-lead">AI made the documentation process much faster, but the quality still depended on the context and constraints I gave it.</p>
               <div class="story-divider">
-                <p class="c-lead" style="color:var(--case-accent); font-style:italic;">Search only works if users can actually notice it. Sometimes the problem is not the feature — it is its visibility.</p>
+                <p class="c-lead" style="color:var(--case-accent); font-style:italic;">AI became useful when I stopped asking it to "design" and gave it a clear system to work inside.</p>
               </div>
             </div>
           </div>
@@ -646,22 +647,27 @@
 
     <!-- ── Gallery ────────────────────────────────────────────────────── -->
     <div class="gallery-section" data-reveal="up">
-      <div class="img-cell" style="aspect-ratio:1536/512;">
-        <img src="NetoCase/Search.gif" alt="Search and categories redesign" loading="lazy" />
+      <div class="gallery-col-2">
+        <div class="img-cell" style="aspect-ratio:1/1;">
+          <img src="MobileApp/Figma.png" alt="Figma design file" loading="lazy" />
+        </div>
+        <div class="img-cell" style="aspect-ratio:1590/1578;">
+          <img src="MobileApp/SJM.png" alt="SJM design file" loading="lazy" />
+        </div>
       </div>
     </div>
 
-    <!-- ══ STORY 03 — EXPLORATION ════════════════════════════════════════ -->
+    <!-- ══ STEP 03 ═══════════════════════════════════════════════════════ -->
     <section class="cs" data-reveal="up">
       <div class="story-grid">
 
         <div class="story-card-left">
           <div class="story-card-left__content">
             <span class="c-cap">Step 03</span>
-            <h2 class="c-h2">Banner blindness: users saw the homepage, but <span class="acc">remembered nothing.</span></h2>
+            <h2 class="c-h2">Instead of generating screens, I built a system <span class="acc">AI could reuse.</span></h2>
           </div>
           <div class="story-card-left__bg">
-            <img src="NetoCase/Story_o3.png" alt="Story 03 illustration" loading="lazy" />
+            <img src="MobileApp/fave5.png" alt="Step 03 illustration" loading="lazy" />
           </div>
         </div>
 
@@ -669,9 +675,9 @@
 
           <div class="rail-sm">
             <span class="c-cap">Context</span>
-            <p class="c-lead">The homepage had a lot of videos, but most of them looked very similar.</p>
-            <p class="c-lead">I ran a 5-second test with the old design. After seeing the homepage for five seconds, users could not remember even one specific video.</p>
-            <p class="c-lead">This showed a banner blindness problem — there was a lot of content on screen, but nothing stood out enough to be remembered.</p>
+            <p class="c-lead">With the interaction rules defined, I moved into the visual redesign.</p>
+            <p class="c-lead">AI could help generate and iterate on screens quickly, but without strong constraints, the product could easily become inconsistent.</p>
+            <p class="c-lead">For a financial app, I needed the same patterns, spacing, components, and states to behave consistently everywhere.</p>
           </div>
 
           <div class="story-2col">
@@ -680,15 +686,15 @@
               <div class="bullets">
                 <div class="bullet">
                   <span class="bullet__icon">→</span>
-                  <span class="bullet__text">Explored how to break the visual repetition without making the homepage feel chaotic.</span>
+                  <span class="bullet__text">Built a reusable UI Kit in Figma with components, variants, spacing, typography, and states.</span>
                 </div>
                 <div class="bullet">
                   <span class="bullet__icon">→</span>
-                  <span class="bullet__text">Tested different card sizes, shapes, layouts, and content blocks to create stronger visual hierarchy.</span>
+                  <span class="bullet__text">Structured design tokens and UI properties in JSON so the same rules could be reused across the product.</span>
                 </div>
                 <div class="bullet">
                   <span class="bullet__icon">→</span>
-                  <span class="bullet__text">The goal was to make important content easier to notice and help users scan the page faster.</span>
+                  <span class="bullet__text">Used AI-assisted workflows to create and iterate on screens inside this system instead of designing every screen from zero.</span>
                 </div>
               </div>
             </div>
@@ -697,10 +703,10 @@
 
             <div class="story-card-out">
               <span class="c-cap" style="color:var(--case-accent);">Outcome &amp; I learned</span>
-              <p class="c-lead">We didn't need more content. We needed to make the existing content easier to notice.</p>
-              <p class="c-lead">Instead of giving every video the same visual weight, I created more contrast between content blocks.</p>
+              <p class="c-lead">AI helped me move much faster through repetitive design work and screen exploration.</p>
+              <p class="c-lead">The first output still needed refinement, especially for hierarchy, spacing, states, and visual details. But because the system was already structured, the final components and tokens were also much easier to prepare for development handoff.</p>
               <div class="story-divider">
-                <p class="c-lead" style="color:var(--case-accent); font-style:italic;">Consistency does not mean making everything look the same. A good system needs enough variation to guide attention.</p>
+                <p class="c-lead" style="color:var(--case-accent); font-style:italic;">AI made the redesign faster. The design system made it consistent. Human judgment made it usable.</p>
               </div>
             </div>
           </div>
@@ -711,8 +717,16 @@
 
     <!-- ── Gallery ────────────────────────────────────────────────────── -->
     <div class="gallery-section" data-reveal="up">
-      <div class="img-cell" style="aspect-ratio:1366/876;">
-        <img src="NetoCase/BannerBlinCase.png" alt="Banner blindness — content system" loading="lazy" />
+      <div class="gallery-col-3" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+        <div class="img-cell" style="aspect-ratio:1/1;">
+          <img src="MobileApp/Phome1.png" alt="App screen 1" loading="lazy" />
+        </div>
+        <div class="img-cell" style="aspect-ratio:1/1;">
+          <img src="MobileApp/Phone2.png" alt="App screen 2" loading="lazy" />
+        </div>
+        <div class="img-cell" style="aspect-ratio:1/1;">
+          <img src="MobileApp/Phone3.png" alt="App screen 3" loading="lazy" />
+        </div>
       </div>
     </div>
 
@@ -722,10 +736,10 @@
 
         <div class="story-card-left">
           <div class="story-card-left__content">
-            <h2 class="c-h2">A scalable system that made content easier to <span class="acc">notice and understand.</span></h2>
+            <h2 class="c-h2">A scalable mobile system built for users, AI, and <span class="acc">development.</span></h2>
           </div>
           <div class="story-card-left__bg">
-            <img src="NetoCase/Story_o4.png" alt="Final impact" loading="lazy" />
+            <img src="MobileApp/fase1.png" alt="Final impact" loading="lazy" />
           </div>
         </div>
 
@@ -733,16 +747,17 @@
 
           <div class="rail-sm">
             <span class="c-cap">Final impact</span>
-            <p class="c-lead">The redesign moved the homepage away from one repeated visual pattern and towards a system where different types of content could stand out while still feeling consistent.</p>
-            <p class="c-lead">The wider product improvements contributed to a 17% increase in activation and improved D7 retention from 21% to 40%.</p>
-            <p class="c-lead">The new content system also gave the team a scalable way to work with thousands of videos instead of treating every thumbnail as a separate design task.</p>
+            <p class="c-lead">The redesign moved Tickeron from a collection of disconnected mobile screens toward one consistent mobile-first experience.</p>
+            <p class="c-lead">The new structure made navigation easier to understand, connected key user journeys, and introduced shared interaction patterns across the product.</p>
+            <p class="c-lead">AI helped speed up documentation, repetitive UI work, and system creation, while the final UI Kit and design tokens made the experience easier to maintain and prepare for development.</p>
           </div>
 
           <div class="story-card-out" style="border-radius:24px;">
             <span class="c-cap" style="color:var(--case-accent);">The biggest lesson</span>
-            <p class="c-lead">Consistency and repetition are not the same thing. A product can stay consistent without making every piece of content look identical.</p>
+            <p class="c-lead">AI was most valuable when it worked inside a clear system.</p>
+            <p class="c-lead">It could accelerate documentation, exploration, and repetitive design work, but the quality of the final experience still depended on product thinking, user research, and human review.</p>
             <div class="story-divider">
-              <p class="c-lead" style="color:var(--case-accent); font-style:italic;">The design system should create enough structure to keep the experience clear and enough variation to help users notice what matters.</p>
+              <p class="c-lead" style="color:var(--case-accent); font-style:italic;">AI made the process faster. The system made it scalable. Human judgment made it useful.</p>
             </div>
           </div>
 
@@ -754,17 +769,14 @@
     <section class="cs other-cases-section" data-reveal="up">
       <h2 class="c-h2" style="color:var(--headline-text);">Other cases</h2>
       <div class="other-grid">
-
-        <!-- Tickeron — live -->
-        <a href="case-tickron.html" class="other-card" data-case-card>
+        <a href="case-netology.html" class="other-card" data-case-card>
           <div class="other-card__img">
-            <img src="MobileApp/Main_Top_Tittle.png" alt="Tickeron — Mobile redesign" loading="lazy" />
+            <img src="NetoCase/Main_Top_Tittle.png" alt="Netology case cover" loading="lazy" />
           </div>
           <div class="other-card__meta">
-            <h3 class="other-card__title">How user drop-off led us to redesign the entire mobile experience.</h3>
+            <h3 class="other-card__title">How I increased activation by 17% and D7 retention from 21% to 40%.</h3>
           </div>
         </a>
-
         <!-- Coming soon — locked -->
         <div class="other-card other-card--locked">
           <div class="other-card__img">
@@ -777,7 +789,6 @@
             <h3 class="other-card__title">Next case is on its way.</h3>
           </div>
         </div>
-
       </div>
     </section>
 

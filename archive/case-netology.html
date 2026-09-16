@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netology — Search that actually works</title>
+  <meta name="description" content="Asmik Mikaelian — Netology case study. Three-phase redesign of search on Russia's largest online learning platform: from invisible entry point to full-screen personalized discovery.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+
+    <a href="index.html" class="back-link">← Portfolio</a>
+
+    <h1 class="display-title">Netology</h1>
+
+    <p class="page-desc">
+      Netology is one of Russia's largest online learning platforms — 1.5 million registered users, 130,000 graduates, 3.7 million unique visitors a year across its media properties. I was embedded in the subscription product team alongside Product, Engineering, and Analytics. The assignment: find out why engagement with video content was low. The answer turned out to be search.
+    </p>
+
+    <div class="main-card">
+
+      <!-- ── ROLE AND OVERALL RESULT ───── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Role and overall result</h2>
+      <p class="muted mb-md">Product Designer — embedded in subscription product team. Full discovery-to-delivery across three sequential design phases shipped over 18 months.</p>
+
+      <div class="impact-grid">
+        <div class="impact-item">
+          <p class="impact-number">+42%</p>
+          <p class="impact-label">users finding search without any help</p>
+        </div>
+        <div class="impact-item">
+          <p class="impact-number">+32%</p>
+          <p class="impact-label">satisfaction score in usability testing</p>
+        </div>
+        <div class="impact-item">
+          <p class="impact-number">3 phases</p>
+          <p class="impact-label">shipped — Phase 3 live in A/B testing</p>
+        </div>
+      </div>
+      <p class="img-caption" style="margin-top:0; margin-bottom:1.75rem;">Search redesign — Netology subscription platform</p>
+
+      <!-- ── TOOLS AND METHODOLOGIES ───── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Tools and methodologies</h2>
+      <p class="muted mb-lg">Figma — all design and prototyping. Discovery through session recordings and search log analysis with the Analytics team. Usability testing: 5 tasks, time-on-task measured before and after each phase. Card sorting to validate category taxonomy before building. Competitive review across Coursera, Udemy, Skillbox, and two further EdTech platforms for Phase 3.</p>
+
+      <!-- ── RESEARCH SYNTHESIS TABLE ───── -->
+      <div style="background:var(--inner); border-radius:var(--radius-md); padding:1.25rem; margin-bottom:0.6rem; overflow-x:auto;">
+        <table class="research-table">
+          <thead>
+            <tr>
+              <th>Problem identified</th>
+              <th>What the evidence showed</th>
+              <th>Design response</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Invisible entry point</td>
+              <td>Session recordings: users scrolled past the search bar repeatedly without registering it — the icon and input had no visual weight</td>
+              <td>Phase 1 — full-width prominent search field, primary position on page</td>
+            </tr>
+            <tr>
+              <td>Input too small to trust</td>
+              <td>The field was sized for a short keyword, not a real query — users weren't typing full thoughts into it</td>
+              <td>Phase 1 — large single input with a clearly labelled Search button</td>
+            </tr>
+            <tr>
+              <td>Zero feedback on action</td>
+              <td>No loading state, no confirmation, no error. Users had no signal that search had done anything at all</td>
+              <td>Phase 1 — explicit loading, results-found, and no-results states</td>
+            </tr>
+            <tr>
+              <td>Broad queries, low confidence</td>
+              <td>Analytics: most queries were category-level terms. Users weren't being specific because they didn't trust the system to handle it</td>
+              <td>Phase 2 — visual category shortcuts that replace typing for the most common intent</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="img-caption">Research synthesis — four problems confirmed before any screen work began</p>
+
+      <!-- ── KEY INSIGHTS ────────────────── -->
+      <p class="meta-label" style="color:var(--accent); margin-bottom:0.5rem; margin-top:0.75rem;">Key insights from discovery</p>
+      <ul class="insights-list mb-lg">
+        <li>Search wasn't broken — it was invisible. Users who eventually found it still didn't engage because nothing confirmed it had worked</li>
+        <li>A significant share of queries returned zero results — not because the content wasn't there, but because the backend didn't handle broad category-level terms</li>
+        <li>Most users weren't looking for a specific course title. They were browsing by topic. The search model assumed precision; user intent was exploratory</li>
+        <li>Low engagement wasn't a content problem. It was a trust problem — users had already decided search wouldn't work before they tried it</li>
+      </ul>
+
+      <!-- ── BEFORE — THE ORIGINAL STATE ── -->
+      <img src="img/Search_Case/Search_Case_0.png" alt="Original search state — small input in corner of Knowledge Base page" class="case-img">
+      <p class="img-caption">The original state. The search input sat in the top-right corner of the page — low contrast, undersized, and easy to miss while scanning content. No loading state, no feedback. Users who tried it once and got silence rarely came back to it.</p>
+
+      <hr class="divider">
+
+      <!-- ── PHASE 1 ──────────────────────── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Phase 1 — Make it visible</h2>
+      <p class="muted mb-lg">The constraint was explicit: don't change how search works. No backend engineering time. Just make the entry point impossible to miss, and give users clear confirmation that something happened when they used it.</p>
+
+      <img src="img/Search_Case/Search_Case_1.png" alt="Phase 1 — redesigned search bar, empty and active states, placed in context" class="case-img">
+      <p class="img-caption">Phase 1 — the redesigned search bar. Top row: component states — empty (placeholder) and active with a live query. Below: the field placed in context on the Knowledge Base page. One large input, a clearly labelled button, and three explicit feedback states: loading, results found, no results found.</p>
+
+      <div class="pid-block mb-lg">
+        <p class="pid-label">What changed and why</p>
+        <p class="pid-text">The search bar moved from a corner detail to the primary action on the page. Size and placement communicate what an input can handle — a small field signals small queries. Making it large was a signal: this is how you navigate here. The feedback states were the real change. For the first time, clicking Search did something visible. Usability testing after shipping: 42% more users found the field without guidance. Five tasks, time-on-task measured before and after. Almost half the people the platform wasn't working for before could suddenly use it.</p>
+      </div>
+
+      <hr class="divider">
+
+      <!-- ── PHASE 2 ──────────────────────── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Phase 2 — Meet users where they are</h2>
+      <p class="muted mb-lg">Analytics after Phase 1 confirmed the pattern: most searches were category-level. Design. Marketing. Programming. Users knew the area, not the title. So instead of asking them to type the same broad terms every session, we gave them one-tap shortcuts — visual category widgets placed above the search input.</p>
+
+      <img src="img/Search_Case/Search_Case_2.png" alt="Phase 2 — search page with visual category widgets" class="case-img">
+      <p class="img-caption">Phase 2 — category widgets above the search input. Each widget is a one-tap shortcut to the most-searched content areas, ranked by actual query frequency from the Analytics team. A card sorting session with users validated the taxonomy before we built anything — the labels and groupings came from how users think, not how the platform had organized content internally.</p>
+
+      <img src="img/Search_Case/Search_Case_20.png" alt="Component library — category widgets with icon set and colour system" class="case-img">
+      <p class="img-caption">Component breakdown — the full widget set with icon library and colour system. Each category has a distinct colour paired with a 3D icon to support quick scanning. Default, hover, and selected states defined across all variants.</p>
+
+      <img src="img/Search_Case/Search_Case_201.png" alt="Responsive design — category widgets from desktop to mobile across five breakpoints" class="case-img">
+      <p class="img-caption">Desktop to mobile — the widget grid across five viewport widths. The layout collapses from a two-row grid on wide desktop down to a compact single-column list on the smallest screens, preserving scannability at every breakpoint.</p>
+
+      <div class="pid-block mb-lg">
+        <p class="pid-label">What changed and why</p>
+        <p class="pid-text">For most users, the fastest path to content is not typing — it's recognizing. Visual widgets reduced the friction of that first step to a single tap. Card sorting ran before design began to make sure the categories matched user mental models. After shipping, satisfaction in testing rose 32%. We then waited three months before moving to Phase 3. That was intentional — users needed time to build a new habit around the new experience, and we needed enough behavioral data to make good decisions for what came next.</p>
+      </div>
+
+      <hr class="divider">
+
+      <!-- ── PHASE 3 ──────────────────────── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">Phase 3 — Search as the main feature</h2>
+      <p class="muted mb-lg">By the time Phase 3 began, the context had shifted. People navigate everything through search now — chat interfaces, search bars, command palettes. A competitive review across Coursera, Udemy, Skillbox, and two more platforms surfaced the new standard. We designed to meet it.</p>
+
+      <img src="img/Search_Case/Search_Case_3.png" alt="Phase 3 — advanced full-panel search with persistent category sidebar and content grid" class="case-img">
+      <p class="img-caption">Phase 3 — advanced search. The full-panel experience opens with a persistent category sidebar and a content grid that populates on category selection — Top 3 and New sections surfaced without the user needing to type a single character. Personalized suggestions based on watch history appear before any input. Search stops being a destination and becomes a navigation layer.</p>
+
+      <div class="concept-note mb-lg">
+        A/B testing is running now. Early analytics show stronger engagement with the pre-loaded suggestion surface compared to the empty-state search bar. Full results pending.
+      </div>
+
+      <hr class="divider">
+
+      <!-- ── TAKEAWAY ─────────────────────── -->
+      <h2 class="section-heading" style="margin-bottom:0.5rem;">What I took away</h2>
+      <p class="muted mb-lg">This looked like a UI problem at the start. It was a trust problem. Users had already decided search wouldn't work — and the experience gave them no reason to think otherwise. Fixing visibility got people in the door. Fixing the feedback loop made them stay.</p>
+
+      <div class="concept-note">
+        The phased structure changed how I think about scope. Each phase was a bet with a small stake: ship something minimal, measure the real behaviour, use the data to justify the next step. By Phase 3 we weren't guessing about what users needed from search — we had two rounds of validated evidence built into the brief. That's a different quality of decision than designing end-to-end and shipping everything at once.
+      </div>
+
+      <hr class="divider">
+
+      <p class="meta-label">Contact</p>
+      <div class="hero-links" style="margin-top:0.5rem; margin-bottom:1.5rem;">
+        <a href="mailto:asmikpod@gmail.com">asmikpod@gmail.com</a>
+        <a href="https://www.linkedin.com/in/asmik-mikaelian-69164b322/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <a href="index.html" class="back-link" style="margin-bottom:0;">← Portfolio</a>
+
+    </div>
+
+  </div>
+</body>
+</html>
