@@ -376,6 +376,25 @@
       .hero__title-main { font-size: clamp(48px, 15.5vw, 70px); }
     }
 
+    /* ── Hero flash images ── */
+    .hero__flash-wrap {
+      position: fixed;
+      width: 200px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.05s ease;
+      transform: translate(-50%, -110%);
+    }
+    .hero__flash-wrap.is-active { opacity: 1; }
+    .hero__flash-img {
+      width: 100%;
+      border-radius: 16px;
+      display: block;
+      object-fit: cover;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+    }
+
     /* ── Hero text hover motion ── */
     .hero__title {
       pointer-events: auto !important;

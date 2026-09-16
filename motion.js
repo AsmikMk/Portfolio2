@@ -176,6 +176,66 @@
     });
   }
 
+  /* ── Hero Flash Images ────────────────────── */
+  function initHeroFlash() {
+    var titleEl = document.querySelector('.hero__title');
+    var heroEl  = document.querySelector('.hero');
+    if (!titleEl || !heroEl) return;
+
+    /* Build the floating image element */
+    var wrap = document.createElement('div');
+    wrap.className = 'hero__flash-wrap';
+    wrap.setAttribute('aria-hidden', 'true');
+    var img = document.createElement('img');
+    img.className = 'hero__flash-img';
+    img.alt = '';
+    wrap.appendChild(img);
+    document.body.appendChild(wrap);
+
+    var srcs = [
+      'MyImgs/ChatGPT Image 16 сент. 2026 г., 19_21_11 (1).png',
+      'MyImgs/ChatGPT Image 16 сент. 2026 г., 19_21_12 (2).png',
+      'MyImgs/ChatGPT Image 16 сент. 2026 г., 19_21_14 (3).png',
+      'MyImgs/ChatGPT Image 16 сент. 2026 г., 19_21_15 (4).png',
+      'MyImgs/ChatGPT Image 16 сент. 2026 г., 19_21_16 (5).png'
+    ];
+
+    /* Preload all images */
+    srcs.forEach(function(s) { var p = new Image(); p.src = s; });
+
+    var idx = 0;
+    var mx = 0, my = 0;
+    var iv = null;
+
+    document.addEventListener('mousemove', function(e) {
+      mx = e.clientX;
+      my = e.clientY;
+    }, { passive: true });
+
+    function showNext() {
+      img.src = srcs[idx % srcs.length];
+      idx++;
+      var ox = (Math.random() - 0.5) * 32;
+      var oy = (Math.random() - 0.5) * 20;
+      var rot = (Math.random() - 0.5) * 10;
+      wrap.style.left = (mx + ox) + 'px';
+      wrap.style.top  = (my + oy) + 'px';
+      img.style.transform = 'rotate(' + rot + 'deg)';
+    }
+
+    titleEl.addEventListener('mouseenter', function() {
+      showNext();
+      wrap.classList.add('is-active');
+      iv = setInterval(showNext, 120);
+    });
+
+    titleEl.addEventListener('mouseleave', function() {
+      clearInterval(iv);
+      iv = null;
+      wrap.classList.remove('is-active');
+    });
+  }
+
   /* ── Hero Text Motion ─────────────────────── */
   function initHeroTextMotion() {
     var titleEl = document.querySelector('.hero__title');
@@ -291,6 +351,7 @@
     initParallax();
     initScrollTop();
     initHeroTextMotion();
+    initHeroFlash();
   }
 
   if (document.readyState === 'loading') {
