@@ -420,16 +420,6 @@
       transition-delay: calc(var(--i) * 0.055s);
     }
 
-    @keyframes hero-char-float {
-      0%, 100% { transform: translateY(0px); }
-      50%       { transform: translateY(-18px); }
-    }
-
-    .hero__title:hover .hero__title-main .char {
-      animation: hero-char-float 2.6s ease-in-out infinite;
-      animation-delay: calc(var(--i) * 0.18s);
-      transition: none;
-    }
 
     .hero__title:hover .hero__title-bottom .char {
       transform: translateY(-9px) rotate(1.5deg);
