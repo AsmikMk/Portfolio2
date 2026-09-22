@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#0e0f14">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>minePASS LAMP — Designing a Safety-Critical Admin System for Underground Mines · Asmik Mikaelian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Raleway:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="motion.css" />
+
+  <style>
+    body { font-family: 'Raleway', sans-serif; }
+    :root { --case-accent: #ffb347; }
+    .acc { color: var(--case-accent); }
+
+    .case-page { display: flex; flex-direction: column; gap: 120px; }
+    .cs { padding: 0 80px; display: flex; flex-direction: column; width: 100%; }
+    .gallery-section { padding: 0 80px; display: flex; flex-direction: column; gap: 12px; width: 100%; }
+    .hero-section { padding-top: 200px; }
+
+    .case-hero__title {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: clamp(32px, 3.5vw, 52px); line-height: 1.15;
+      letter-spacing: -1.2px; color: var(--headline-text);
+    }
+    .case-hero-flex { display: flex; align-items: flex-end; gap: 60px; }
+    .case-hero-image { flex: 0 0 550px; height: 380px; position: relative; overflow: hidden; border-radius: 24px; background: #1a1c22; }
+
+    .img-cell { border-radius: 24px; overflow: hidden; background: var(--card); }
+    .img-cell img { width: 100%; height: auto; display: block; }
+    .gallery-col-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .gallery-section img, .gallery-col-2 img { width: 100%; height: auto; display: block; }
+
+    .story-grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 12px; align-items: start; }
+    .story-card-left { grid-column: 1 / span 4; border-radius: 24px; overflow: hidden; position: relative; display: flex; flex-direction: column; padding: 32px; min-height: 360px; }
+    .story-card-left__content { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 16px; margin-top: auto; border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 20px; }
+    .story-card-right { grid-column: 5 / span 8; display: flex; flex-direction: column; gap: 12px; }
+
+    .rail-sm { background: var(--card); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px; }
+    .story-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; position: relative; }
+    .story-card-how { background: var(--card); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+    .story-card-out { background: rgba(255,179,71,0.05); border: 1px solid rgba(255,179,71,0.12); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+    .story-sep { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 44px; height: 44px; background: var(--bg); border: 1px solid var(--border-10); border-radius: 12px; z-index: 2; display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--tertiary-text); pointer-events: none; }
+    .story-divider { border-top: 1px solid rgba(255,179,71,0.2); padding-top: 20px; }
+
+    .c-cap { font-family: 'Raleway', sans-serif; font-size: 13px; letter-spacing: 1.12px; text-transform: uppercase; color: var(--tertiary-text); line-height: 1.4; }
+    .c-h2 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 24px; line-height: 1.3; letter-spacing: -0.4px; color: var(--headline-text); }
+    .c-lead { font-family: 'Raleway', sans-serif; font-size: 18px; line-height: 30px; color: var(--main-text); }
+    .c-body { font-family: 'Raleway', sans-serif; font-size: 16px; line-height: 28px; color: var(--secondary-text); }
+    .story-card-right .c-lead { font-size: 15px; line-height: 26px; }
+
+    .bullets { display: flex; flex-direction: column; gap: 14px; }
+    .bullet { display: flex; gap: 12px; align-items: flex-start; }
+    .bullet__icon { font-size: 14px; line-height: 28px; flex-shrink: 0; color: var(--case-accent); }
+    .bullet__text { font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 24px; color: var(--secondary-text); }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { background: var(--border-10); border-radius: 8px; padding: 3px 12px 4px; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 13px; color: var(--secondary-text); }
+
+    /* ── Context block ── */
+    .context-block {
+      background: rgba(255,179,71,0.05); border: 1px solid rgba(255,179,71,0.15);
+      border-radius: 16px; padding: 20px 24px;
+      font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 22px;
+      color: rgba(255,179,71,0.8); font-style: italic;
+    }
+
+    /* ── User type cards ── */
+    .user-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .user-card { background: var(--card); border-radius: 20px; padding: 24px 28px; display: flex; flex-direction: column; gap: 12px; }
+    .user-card--primary { border: 1px solid rgba(255,179,71,0.25); }
+    .user-card__role { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--case-accent); }
+    .user-card__name { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 16px; color: var(--headline-text); }
+    .user-card__body { font-family: 'Raleway', sans-serif; font-size: 13px; line-height: 21px; color: var(--secondary-text); }
+    .user-card__needs { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+    .user-card__need { font-family: 'Raleway', sans-serif; font-size: 12px; line-height: 18px; color: var(--tertiary-text); display: flex; gap: 8px; }
+    .user-card__need::before { content: '—'; color: var(--case-accent); flex-shrink: 0; }
+
+    /* ── Flow map ── */
+    .flow-map { display: flex; flex-direction: column; gap: 8px; }
+    .flow-row { display: grid; grid-template-columns: 140px 1fr; gap: 0; align-items: stretch; }
+    .flow-phase { padding: 16px; display: flex; align-items: center; }
+    .flow-phase-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; writing-mode: horizontal-tb; color: var(--tertiary-text); }
+    .flow-steps { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+    .flow-step { background: var(--card); border-radius: 10px; padding: 10px 14px; font-family: 'Raleway', sans-serif; font-size: 12px; line-height: 18px; color: var(--secondary-text); min-width: 120px; }
+    .flow-step--primary { background: rgba(255,179,71,0.08); border: 1px solid rgba(255,179,71,0.2); color: var(--headline-text); }
+    .flow-step--success { background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.2); color: rgba(74,222,128,0.9); }
+    .flow-step--error { background: rgba(255,90,90,0.08); border: 1px solid rgba(255,90,90,0.2); color: rgba(255,90,90,0.9); }
+    .flow-step--system { background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.2); color: rgba(139,92,246,0.9); }
+    .flow-arrow { color: var(--tertiary-text); font-size: 14px; flex-shrink: 0; padding: 0 2px; }
+    .flow-divider { border-top: 1px solid var(--border-5); margin: 4px 0 4px 140px; }
+    .flow-section-title { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--case-accent); padding: 8px 0 4px 140px; }
+
+    /* ── Problem cards ── */
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .problem-card { background: var(--card); border-radius: 20px; padding: 24px 28px; display: flex; flex-direction: column; gap: 10px; border-left: 3px solid rgba(255,107,107,0.35); }
+    .problem-card__num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,107,107,0.65); }
+    .problem-card__title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 14px; line-height: 1.35; color: var(--headline-text); }
+    .problem-card__body { font-family: 'Raleway', sans-serif; font-size: 13px; line-height: 21px; color: var(--secondary-text); }
+
+    /* ── Two-interface highlight ── */
+    .interface-split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .interface-card { border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+    .interface-card--terminal { background: rgba(255,179,71,0.06); border: 1px solid rgba(255,179,71,0.2); }
+    .interface-card--dashboard { background: rgba(78,207,255,0.04); border: 1px solid rgba(78,207,255,0.12); }
+    .interface-card__label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
+    .interface-card--terminal .interface-card__label { color: var(--case-accent); }
+    .interface-card--dashboard .interface-card__label { color: rgba(78,207,255,0.8); }
+    .interface-card__title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 16px; color: var(--headline-text); }
+    .interface-card__body { font-family: 'Raleway', sans-serif; font-size: 13px; line-height: 21px; color: var(--secondary-text); }
+    .interface-card__specs { display: flex; flex-direction: column; gap: 5px; margin-top: 4px; }
+    .interface-card__spec { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--tertiary-text); display: flex; gap: 8px; }
+    .interface-card__spec::before { content: '·'; }
+
+    /* ── Design principles ── */
+    .principles-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .principle { background: var(--card); border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+    .principle__num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--case-accent); }
+    .principle__title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 16px; line-height: 1.3; color: var(--headline-text); }
+    .principle__body { font-family: 'Raleway', sans-serif; font-size: 13px; line-height: 21px; color: var(--secondary-text); }
+
+    /* ── Collab insights ── */
+    .insights-wrap { display: flex; flex-direction: column; gap: 8px; }
+    .insight-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .insight-card { background: var(--card); border-radius: 16px; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; }
+    .insight-card__quote { font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 22px; color: var(--headline-text); font-style: italic; }
+    .insight-card__quote::before { content: '"'; color: var(--case-accent); }
+    .insight-card__quote::after { content: '"'; color: var(--case-accent); }
+    .insight-card__decision { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--case-accent); }
+    .insight-card__decision::before { content: '→ '; }
+
+    /* ── Impact ── */
+    .impact-list { display: flex; flex-direction: column; gap: 10px; }
+    .impact-item { display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; background: var(--card); border-radius: 14px; }
+    .impact-item__icon { font-size: 18px; flex-shrink: 0; line-height: 1.5; }
+    .impact-item__text { font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 22px; color: var(--secondary-text); }
+    .impact-item__text strong { color: var(--headline-text); font-weight: 600; }
+
+    /* ── Other cases ── */
+    .other-cases-section { gap: 40px; padding-bottom: 120px; }
+    .other-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 40px; }
+    .other-card { display: flex; flex-direction: column; gap: 24px; text-decoration: none; }
+    .other-card__img { aspect-ratio: 1280/768; border-radius: 40px; overflow: hidden; position: relative; background: var(--card); }
+    .other-card__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 650ms cubic-bezier(0.16,1,0.3,1); }
+    .other-card:hover .other-card__img img { transform: scale(1.05); }
+    .other-card__meta { display: flex; flex-direction: column; gap: 8px; }
+    .other-card__title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(20px,2vw,28px); line-height: 1.3; color: var(--headline-text); }
+
+    /* ── Navbar ── */
+    .navbar__cases-label { font-family: 'IBM Plex Mono', monospace; font-size: 13px; text-transform: uppercase; color: var(--tertiary-text); white-space: nowrap; }
+    .navbar__case-btns { display: flex; align-items: center; gap: 8px; }
+    .navbar__case-btn { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid var(--border-20); border-radius: 50%; font-size: 18px; color: var(--secondary-text); text-decoration: none; transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s cubic-bezier(0.16,1,0.3,1); }
+    .navbar__case-btn:hover { border-color: rgba(255,255,255,0.4); color: var(--headline-text); transform: scale(1.08); }
+    .navbar__case-btn:active { transform: scale(0.93); }
+    .navbar__case-btn--muted { opacity: 0.22; pointer-events: none; cursor: default; }
+
+    /* ── LinkedIn Banner ── */
+    .linkedin-banner-wrap { padding: 0 80px 80px; max-width: 50%; margin: 0 auto; }
+    .linkedin-banner { display: block; position: relative; border-radius: 32px; overflow: hidden; text-decoration: none; }
+    .linkedin-banner img { display: block; width: 100%; height: auto; transition: transform 700ms cubic-bezier(0.16,1,0.3,1); }
+    .linkedin-banner:hover img { transform: scale(1.03); }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) {
+      .cs, .gallery-section { padding: 0 40px; }
+      .principles-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 860px) {
+      .story-card-left { grid-column: 1 / -1; min-height: 220px; }
+      .story-card-right { grid-column: 1 / -1; }
+      .case-hero-flex { flex-direction: column; gap: 32px; }
+      .case-hero-image { flex: none; width: 100%; height: 260px; }
+      .user-grid { grid-template-columns: 1fr; }
+      .interface-split { grid-template-columns: 1fr; }
+      .insight-row { grid-template-columns: 1fr; }
+      .problem-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .cs, .gallery-section { padding: 0 20px; }
+      .hero-section { padding-top: 120px; }
+      .case-page { gap: 64px; }
+      .story-2col { grid-template-columns: 1fr; }
+      .story-sep { display: none; }
+      .gallery-col-2 { grid-template-columns: 1fr; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .other-grid { grid-template-columns: 1fr; }
+      .linkedin-banner-wrap { padding: 0 20px 60px; max-width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .navbar__btn--cv { display: none; }
+      .navbar__cases-label { display: none; }
+      .navbar__right { gap: 8px; }
+      .navbar__case-btn { width: 36px; height: 36px; font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <div id="navbarWrap" class="navbar-wrap">
+    <nav class="navbar">
+      <a href="index.html" class="navbar__logo" aria-label="Back to portfolio">AM</a>
+      <div class="navbar__right">
+        <a href="https://asmikmk.github.io/Portfolio2/Asmik_CV.pdf" class="navbar__btn navbar__btn--cv" target="_blank" rel="noopener">Open CV</a>
+        <span class="navbar__cases-label">Case 04 / 04</span>
+        <div class="navbar__case-btns">
+          <a href="case-taxtank.html" class="navbar__case-btn" aria-label="Previous case">←</a>
+          <a class="navbar__case-btn navbar__case-btn--muted" aria-label="No next case" aria-disabled="true">→</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    (function () {
+      var wrap = document.getElementById('navbarWrap');
+      var ticking = false, compact = false;
+      var SHRINK_AT = 60, GROW_AT = 30;
+      function update() {
+        var y = window.scrollY;
+        if (!compact && y > SHRINK_AT) { compact = true; wrap.classList.add('is-compact'); }
+        else if (compact && y < GROW_AT) { compact = false; wrap.classList.remove('is-compact'); }
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
+    })();
+  </script>
+
+  <div id="cardCursor" class="card-cursor" aria-hidden="true">
+    <span class="card-cursor__text">View</span>
+    <span class="card-cursor__arrow">→</span>
+  </div>
+  <button id="scrollTop" class="scroll-top" aria-label="Back to top">↑</button>
+
+  <div class="page case-page">
+
+    <!-- ══ HERO ══════════════════════════════════════════════════════════ -->
+    <section class="cs hero-section">
+      <div class="case-hero-flex">
+
+        <div class="case-hero-image">
+          <img src="LAMP/MainPass_Main.png" alt="minePASS LAMP — full UI overview"
+               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top left;" />
+        </div>
+
+        <div class="case-hero-title" style="flex:1; padding-bottom:24px;">
+          <h1 class="case-hero__title">
+            How I designed a <span class="acc">safety-critical system</span> by working directly with the people who use it underground.
+          </h1>
+          <p style="margin-top:32px;font-family:'Raleway',sans-serif;font-size:18px;line-height:30px;color:var(--secondary-text);max-width:560px;">
+            minePASS LAMP is the digital system for the lamp room at an underground mine — where every transaction is a safety record and every second at shift start counts.
+          </p>
+          <div class="tags" style="margin-top:24px;">
+            <span class="tag">Enterprise B2B</span>
+            <span class="tag">Safety Systems</span>
+            <span class="tag">Admin UX</span>
+            <span class="tag">Mining Industry</span>
+            <span class="tag">End to End</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Cover ── -->
+    <div class="gallery-section">
+      <div class="img-cell">
+        <img src="LAMP/MainPass_Main.png" alt="minePASS LAMP — complete UI system overview" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- ══ STEP 01 — UNDERSTAND THE CONTEXT ══════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-grid">
+
+        <div class="story-card-left">
+          <div class="story-card-left__content">
+            <span class="c-cap">Step 01</span>
+            <h2 class="c-h2">This is not a typical product. I had to understand the <span class="acc">physical world first.</span></h2>
+          </div>
+        </div>
+
+        <div class="story-card-right">
+
+          <div class="context-block">
+            The lamp room is the last checkpoint before a miner goes underground. It is not optional — it is a regulatory safety requirement. Every miner must collect their cap lamp, self-rescuer, and gas analyzer. Every issue must be recorded. In an emergency, the mine safety officer must know — instantly — who is underground right now.
+          </div>
+
+          <div class="rail-sm">
+            <span class="c-cap">What the system had to do</span>
+            <div class="bullets">
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Record every entry and exit</strong> — who went underground, at what time, with which equipment.</span></div>
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Process miners fast</strong> — at shift start, 40–50 miners arrive in a 10–15 minute window. The system had to keep up.</span></div>
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Prevent equipment errors</strong> — wrong assignment is a safety violation. The UI had to make mistakes hard, not easy.</span></div>
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Give real-time underground status</strong> — management needs a live list of who is below, always current.</span></div>
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Integrate with minePASS</strong> — fit into the existing platform's employee data, roles, and CIN (company ID) system.</span></div>
+            </div>
+          </div>
+
+          <div class="story-card-out">
+            <span class="c-cap" style="color:var(--case-accent);">Why this project is different</span>
+            <p class="c-lead">Most admin systems exist to improve efficiency. This one exists to support safety. A paper ledger that has an error is an inconvenience. A digital system that has an error in a mine is a safety incident.</p>
+            <div class="story-divider">
+              <p class="c-lead" style="color:var(--case-accent);font-style:italic;">I designed this with the weight of that responsibility in mind from the first screen to the last.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ STEP 02 — THE USERS ════════════════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-grid">
+
+        <div class="story-card-left">
+          <div class="story-card-left__content">
+            <span class="c-cap">Step 02</span>
+            <h2 class="c-h2">I worked with the <span class="acc">admins on site</span> — not with stakeholders in a meeting room.</h2>
+          </div>
+        </div>
+
+        <div class="story-card-right">
+
+          <div class="rail-sm">
+            <span class="c-cap">Research approach</span>
+            <p class="c-lead">I did not start with wireframes. I spent time with the lamp room administrators — the people who would use this system every working day. I watched how they managed the existing paper process, where it broke down, and what they needed to never worry about.</p>
+            <p class="c-lead">This is not a system designed for a stakeholder presentation. It is a system designed for a person standing behind a counter at 5:45am, processing miners before a shift starts.</p>
+          </div>
+
+          <div class="user-grid">
+            <div class="user-card user-card--primary">
+              <span class="user-card__role">Primary user</span>
+              <span class="user-card__name">Lamp Room Administrator</span>
+              <p class="user-card__body">On-site staff responsible for issuing and receiving safety equipment at each shift. Not a technical user. Works under time pressure at shift transitions.</p>
+              <div class="user-card__needs">
+                <div class="user-card__need">Process entries in under 10 seconds per miner</div>
+                <div class="user-card__need">See immediately if something is wrong</div>
+                <div class="user-card__need">Know which equipment is out and with whom</div>
+                <div class="user-card__need">Handle the rush without mistakes</div>
+              </div>
+            </div>
+            <div class="user-card">
+              <span class="user-card__role">Secondary user</span>
+              <span class="user-card__name">Mine Safety Officer / Shift Manager</span>
+              <p class="user-card__body">Needs oversight of underground personnel at any moment. Manages employees, reviews reports, and handles escalations from the lamp room.</p>
+              <div class="user-card__needs">
+                <div class="user-card__need">Real-time list of who is underground</div>
+                <div class="user-card__need">Equipment audit history per employee</div>
+                <div class="user-card__need">Employee management and role assignment</div>
+                <div class="user-card__need">Alerts for unreturned equipment</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ STEP 03 — MAP THE FLOW ═════════════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-grid">
+
+        <div class="story-card-left">
+          <div class="story-card-left__content">
+            <span class="c-cap">Step 03</span>
+            <h2 class="c-h2">I mapped both flows end to end before <span class="acc">designing a single screen.</span></h2>
+          </div>
+        </div>
+
+        <div class="story-card-right">
+
+          <div class="rail-sm">
+            <span class="c-cap">Two critical flows</span>
+            <p class="c-lead">The entire lamp room operation comes down to two flows: entry and exit. I mapped both fully — including every error state, every edge case, and every decision point — before opening a design tool.</p>
+          </div>
+
+          <div class="flow-map">
+
+            <div class="flow-section-title">Flow 01 — Entry (Miner goes underground)</div>
+
+            <div class="flow-row">
+              <div class="flow-phase"><span class="flow-phase-label">Initiate</span></div>
+              <div class="flow-steps">
+                <div class="flow-step flow-step--primary">Miner arrives at lamp room</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step flow-step--primary">Scans QR card on terminal</div>
+              </div>
+            </div>
+
+            <div class="flow-row">
+              <div class="flow-phase"><span class="flow-phase-label">Verify</span></div>
+              <div class="flow-steps">
+                <div class="flow-step flow-step--system">System looks up CIN</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step flow-step--success">Authorised — photo + name shown</div>
+                <div class="flow-arrow" style="color:rgba(255,90,90,0.5);">/</div>
+                <div class="flow-step flow-step--error">Error — admin must check manually</div>
+              </div>
+            </div>
+
+            <div class="flow-row">
+              <div class="flow-phase"><span class="flow-phase-label">Issue</span></div>
+              <div class="flow-steps">
+                <div class="flow-step">Cap lamp assigned</div>
+                <div class="flow-arrow">+</div>
+                <div class="flow-step">Self-rescuer assigned</div>
+                <div class="flow-arrow">+</div>
+                <div class="flow-step">Gas analyser (if required)</div>
+              </div>
+            </div>
+
+            <div class="flow-row">
+              <div class="flow-phase"><span class="flow-phase-label">Record</span></div>
+              <div class="flow-steps">
+                <div class="flow-step flow-step--system">Entry logged with timestamp</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step flow-step--success">Miner added to underground list</div>
+              </div>
+            </div>
+
+            <div class="flow-divider"></div>
+            <div class="flow-section-title">Flow 02 — Exit (Miner returns to surface)</div>
+
+            <div class="flow-row">
+              <div class="flow-phase"><span class="flow-phase-label">Initiate</span></div>
+              <div class="flow-steps">
+                <div class="flow-step flow-step--primary">Miner returns to lamp room</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step flow-step--primary">Scans QR card on terminal</div>
+              </div>
+            </div>
+
+            <div class="flow-row">
+              <div class="flow-phase"><span class="flow-phase-label">Return</span></div>
+              <div class="flow-steps">
+                <div class="flow-step flow-step--system">System shows issued equipment</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Admin confirms all items returned</div>
+                <div class="flow-arrow">/</div>
+                <div class="flow-step flow-step--error">Flag missing item</div>
+              </div>
+            </div>
+
+            <div class="flow-row">
+              <div class="flow-phase"><span class="flow-phase-label">Record</span></div>
+              <div class="flow-steps">
+                <div class="flow-step flow-step--system">Exit logged with timestamp</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step flow-step--success">Miner removed from underground list</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- UX Flow image -->
+    <div class="gallery-section" data-reveal="up">
+      <div class="img-cell">
+        <img src="LAMP/UX-FLOW.png" alt="Complete UX flow diagram — decision logic and screen states" loading="lazy" />
+      </div>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--tertiary-text);padding-top:4px;">Full UX flow — decision logic, screen states and error paths mapped before design began</p>
+    </div>
+
+    <!-- ══ STEP 04 — CORE PROBLEMS ═══════════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-grid">
+
+        <div class="story-card-left">
+          <div class="story-card-left__content">
+            <span class="c-cap">Step 04</span>
+            <h2 class="c-h2">The paper process revealed <span class="acc">four problems</span> the digital system had to solve.</h2>
+          </div>
+        </div>
+
+        <div class="story-card-right">
+
+          <div class="problem-grid">
+            <div class="problem-card">
+              <span class="problem-card__num">Problem 01</span>
+              <span class="problem-card__title">Shift rush created processing bottlenecks</span>
+              <p class="problem-card__body">40–50 miners arriving in 15 minutes meant the paper system caused queues. Any UI with too many steps or small touch targets would replicate the same problem digitally.</p>
+            </div>
+            <div class="problem-card">
+              <span class="problem-card__num">Problem 02</span>
+              <span class="problem-card__title">Equipment misassignment was possible and undetected</span>
+              <p class="problem-card__body">Manual recording meant a lamp could be assigned to the wrong CIN. No system check. No alert. The error would only be discovered during an audit or incident review.</p>
+            </div>
+            <div class="problem-card">
+              <span class="problem-card__num">Problem 03</span>
+              <span class="problem-card__title">No real-time underground personnel list</span>
+              <p class="problem-card__body">The paper ledger showed cumulative entries, not a live current list. In an emergency, a manager had to manually reconstruct who was still underground from entries and exits.</p>
+            </div>
+            <div class="problem-card">
+              <span class="problem-card__num">Problem 04</span>
+              <span class="problem-card__title">No audit trail for equipment history</span>
+              <p class="problem-card__body">Paper records were lost, damaged or illegible. There was no way to retrieve reliable equipment history per employee for compliance reporting or incident investigation.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ STEP 05 — DESIGN PRINCIPLES ═══════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div style="display:flex;flex-direction:column;gap:32px;">
+        <div>
+          <span class="c-cap">Step 05</span>
+          <h2 class="c-h2" style="margin-top:12px;">Four principles shaped every decision.</h2>
+        </div>
+        <div class="principles-grid">
+          <div class="principle">
+            <span class="principle__num">01</span>
+            <h3 class="principle__title">Speed before <span class="acc">everything</span></h3>
+            <p class="principle__body">The terminal must process one miner in under 10 seconds. Scan → verify → confirm. Every additional tap is a problem. If the rush still causes queues, the design has failed.</p>
+          </div>
+          <div class="principle">
+            <span class="principle__num">02</span>
+            <h3 class="principle__title">Make errors <span class="acc">impossible</span></h3>
+            <p class="principle__body">In a safety-critical system, error prevention matters more than error recovery. The UI should make correct actions obvious and wrong actions require deliberate effort to take.</p>
+          </div>
+          <div class="principle">
+            <span class="principle__num">03</span>
+            <h3 class="principle__title">One source of <span class="acc">truth</span></h3>
+            <p class="principle__body">Underground personnel status must be a single live number — not reconstructed from logs, not estimated. Any manager, on any device, sees the same current list.</p>
+          </div>
+          <div class="principle">
+            <span class="principle__num">04</span>
+            <h3 class="principle__title">Designed with <span class="acc">the users</span></h3>
+            <p class="principle__body">Every interaction was reviewed with the lamp room administrators before it was finalised. Their corrections changed the design. Their confidence in the system was the acceptance criteria.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ STEP 06 — TWO-INTERFACE SOLUTION ══════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-grid">
+
+        <div class="story-card-left">
+          <div class="story-card-left__content">
+            <span class="c-cap">Step 06</span>
+            <h2 class="c-h2">One problem needed <span class="acc">two different interfaces.</span></h2>
+          </div>
+        </div>
+
+        <div class="story-card-right">
+
+          <div class="rail-sm">
+            <span class="c-cap">The core architectural decision</span>
+            <p class="c-lead">The lamp room administrator and the shift manager have completely different contexts, needs and environments. Designing one interface for both would mean compromising both. I designed two purpose-built interfaces that share the same data layer.</p>
+          </div>
+
+          <div class="interface-split">
+            <div class="interface-card interface-card--terminal">
+              <span class="interface-card__label">Interface 01</span>
+              <span class="interface-card__title">The Terminal</span>
+              <p class="interface-card__body">A tablet mounted at the lamp room counter. Handles one task: process a miner in or out. Designed for speed, large touch targets, and high-contrast feedback at a glance.</p>
+              <div class="interface-card__specs">
+                <div class="interface-card__spec">Tablet-first, touch-optimised</div>
+                <div class="interface-card__spec">QR/RFID scan as primary input</div>
+                <div class="interface-card__spec">Two states: Entry / Exit</div>
+                <div class="interface-card__spec">Minimal steps — scan, verify, confirm</div>
+                <div class="interface-card__spec">Large visual feedback (authorised / error)</div>
+                <div class="interface-card__spec">Manual entry fallback if scan fails</div>
+              </div>
+            </div>
+            <div class="interface-card interface-card--dashboard">
+              <span class="interface-card__label">Interface 02</span>
+              <span class="interface-card__title">The Admin Dashboard</span>
+              <p class="interface-card__body">A web interface for shift managers and safety officers. Handles everything the terminal doesn't: employee management, live underground status, equipment history, reports.</p>
+              <div class="interface-card__specs">
+                <div class="interface-card__spec">Web, desktop-optimised</div>
+                <div class="interface-card__spec">Live underground personnel list</div>
+                <div class="interface-card__spec">Employee CIN management and roles</div>
+                <div class="interface-card__spec">Equipment issue and return history</div>
+                <div class="interface-card__spec">SMS notification system</div>
+                <div class="interface-card__spec">Shift reports and audit trail</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Terminal flow image -->
+    <div class="gallery-section" data-reveal="up">
+      <div class="img-cell">
+        <img src="LAMP/UX-FLOW_TERMINAL.png" alt="Terminal entry and exit flows — QR scan, authorised state, error states, exit confirmation" loading="lazy" />
+      </div>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--tertiary-text);padding-top:4px;">Terminal flow — Entry (left): QR scan → authorised / error → record. Exit (right): QR scan → confirm items returned → record.</p>
+    </div>
+
+    <!-- ══ STEP 07 — WHAT WORKING WITH ADMINS REVEALED ════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-grid">
+
+        <div class="story-card-left">
+          <div class="story-card-left__content">
+            <span class="c-cap">Step 07</span>
+            <h2 class="c-h2">What collaboration with admins revealed that no brief <span class="acc">could have told me.</span></h2>
+          </div>
+        </div>
+
+        <div class="story-card-right">
+
+          <div class="rail-sm">
+            <span class="c-cap">Working method</span>
+            <p class="c-lead">I reviewed every screen and interaction with the lamp room administrators before finalising it. Their corrections were direct and specific — they knew immediately what would and wouldn't work in their environment. Those conversations changed the design in ways no user story could have predicted.</p>
+          </div>
+
+          <div class="insights-wrap">
+            <div class="insight-row">
+              <div class="insight-card">
+                <span class="insight-card__quote">At the start of the shift I don't look at the screen much — I'm watching the miner, checking their card, managing the queue. I need to hear or feel when it works.</span>
+                <span class="insight-card__decision">Added distinct audio feedback for authorised and error states</span>
+              </div>
+              <div class="insight-card">
+                <span class="insight-card__quote">Sometimes the card reader misses on the first scan. I can't have the queue waiting while I retry three times.</span>
+                <span class="insight-card__decision">Built a manual CIN entry fallback accessible in one tap</span>
+              </div>
+            </div>
+            <div class="insight-row">
+              <div class="insight-card">
+                <span class="insight-card__quote">When management calls asking who is underground, I need to tell them immediately. Right now I have to count the ledger.</span>
+                <span class="insight-card__decision">Live underground count shown prominently in the dashboard header — always current</span>
+              </div>
+              <div class="insight-card">
+                <span class="insight-card__quote">Some miners try to borrow each other's lamps. I need to see the photo, not just the name, to be sure it's the right person.</span>
+                <span class="insight-card__decision">Employee photo made the dominant element on the authorised confirmation screen</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ STEP 08 — DESIGN SYSTEM ════════════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-grid">
+
+        <div class="story-card-left">
+          <div class="story-card-left__content">
+            <span class="c-cap">Step 08</span>
+            <h2 class="c-h2">I built a design system to make both interfaces feel <span class="acc">like one product.</span></h2>
+          </div>
+        </div>
+
+        <div class="story-card-right">
+
+          <div class="rail-sm">
+            <span class="c-cap">System rationale</span>
+            <p class="c-lead">The terminal and the dashboard share the same employee data, the same CIN structure, and the same status system. I built a unified component library so both interfaces feel like they come from the same product — even though they serve entirely different contexts and users.</p>
+          </div>
+
+          <div class="story-2col">
+            <div class="story-card-how">
+              <span class="c-cap">Component inventory</span>
+              <div class="bullets">
+                <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Employee CIN card</strong> — photo, name, CIN number, role badge, current status</span></div>
+                <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Role badges</strong> — Financial, Structural, Technical, Analyst — colour-coded for quick scanning</span></div>
+                <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Status system</strong> — Underground / Surface / Unknown / Flagged — consistent across both interfaces</span></div>
+                <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Action confirmation modals</strong> — standardised patterns for entry, exit and equipment assignments</span></div>
+                <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">SMS notification component</strong> — for push alerts to employees and managers</span></div>
+                <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Form field states</strong> — default, active, error, disabled — covering all validation cases</span></div>
+              </div>
+            </div>
+
+            <div class="story-sep">→</div>
+
+            <div class="story-card-out">
+              <span class="c-cap" style="color:var(--case-accent);">Why a design system mattered here</span>
+              <p class="c-lead">The lamp room module was built to be part of a larger platform (minePASS). Consistency meant that when an employee record looked one way in the admin dashboard, it looked the same way in the terminal confirmation screen. No visual relearning. No confusion under pressure.</p>
+              <div class="story-divider">
+                <p class="c-lead" style="color:var(--case-accent);font-style:italic;">A component built once, trusted everywhere. That is the point of a system.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Design system image -->
+    <div class="gallery-section" data-reveal="up">
+      <div class="img-cell">
+        <img src="LAMP/DESIGN SYSTEM.png" alt="LAMP design system — navigation, employee cards, role badges, form fields, status components, SMS notifications, action modals" loading="lazy" />
+      </div>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--tertiary-text);padding-top:4px;">Design system — navigation, CIN employee cards, role badges, status system, form fields, SMS notifications, action confirmation modals</p>
+    </div>
+
+    <!-- ══ EXPECTED IMPACT ════════════════════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-2col">
+        <div class="story-card-how">
+          <span class="c-cap" style="color:var(--case-accent);">Implemented at</span>
+          <h2 class="c-h2" style="font-size:20px;">NOVA Zinc and Kirovskaya Mine — part of the minePASS platform rollout.</h2>
+          <p class="c-lead" style="font-size:14px;line-height:22px;">Quantitative post-launch data is not available for this case study. The outcomes below reflect what the system was designed to achieve, observed through admin feedback and operational context.</p>
+        </div>
+        <div class="story-card-out">
+          <div class="impact-list">
+            <div class="impact-item">
+              <span class="impact-item__icon">⚡</span>
+              <span class="impact-item__text"><strong>Faster shift processing.</strong> QR scan + single confirmation replaced multi-step paper recording. Reduced time per miner at the counter.</span>
+            </div>
+            <div class="impact-item">
+              <span class="impact-item__icon">🛡️</span>
+              <span class="impact-item__text"><strong>Eliminated equipment misassignment.</strong> System-verified CIN matching with photo confirmation made wrong assignment require deliberate override.</span>
+            </div>
+            <div class="impact-item">
+              <span class="impact-item__icon">📍</span>
+              <span class="impact-item__text"><strong>Live underground personnel list.</strong> Shift managers can answer "who is underground right now" without calling the lamp room or reconstructing records.</span>
+            </div>
+            <div class="impact-item">
+              <span class="impact-item__icon">📋</span>
+              <span class="impact-item__text"><strong>Complete audit trail.</strong> Every entry, exit and equipment issue is timestamped and retrievable — replacing paper records that could be lost or unreadable.</span>
+            </div>
+            <div class="impact-item">
+              <span class="impact-item__icon">♾️</span>
+              <span class="impact-item__text"><strong>Scalable to new modules.</strong> The design system and data architecture are built to extend into other minePASS modules without redesigning from scratch.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ REFLECTION ════════════════════════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-card-out" style="max-width:880px;margin:0 auto;">
+        <span class="c-cap" style="color:var(--case-accent);">Reflection</span>
+        <p class="c-lead">The most important thing I did on this project was spend time on-site before opening a design tool. The lamp room administrators knew things about their work that no brief, persona or requirements document could have captured — things that directly changed how the terminal behaves, what feedback it gives, and what the admin dashboard prioritises.</p>
+        <p class="c-lead" style="margin-top:16px;">Working with them did not slow the process. It made every decision faster to validate, because the people who mattered were in the room.</p>
+        <div class="story-divider">
+          <p class="c-lead" style="color:var(--case-accent);font-style:italic;">In safety-critical systems, the cost of designing without the user is not a poor rating or low engagement. It is a safety incident. That changed how I approached every screen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ OTHER CASES ════════════════════════════════════════════════ -->
+    <section class="cs other-cases-section" data-reveal="up">
+      <h2 class="c-h2" style="color:var(--headline-text);">Other cases</h2>
+      <div class="other-grid">
+        <a href="case-netology.html" class="other-card" data-case-card>
+          <div class="other-card__img">
+            <img src="NetoCase/Main_Top_Tittle.png" alt="Netology — EdTech activation" loading="lazy" />
+          </div>
+          <div class="other-card__meta">
+            <h3 class="other-card__title">How I increased activation by 17% and D7 retention from 21% to 40%.</h3>
+          </div>
+        </a>
+        <a href="case-taxtank.html" class="other-card" data-case-card>
+          <div class="other-card__img">
+            <img src="TaxTankCase/dashboard-new-2.png" alt="TaxTank — Dashboard redesign" loading="lazy" />
+          </div>
+          <div class="other-card__meta">
+            <h3 class="other-card__title">How I turned a tax dashboard into something users can actually understand.</h3>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </div><!-- /.page -->
+
+  <!-- ── LinkedIn Banner ── -->
+  <div class="linkedin-banner-wrap" data-reveal="up">
+    <a href="https://www.linkedin.com/in/asmik-mikaelian-69164b322/" target="_blank" rel="noopener" class="linkedin-banner" data-case-card aria-label="View Asmik Mikaelian on LinkedIn">
+      <img src="LInkedIN.png" alt="Asmik Mikaelian — LinkedIn" />
+    </a>
+  </div>
+
+  <footer class="site-footer" data-reveal="fade">
+    <span class="site-footer__name">Asmik Mikaelian</span>
+    <div class="site-footer__links">
+      <a href="mailto:asmikpod@gmail.com" class="site-footer__link">asmikpod@gmail.com</a>
+    </div>
+    <span class="site-footer__copy">© 2026 Asmik Mikaelian</span>
+  </footer>
+
+  <script src="motion.js"></script>
+</body>
+</html>
