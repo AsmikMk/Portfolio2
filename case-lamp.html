@@ -373,93 +373,95 @@
         </div>
 
         <div class="story-card-right">
-
           <div class="rail-sm">
             <span class="c-cap">Two critical flows</span>
             <p class="c-lead">The entire lamp room operation comes down to two flows: entry and exit. I mapped both fully — including every error state, every edge case, and every decision point — before opening a design tool.</p>
           </div>
-
-          <div class="flow-map">
-
-            <div class="flow-section-title">Flow 01 — Entry (Miner goes underground)</div>
-
-            <div class="flow-row">
-              <div class="flow-phase"><span class="flow-phase-label">Initiate</span></div>
-              <div class="flow-steps">
-                <div class="flow-step flow-step--primary">Miner arrives at lamp room</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step flow-step--primary">Scans QR card on terminal</div>
-              </div>
-            </div>
-
-            <div class="flow-row">
-              <div class="flow-phase"><span class="flow-phase-label">Verify</span></div>
-              <div class="flow-steps">
-                <div class="flow-step flow-step--system">System looks up CIN</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step flow-step--success">Authorised — photo + name shown</div>
-                <div class="flow-arrow" style="color:rgba(255,90,90,0.5);">/</div>
-                <div class="flow-step flow-step--error">Error — admin must check manually</div>
-              </div>
-            </div>
-
-            <div class="flow-row">
-              <div class="flow-phase"><span class="flow-phase-label">Issue</span></div>
-              <div class="flow-steps">
-                <div class="flow-step">Cap lamp assigned</div>
-                <div class="flow-arrow">+</div>
-                <div class="flow-step">Self-rescuer assigned</div>
-                <div class="flow-arrow">+</div>
-                <div class="flow-step">Gas analyser (if required)</div>
-              </div>
-            </div>
-
-            <div class="flow-row">
-              <div class="flow-phase"><span class="flow-phase-label">Record</span></div>
-              <div class="flow-steps">
-                <div class="flow-step flow-step--system">Entry logged with timestamp</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step flow-step--success">Miner added to underground list</div>
-              </div>
-            </div>
-
-            <div class="flow-divider"></div>
-            <div class="flow-section-title">Flow 02 — Exit (Miner returns to surface)</div>
-
-            <div class="flow-row">
-              <div class="flow-phase"><span class="flow-phase-label">Initiate</span></div>
-              <div class="flow-steps">
-                <div class="flow-step flow-step--primary">Miner returns to lamp room</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step flow-step--primary">Scans QR card on terminal</div>
-              </div>
-            </div>
-
-            <div class="flow-row">
-              <div class="flow-phase"><span class="flow-phase-label">Return</span></div>
-              <div class="flow-steps">
-                <div class="flow-step flow-step--system">System shows issued equipment</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">Admin confirms all items returned</div>
-                <div class="flow-arrow">/</div>
-                <div class="flow-step flow-step--error">Flag missing item</div>
-              </div>
-            </div>
-
-            <div class="flow-row">
-              <div class="flow-phase"><span class="flow-phase-label">Record</span></div>
-              <div class="flow-steps">
-                <div class="flow-step flow-step--system">Exit logged with timestamp</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step flow-step--success">Miner removed from underground list</div>
-              </div>
-            </div>
-
-          </div>
-
         </div>
+
       </div>
     </section>
+
+    <!-- Flow map — full width -->
+    <div class="gallery-section" data-reveal="up">
+      <div class="flow-map" style="background:var(--card);border-radius:24px;padding:40px;">
+
+        <div class="flow-section-title">Flow 01 — Entry (Miner goes underground)</div>
+
+        <div class="flow-row">
+          <div class="flow-phase"><span class="flow-phase-label">Initiate</span></div>
+          <div class="flow-steps">
+            <div class="flow-step flow-step--primary">Miner arrives at lamp room</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step flow-step--primary">Scans QR card on terminal</div>
+          </div>
+        </div>
+
+        <div class="flow-row">
+          <div class="flow-phase"><span class="flow-phase-label">Verify</span></div>
+          <div class="flow-steps">
+            <div class="flow-step flow-step--system">System looks up CIN</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step flow-step--success">Authorised — photo + name shown</div>
+            <div class="flow-arrow" style="color:rgba(255,90,90,0.5);">/</div>
+            <div class="flow-step flow-step--error">Error — admin must check manually</div>
+          </div>
+        </div>
+
+        <div class="flow-row">
+          <div class="flow-phase"><span class="flow-phase-label">Issue</span></div>
+          <div class="flow-steps">
+            <div class="flow-step">Cap lamp assigned</div>
+            <div class="flow-arrow">+</div>
+            <div class="flow-step">Self-rescuer assigned</div>
+            <div class="flow-arrow">+</div>
+            <div class="flow-step">Gas analyser (if required)</div>
+          </div>
+        </div>
+
+        <div class="flow-row">
+          <div class="flow-phase"><span class="flow-phase-label">Record</span></div>
+          <div class="flow-steps">
+            <div class="flow-step flow-step--system">Entry logged with timestamp</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step flow-step--success">Miner added to underground list</div>
+          </div>
+        </div>
+
+        <div class="flow-divider"></div>
+        <div class="flow-section-title">Flow 02 — Exit (Miner returns to surface)</div>
+
+        <div class="flow-row">
+          <div class="flow-phase"><span class="flow-phase-label">Initiate</span></div>
+          <div class="flow-steps">
+            <div class="flow-step flow-step--primary">Miner returns to lamp room</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step flow-step--primary">Scans QR card on terminal</div>
+          </div>
+        </div>
+
+        <div class="flow-row">
+          <div class="flow-phase"><span class="flow-phase-label">Return</span></div>
+          <div class="flow-steps">
+            <div class="flow-step flow-step--system">System shows issued equipment</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Admin confirms all items returned</div>
+            <div class="flow-arrow">/</div>
+            <div class="flow-step flow-step--error">Flag missing item</div>
+          </div>
+        </div>
+
+        <div class="flow-row">
+          <div class="flow-phase"><span class="flow-phase-label">Record</span></div>
+          <div class="flow-steps">
+            <div class="flow-step flow-step--system">Exit logged with timestamp</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step flow-step--success">Miner removed from underground list</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
     <!-- UX Flow image -->
     <div class="gallery-section" data-reveal="up">
