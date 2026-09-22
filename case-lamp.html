@@ -28,10 +28,9 @@
     .case-hero-flex { display: flex; align-items: flex-end; gap: 60px; }
     .case-hero-image { flex: 0 0 550px; height: 380px; position: relative; overflow: hidden; border-radius: 24px; background: #1a1c22; }
 
-    .img-cell { border-radius: 24px; overflow: hidden; background: var(--card); }
-    .img-cell img { width: 100%; height: auto; display: block; }
+    .img-cell { position: relative; border-radius: 24px; overflow: hidden; background: var(--card); }
+    .img-cell img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
     .gallery-col-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .gallery-section img, .gallery-col-2 img { width: 100%; height: auto; display: block; }
 
     .story-grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 12px; align-items: start; }
     .story-card-left { grid-column: 1 / span 4; border-radius: 24px; overflow: hidden; position: relative; display: flex; flex-direction: column; padding: 32px; min-height: 360px; }
@@ -204,10 +203,10 @@
       <a href="index.html" class="navbar__logo" aria-label="Back to portfolio">AM</a>
       <div class="navbar__right">
         <a href="https://asmikmk.github.io/Portfolio2/Asmik_CV.pdf" class="navbar__btn navbar__btn--cv" target="_blank" rel="noopener">Open CV</a>
-        <span class="navbar__cases-label">Case 04 / 04</span>
+        <span class="navbar__cases-label">Case 02 / 04</span>
         <div class="navbar__case-btns">
-          <a href="case-taxtank.html" class="navbar__case-btn" aria-label="Previous case">←</a>
-          <a class="navbar__case-btn navbar__case-btn--muted" aria-label="No next case" aria-disabled="true">→</a>
+          <a href="case-netology.html" class="navbar__case-btn" aria-label="Previous case">←</a>
+          <a href="case-tickron.html" class="navbar__case-btn" aria-label="Next case">→</a>
         </div>
       </div>
     </nav>
@@ -268,7 +267,7 @@
 
     <!-- ── Cover ── -->
     <div class="gallery-section">
-      <div class="img-cell">
+      <div class="img-cell" style="aspect-ratio:4262/2521;">
         <img src="LAMP/MainPass_Main.png" alt="minePASS LAMP — complete UI system overview" loading="lazy" />
       </div>
     </div>
@@ -465,7 +464,7 @@
 
     <!-- UX Flow image -->
     <div class="gallery-section" data-reveal="up">
-      <div class="img-cell">
+      <div class="img-cell" style="aspect-ratio:21449/5353;">
         <img src="LAMP/UX-FLOW.png" alt="Complete UX flow diagram — decision logic and screen states" loading="lazy" />
       </div>
       <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--tertiary-text);padding-top:4px;">Full UX flow — decision logic, screen states and error paths mapped before design began</p>
@@ -596,7 +595,7 @@
 
     <!-- Terminal flow image -->
     <div class="gallery-section" data-reveal="up">
-      <div class="img-cell">
+      <div class="img-cell" style="aspect-ratio:9537/5712;">
         <img src="LAMP/UX-FLOW_TERMINAL.png" alt="Terminal entry and exit flows — QR scan, authorised state, error states, exit confirmation" loading="lazy" />
       </div>
       <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--tertiary-text);padding-top:4px;">Terminal flow — Entry (left): QR scan → authorised / error → record. Exit (right): QR scan → confirm items returned → record.</p>
@@ -695,7 +694,7 @@
 
     <!-- Design system image -->
     <div class="gallery-section" data-reveal="up">
-      <div class="img-cell">
+      <div class="img-cell" style="aspect-ratio:6109/3946;">
         <img src="LAMP/DESIGN SYSTEM.png" alt="LAMP design system — navigation, employee cards, role badges, form fields, status components, SMS notifications, action modals" loading="lazy" />
       </div>
       <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--tertiary-text);padding-top:4px;">Design system — navigation, CIN employee cards, role badges, status system, form fields, SMS notifications, action confirmation modals</p>
@@ -760,12 +759,12 @@
             <h3 class="other-card__title">How I increased activation by 17% and D7 retention from 21% to 40%.</h3>
           </div>
         </a>
-        <a href="case-taxtank.html" class="other-card" data-case-card>
+        <a href="case-tickron.html" class="other-card" data-case-card>
           <div class="other-card__img">
-            <img src="TaxTankCase/dashboard-new-2.png" alt="TaxTank — Dashboard redesign" loading="lazy" />
+            <img src="MobileApp/Main_Top_Tittle.png" alt="Tickeron — Mobile redesign" loading="lazy" />
           </div>
           <div class="other-card__meta">
-            <h3 class="other-card__title">How I turned a tax dashboard into something users can actually understand.</h3>
+            <h3 class="other-card__title">How user drop-off led us to redesign the entire mobile experience.</h3>
           </div>
         </a>
       </div>
