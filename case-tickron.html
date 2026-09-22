@@ -317,7 +317,7 @@
     .other-cases-section { gap: 40px; padding-bottom: 120px; }
     .other-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 40px;
     }
     .other-card {
@@ -434,6 +434,7 @@
       .story-card-right { grid-column: 1 / -1; }
       .case-hero-flex   { flex-direction: column; gap: 32px; }
       .case-hero-image  { flex: none; width: 100%; height: 260px; }
+      .other-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
     }
     @media (max-width: 640px) {
       .cs, .gallery-section { padding: 0 20px; }
@@ -799,6 +800,14 @@
           </div>
           <div class="other-card__meta">
             <h3 class="other-card__title">How I increased activation by 17% and D7 retention from 21% to 40%.</h3>
+          </div>
+        </a>
+        <a href="case-lamp.html" class="other-card" data-case-card>
+          <div class="other-card__img">
+            <img src="LAMP/MainPass_Main.png" alt="minePASS LAMP — Safety system" loading="lazy" />
+          </div>
+          <div class="other-card__meta">
+            <h3 class="other-card__title">How I designed a safety-critical system by working directly with the people who use it underground.</h3>
           </div>
         </a>
         <a href="case-taxtank.html" class="other-card" data-case-card>

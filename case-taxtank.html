@@ -325,7 +325,7 @@
 
     /* ── Other cases ── */
     .other-cases-section { gap: 40px; padding-bottom: 120px; }
-    .other-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
+    .other-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
     .other-card { display: flex; flex-direction: column; gap: 24px; text-decoration: none; }
     .other-card__img { aspect-ratio: 1280/768; border-radius: 40px; overflow: hidden; position: relative; background: var(--card); }
     .other-card__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 650ms cubic-bezier(0.16,1,0.3,1); }
@@ -357,6 +357,7 @@
       .story-card-right { grid-column: 1 / -1; }
       .case-hero-flex { flex-direction: column; gap: 32px; }
       .case-hero-image { flex: none; width: 100%; height: 260px; }
+      .other-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .pm-intro { grid-template-columns: 1fr; }
       .pm-zones { grid-template-columns: 1fr; }
       .pm-callouts { grid-template-columns: repeat(2, 1fr); }
@@ -721,6 +722,14 @@
           </div>
           <div class="other-card__meta">
             <h3 class="other-card__title">How I designed a safety-critical system by working directly with the people who use it underground.</h3>
+          </div>
+        </a>
+        <a href="case-tickron.html" class="other-card" data-case-card>
+          <div class="other-card__img">
+            <img src="MobileApp/Main_Top_Tittle.png" alt="Tickeron — Mobile redesign" loading="lazy" />
+          </div>
+          <div class="other-card__meta">
+            <h3 class="other-card__title">How user drop-off led us to redesign the entire mobile experience.</h3>
           </div>
         </a>
       </div>
