@@ -31,7 +31,8 @@
     .img-cell {
       border-radius: 24px; overflow: hidden; background: var(--card);
     }
-    .img-cell img { width: 100%; height: auto; display: block; }
+    .img-cell { position: relative; }
+    .img-cell img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
     .gallery-col-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .gallery-col-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
     .gallery-section img, .gallery-col-2 img, .gallery-col-3 img { width: 100%; height: auto; display: block; }
