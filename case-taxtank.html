@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#0e0f14">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>TaxTank — Redesigning a Complex Tax Dashboard for Clarity · Asmik Mikaelian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Raleway:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="motion.css" />
+
+  <style>
+    body { font-family: 'Raleway', sans-serif; }
+    :root { --case-accent: #4ecfff; }
+    .acc { color: var(--case-accent); }
+
+    .case-page { display: flex; flex-direction: column; gap: 120px; }
+    .cs { padding: 0 80px; display: flex; flex-direction: column; width: 100%; }
+    .gallery-section { padding: 0 80px; display: flex; flex-direction: column; gap: 12px; width: 100%; }
+    .hero-section { padding-top: 200px; }
+
+    .case-hero__title {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: clamp(32px, 3.5vw, 52px); line-height: 1.15;
+      letter-spacing: -1.2px; color: var(--headline-text);
+    }
+    .case-hero-flex { display: flex; align-items: flex-end; gap: 60px; }
+    .case-hero-image { flex: 0 0 550px; height: 380px; position: relative; overflow: hidden; border-radius: 24px; }
+
+    .img-cell {
+      border-radius: 24px; overflow: hidden; background: var(--card);
+    }
+    .img-cell img { width: 100%; height: auto; display: block; }
+    .gallery-col-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .gallery-col-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .gallery-section img, .gallery-col-2 img, .gallery-col-3 img { width: 100%; height: auto; display: block; }
+
+    .story-grid {
+      display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 12px; align-items: start;
+    }
+    .story-card-left {
+      grid-column: 1 / span 4; border-radius: 24px; overflow: hidden;
+      position: relative; display: flex; flex-direction: column;
+      padding: 32px; min-height: 360px;
+    }
+    .story-card-left__content {
+      position: relative; z-index: 1; display: flex; flex-direction: column;
+      gap: 16px; margin-top: auto; border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px; padding: 20px;
+    }
+    .story-card-right { grid-column: 5 / span 8; display: flex; flex-direction: column; gap: 12px; }
+
+    .rail-sm { background: var(--card); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px; }
+    .story-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; position: relative; }
+    .story-card-how { background: var(--card); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+    .story-card-out { background: rgba(78,207,255,0.06); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+    .story-sep {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+      width: 44px; height: 44px; background: var(--bg); border: 1px solid var(--border-10);
+      border-radius: 12px; z-index: 2; display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: var(--tertiary-text); pointer-events: none;
+    }
+    .story-divider { border-top: 1px solid rgba(78,207,255,0.2); padding-top: 20px; }
+
+    .c-cap { font-family: 'Raleway', sans-serif; font-size: 13px; letter-spacing: 1.12px; text-transform: uppercase; color: var(--tertiary-text); line-height: 1.4; }
+    .c-h2 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 24px; line-height: 1.3; letter-spacing: -0.4px; color: var(--headline-text); }
+    .c-lead { font-family: 'Raleway', sans-serif; font-size: 18px; line-height: 30px; color: var(--main-text); }
+    .c-body { font-family: 'Raleway', sans-serif; font-size: 16px; line-height: 28px; color: var(--secondary-text); }
+
+    .metric__val { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 36px; line-height: 1.2; color: var(--headline-text); }
+    .metric__val--accent { color: var(--case-accent); }
+    .metric__cap { font-family: 'Raleway', sans-serif; font-size: 13px; line-height: 20px; color: var(--tertiary-text); }
+
+    .bullets { display: flex; flex-direction: column; gap: 14px; }
+    .bullet { display: flex; gap: 12px; align-items: flex-start; }
+    .bullet__icon { font-size: 14px; line-height: 28px; flex-shrink: 0; color: var(--case-accent); }
+    .bullet__text { font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 24px; color: var(--secondary-text); }
+    .story-card-right .c-lead { font-size: 15px; line-height: 26px; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { background: var(--border-10); border-radius: 8px; padding: 3px 12px 4px; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 13px; color: var(--secondary-text); }
+
+    /* ── Product Map ── */
+    .product-map {
+      background: var(--card); border-radius: 24px; padding: 48px;
+      display: flex; flex-direction: column; gap: 40px;
+    }
+
+    /* Intro: 2-col header */
+    .pm-intro {
+      display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start;
+    }
+    .pm-intro-content { display: flex; flex-direction: column; gap: 14px; }
+    .pm-intro-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: clamp(22px, 2.2vw, 30px); line-height: 1.2; letter-spacing: -0.4px;
+      color: var(--headline-text);
+    }
+    .pm-intro-subtitle {
+      font-family: 'Raleway', sans-serif; font-size: 15px; line-height: 26px;
+      color: var(--secondary-text); max-width: 520px;
+    }
+    .pm-takeaway {
+      background: rgba(78,207,255,0.05); border: 1px solid rgba(78,207,255,0.15);
+      border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .pm-takeaway-label {
+      font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--case-accent);
+    }
+    .pm-takeaway-text {
+      font-family: 'Raleway', sans-serif; font-size: 13px; line-height: 22px;
+      color: var(--secondary-text); font-style: italic;
+    }
+
+    /* 3-column zone grid */
+    .pm-zones { display: grid; grid-template-columns: 210px 1fr 230px; gap: 12px; align-items: start; }
+
+    /* Each zone */
+    .pm-zone {
+      background: rgba(255,255,255,0.025); border: 1px solid var(--border-5);
+      border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .pm-zone--flagged {
+      border-color: rgba(255,164,71,0.18); background: rgba(255,164,71,0.03);
+    }
+
+    /* Zone header row: label + marker(s) */
+    .pm-zone-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 4px;
+    }
+    .pm-zone-label {
+      font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--case-accent);
+    }
+    .pm-zone-markers { display: flex; gap: 5px; }
+
+    /* Numbered problem marker circle */
+    .pm-marker {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(255,164,71,0.12); border: 1px solid rgba(255,164,71,0.35);
+      font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700;
+      color: #ffb347; letter-spacing: 0;
+    }
+
+    /* Nav items */
+    .pm-item {
+      font-family: 'Raleway', sans-serif; font-size: 12px; line-height: 19px;
+      color: var(--secondary-text); padding: 5px 9px;
+      background: rgba(255,255,255,0.03); border-radius: 7px;
+    }
+    .pm-item--active {
+      color: var(--headline-text); background: rgba(78,207,255,0.08);
+      border: 1px solid rgba(78,207,255,0.2);
+    }
+    .pm-item--alert { color: #ffa647; background: rgba(255,164,71,0.06); }
+    .pm-item--dim {
+      font-size: 11px; opacity: 0.35; padding: 3px 9px 3px 14px;
+    }
+
+    .pm-group { display: flex; flex-direction: column; gap: 3px; }
+    .pm-group-label {
+      font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.13em;
+      text-transform: uppercase; color: var(--tertiary-text); padding: 6px 9px 3px;
+    }
+    .pm-sub { font-size: 11px; padding-left: 10px; }
+    .pm-badge {
+      display: inline-block; background: rgba(255,80,80,0.15); color: #ff7070;
+      font-family: 'IBM Plex Mono', monospace; font-size: 9px;
+      padding: 2px 5px; border-radius: 4px; margin-left: 5px;
+    }
+    .pm-count-note {
+      font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+      color: rgba(255,164,71,0.6); letter-spacing: 0.08em;
+      padding: 4px 9px; font-style: italic;
+    }
+
+    /* Center zone content */
+    .pm-center-cols { display: flex; flex-direction: column; gap: 8px; }
+    .pm-center-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .pm-header {
+      grid-column: 1 / -1;
+      background: rgba(255,164,71,0.06); border: 1px solid rgba(255,164,71,0.18);
+      border-radius: 9px; padding: 9px 12px;
+      font-family: 'Raleway', sans-serif; font-size: 11px; color: rgba(255,164,71,0.8);
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    }
+    .pm-header-note {
+      font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: rgba(255,164,71,0.5);
+      white-space: nowrap; flex-shrink: 0;
+    }
+
+    /* Right panel items (all equal — that's the problem) */
+    .pm-panel-items { display: flex; flex-direction: column; gap: 3px; }
+    .pm-panel-count {
+      font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em;
+      color: rgba(255,164,71,0.5); padding: 2px 0 6px;
+      text-transform: uppercase; font-style: italic;
+    }
+
+    /* Callouts legend below the map */
+    .pm-callouts {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+      border-top: 1px solid var(--border-5); padding-top: 32px;
+    }
+    .pm-callout {
+      display: flex; flex-direction: column; gap: 8px;
+      padding-left: 14px; border-left: 2px solid rgba(255,164,71,0.25);
+    }
+    .pm-callout__num {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: 28px; line-height: 1; color: rgba(255,164,71,0.35);
+      letter-spacing: -1px;
+    }
+    .pm-callout__title {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: 13px; line-height: 1.3; color: var(--headline-text);
+    }
+    .pm-callout__body {
+      font-family: 'Raleway', sans-serif; font-size: 12px; line-height: 19px;
+      color: var(--secondary-text);
+    }
+
+    /* ── Journey Map ── */
+    .journey-wrap { overflow-x: auto; }
+    .journey-map { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; min-width: 900px; }
+    .journey-step { background: var(--card); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+    .journey-step__num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--case-accent); }
+    .journey-step__title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px; line-height: 1.4; color: var(--headline-text); }
+    .journey-row-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tertiary-text); margin-bottom: 2px; }
+    .journey-cell { font-family: 'Raleway', sans-serif; font-size: 12px; line-height: 18px; color: var(--secondary-text); }
+    .journey-cell--risk { color: #ffa647; }
+    .journey-cell--emotion { color: #c084fc; }
+    .journey-cell--opp { color: var(--case-accent); }
+    .journey-divider { border-top: 1px solid var(--border-5); margin: 4px 0; }
+    .journey-row-wrap { display: flex; flex-direction: column; gap: 10px; }
+    .journey-row-item { }
+
+    /* ── Problem Cards ── */
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .problem-card { background: var(--card); border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 12px; border-left: 3px solid rgba(255,107,107,0.4); }
+    .problem-card__num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,107,107,0.7); }
+    .problem-card__title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 15px; line-height: 1.4; color: var(--headline-text); }
+    .problem-card__body { font-family: 'Raleway', sans-serif; font-size: 13px; line-height: 22px; color: var(--secondary-text); }
+    .problem-card__evidence { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--tertiary-text); background: rgba(255,255,255,0.04); border-radius: 6px; padding: 8px 10px; }
+
+    /* ── Principles ── */
+    .principles-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .principle { background: var(--card); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px; }
+    .principle__num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--case-accent); }
+    .principle__title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 18px; line-height: 1.3; color: var(--headline-text); }
+    .principle__body { font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 22px; color: var(--secondary-text); }
+
+    /* ── Problem → Solution ── */
+    .psm-wrap { display: flex; flex-direction: column; gap: 8px; }
+    .psm-header { display: grid; grid-template-columns: 1fr 44px 1fr 1fr; gap: 8px; padding: 0 16px; }
+    .psm-header-cell { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tertiary-text); }
+    .psm-row { display: grid; grid-template-columns: 1fr 44px 1fr 1fr; gap: 8px; background: var(--card); border-radius: 16px; padding: 20px 16px; align-items: center; }
+    .psm-problem { font-family: 'Raleway', sans-serif; font-size: 14px; line-height: 22px; color: var(--secondary-text); }
+    .psm-arrow { display: flex; align-items: center; justify-content: center; color: var(--case-accent); font-size: 18px; }
+    .psm-decision { font-family: 'Raleway', sans-serif; font-size: 14px; font-weight: 600; line-height: 22px; color: var(--headline-text); }
+    .psm-why { font-family: 'Raleway', sans-serif; font-size: 13px; line-height: 20px; color: var(--tertiary-text); }
+
+    /* ── Before / After ── */
+    .before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .ba-panel { display: flex; flex-direction: column; gap: 12px; }
+    .ba-label-wrap { display: flex; align-items: center; gap: 12px; }
+    .ba-label {
+      font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase; padding: 5px 12px; border-radius: 6px;
+    }
+    .ba-label--before { background: rgba(255,107,107,0.12); color: rgba(255,107,107,0.8); }
+    .ba-label--after { background: rgba(78,207,255,0.12); color: var(--case-accent); }
+    .ba-note { font-family: 'Raleway', sans-serif; font-size: 13px; color: var(--tertiary-text); }
+    .annotated-wrap { position: relative; border-radius: 16px; overflow: hidden; }
+    .annotated-wrap img { display: block; width: 100%; height: auto; }
+    .callouts { position: absolute; inset: 0; pointer-events: none; }
+    .callout {
+      position: absolute; display: flex; align-items: center; gap: 6px;
+      background: rgba(14,15,20,0.88); border: 1px solid rgba(255,107,107,0.5);
+      border-radius: 6px; padding: 4px 8px;
+      font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,107,107,0.9);
+      white-space: nowrap; backdrop-filter: blur(4px);
+    }
+    .callout--new {
+      border-color: rgba(78,207,255,0.5); color: var(--case-accent);
+    }
+    .callout::before { content: '×'; font-size: 10px; }
+    .callout--new::before { content: '✓'; }
+
+    /* ── System Thinking ── */
+    .system-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .system-card { background: var(--card); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+    .system-card__label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--case-accent); }
+    .system-card__title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 14px; color: var(--headline-text); }
+    .system-card__body { font-family: 'Raleway', sans-serif; font-size: 13px; line-height: 20px; color: var(--secondary-text); }
+    .system-card__items { display: flex; flex-direction: column; gap: 6px; }
+    .system-card__item { font-family: 'Raleway', sans-serif; font-size: 12px; line-height: 18px; color: var(--tertiary-text); display: flex; gap: 8px; align-items: flex-start; }
+    .system-card__item::before { content: '—'; color: var(--case-accent); flex-shrink: 0; }
+
+    /* ── Hypothesis badge ── */
+    .hypothesis-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,164,71,0.1); border: 1px solid rgba(255,164,71,0.3);
+      border-radius: 6px; padding: 4px 10px;
+      font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #ffa447;
+    }
+
+    /* ── Impact list ── */
+    .impact-list { display: flex; flex-direction: column; gap: 16px; }
+    .impact-item { display: flex; gap: 16px; align-items: flex-start; padding: 20px; background: var(--card); border-radius: 16px; }
+    .impact-item__icon { font-size: 20px; flex-shrink: 0; }
+    .impact-item__text { font-family: 'Raleway', sans-serif; font-size: 15px; line-height: 24px; color: var(--secondary-text); }
+    .impact-item__text strong { color: var(--headline-text); font-weight: 600; }
+
+    /* ── Navbar ── */
+    .navbar__cases-label { font-family: 'IBM Plex Mono', monospace; font-size: 13px; text-transform: uppercase; color: var(--tertiary-text); white-space: nowrap; }
+    .navbar__case-btns { display: flex; align-items: center; gap: 8px; }
+    .navbar__case-btn { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid var(--border-20); border-radius: 50%; font-size: 18px; color: var(--secondary-text); text-decoration: none; transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s cubic-bezier(0.16,1,0.3,1); }
+    .navbar__case-btn:hover { border-color: rgba(255,255,255,0.4); color: var(--headline-text); transform: scale(1.08); }
+    .navbar__case-btn:active { transform: scale(0.93); }
+    .navbar__case-btn--muted { opacity: 0.22; pointer-events: none; cursor: default; }
+
+    /* ── Other cases ── */
+    .other-cases-section { gap: 40px; padding-bottom: 120px; }
+    .other-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
+    .other-card { display: flex; flex-direction: column; gap: 24px; text-decoration: none; }
+    .other-card__img { aspect-ratio: 1280/768; border-radius: 40px; overflow: hidden; position: relative; background: var(--card); }
+    .other-card__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 650ms cubic-bezier(0.16,1,0.3,1); }
+    .other-card:hover .other-card__img img { transform: scale(1.05); }
+    .other-card__meta { display: flex; flex-direction: column; gap: 8px; }
+    .other-card__title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(20px,2vw,28px); line-height: 1.3; color: var(--headline-text); }
+
+    /* ── LinkedIn Banner ── */
+    .linkedin-banner-wrap { padding: 0 80px 80px; max-width: 50%; margin: 0 auto; }
+    .linkedin-banner { display: block; position: relative; border-radius: 32px; overflow: hidden; text-decoration: none; }
+    .linkedin-banner img { display: block; width: 100%; height: auto; transition: transform 700ms cubic-bezier(0.16,1,0.3,1); }
+    .linkedin-banner:hover img { transform: scale(1.03); }
+
+    /* ── Section heading row ── */
+    .section-head { display: flex; flex-direction: column; gap: 12px; max-width: 680px; }
+    .section-head + * { margin-top: 40px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) {
+      .cs, .gallery-section { padding: 0 40px; }
+      .pm-zones { grid-template-columns: 180px 1fr 190px; }
+      .pm-intro { grid-template-columns: 1fr 280px; gap: 24px; }
+      .pm-callouts { grid-template-columns: repeat(2, 1fr); }
+      .principles-grid { grid-template-columns: repeat(2, 1fr); }
+      .system-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 860px) {
+      .story-card-left { grid-column: 1 / -1; min-height: 220px; }
+      .story-card-right { grid-column: 1 / -1; }
+      .case-hero-flex { flex-direction: column; gap: 32px; }
+      .case-hero-image { flex: none; width: 100%; height: 260px; }
+      .pm-intro { grid-template-columns: 1fr; }
+      .pm-zones { grid-template-columns: 1fr; }
+      .pm-callouts { grid-template-columns: repeat(2, 1fr); }
+      .before-after { grid-template-columns: 1fr; }
+      .psm-header { display: none; }
+      .psm-row { grid-template-columns: 1fr; gap: 4px; }
+      .psm-arrow { display: none; }
+      .journey-map { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .cs, .gallery-section { padding: 0 20px; }
+      .hero-section { padding-top: 120px; }
+      .case-page { gap: 64px; }
+      .story-2col { grid-template-columns: 1fr; }
+      .story-sep { display: none; }
+      .gallery-col-2 { grid-template-columns: 1fr; }
+      .gallery-col-3 { grid-template-columns: 1fr; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .pm-callouts { grid-template-columns: 1fr 1fr; }
+      .product-map { padding: 28px; gap: 28px; }
+      .system-grid { grid-template-columns: 1fr; }
+      .other-grid { grid-template-columns: 1fr; }
+      .journey-map { grid-template-columns: 1fr 1fr; }
+      .linkedin-banner-wrap { padding: 0 20px 60px; max-width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .navbar__btn--cv { display: none; }
+      .navbar__cases-label { display: none; }
+      .navbar__right { gap: 8px; }
+      .navbar__case-btn { width: 36px; height: 36px; font-size: 16px; }
+      .journey-map { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <div id="navbarWrap" class="navbar-wrap">
+    <nav class="navbar">
+      <a href="index.html" class="navbar__logo" aria-label="Back to portfolio">AM</a>
+      <div class="navbar__right">
+        <a href="https://asmikmk.github.io/Portfolio2/Asmik_CV.pdf" class="navbar__btn navbar__btn--cv" target="_blank" rel="noopener">Open CV</a>
+        <span class="navbar__cases-label">Case 03 / 04</span>
+        <div class="navbar__case-btns">
+          <a href="case-tickron.html" class="navbar__case-btn" aria-label="Previous case">←</a>
+          <a href="case-lamp.html" class="navbar__case-btn" aria-label="Next case">→</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    (function () {
+      var wrap = document.getElementById('navbarWrap');
+      var ticking = false, compact = false;
+      var SHRINK_AT = 60, GROW_AT = 30;
+      function update() {
+        var y = window.scrollY;
+        if (!compact && y > SHRINK_AT) { compact = true; wrap.classList.add('is-compact'); }
+        else if (compact && y < GROW_AT) { compact = false; wrap.classList.remove('is-compact'); }
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
+    })();
+  </script>
+
+  <div id="cardCursor" class="card-cursor" aria-hidden="true">
+    <span class="card-cursor__text">View</span>
+    <span class="card-cursor__arrow">→</span>
+  </div>
+  <button id="scrollTop" class="scroll-top" aria-label="Back to top">↑</button>
+
+  <div class="page case-page">
+
+    <!-- ══ HERO ══════════════════════════════════════════════════════════ -->
+    <section class="cs hero-section">
+      <div class="case-hero-flex">
+        <div class="case-hero-image">
+          <img src="TaxTankCase/dashboard-new-2.png" alt="TaxTank redesigned dashboard"
+               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top left;" />
+        </div>
+        <div class="case-hero-title" style="flex:1; padding-bottom:24px;">
+          <h1 class="case-hero__title">
+            How I turned a <span class="acc">tax dashboard</span> into something users can actually understand.
+          </h1>
+          <p style="margin-top:32px;font-family:'Raleway',sans-serif;font-size:18px;line-height:30px;color:var(--secondary-text);max-width:560px;">
+            TaxTank had everything a user needed. The problem was the interface didn't help anyone understand what any of it meant, or what to do next.
+          </p>
+          <div class="tags" style="margin-top:24px;">
+            <span class="tag">FinTech</span>
+            <span class="tag">Dashboard</span>
+            <span class="tag">Information Architecture</span>
+            <span class="tag">Product Design</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Cover ── -->
+    <div class="gallery-section">
+      <div class="img-cell">
+        <img src="TaxTankCase/dashboard-new-2.png" alt="TaxTank redesigned dashboard — full view" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- ══ STEP 01 — MAP THE PRODUCT ═══════════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-grid">
+
+        <div class="story-card-left">
+          <div class="story-card-left__content">
+            <span class="c-cap">Step 01</span>
+            <h2 class="c-h2">Before touching the UI, I mapped the <span class="acc">full system.</span></h2>
+          </div>
+        </div>
+
+        <div class="story-card-right">
+          <div class="rail-sm">
+            <span class="c-cap">Context</span>
+            <p class="c-lead">TaxTank is an Australian tax management platform for individuals managing multiple income entities — called Tanks. Each Tank (Property, Work, Sole Trader, Holdings, Other) tracks its own income, expenses and tax position, all feeding into a combined tax forecast.</p>
+            <p class="c-lead">The product also includes Bank Feeds, a Tax Summary, 8 report types, a budgeting tool, an accountant/advisor relationship layer, and fiscal year management. I listed everything before drawing a single wireframe.</p>
+          </div>
+          <div class="story-card-how">
+            <span class="c-cap">What I discovered</span>
+            <div class="bullets">
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text">5 active Tanks, each with a different data model (property has depreciation, work has tax withheld, holdings has dividends)</span></div>
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text">8 distinct report types buried in a collapsible nav item — not surfaced anywhere in the main UI</span></div>
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text">The Bank Feeds badge showed 444 unprocessed items — a critical signal buried in a secondary nav section</span></div>
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text">The right panel mixed 5 completely unrelated widgets: news, budgeting, expert booking, accountant access, financial year close</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Product Map ── -->
+    <div class="gallery-section" data-reveal="up">
+      <div class="product-map">
+
+        <!-- ── Intro ── -->
+        <div class="pm-intro">
+          <div class="pm-intro-content">
+            <span class="c-cap">Step 01</span>
+            <h2 class="pm-intro-title">Mapping the <span class="acc">Existing Product</span></h2>
+            <p class="pm-intro-subtitle">Before changing the interface, I reconstructed the platform to understand how features, financial data and supporting tools were connected — and what the structure revealed about the user experience.</p>
+          </div>
+          <div class="pm-takeaway">
+            <span class="pm-takeaway-label">What I found</span>
+            <p class="pm-takeaway-text">The product had grown feature by feature. Users were presented with many destinations and competing information, but the hierarchy did not clearly show what mattered most or what to do next.</p>
+          </div>
+        </div>
+
+        <!-- ── 3-Column Map ── -->
+        <div class="pm-zones">
+
+          <!-- LEFT — Navigation -->
+          <div class="pm-zone">
+            <div class="pm-zone-header">
+              <span class="pm-zone-label">Navigation</span>
+              <span class="pm-marker">01</span>
+            </div>
+
+            <div class="pm-group">
+              <span class="pm-group-label">Main</span>
+              <div class="pm-item pm-item--active">Dashboard</div>
+            </div>
+
+            <div class="pm-group">
+              <span class="pm-group-label">Tanks</span>
+              <div class="pm-item">Property Tank</div>
+              <div class="pm-item">Work Tank</div>
+              <div class="pm-item">Sole Tank</div>
+              <div class="pm-item">Holdings Tank</div>
+            </div>
+
+            <div class="pm-group">
+              <span class="pm-group-label">Utilities</span>
+              <div class="pm-item pm-item--alert">Bank Feeds <span class="pm-badge">444</span></div>
+              <div class="pm-item">Tax Summary</div>
+              <div class="pm-item">Reports ▾</div>
+              <div class="pm-item pm-item--dim pm-sub">Transactions Report</div>
+              <div class="pm-item pm-item--dim pm-sub">Motor Vehicles</div>
+              <div class="pm-item pm-item--dim pm-sub">Rental Properties</div>
+              <div class="pm-item pm-item--dim pm-sub">Low Value Pool</div>
+              <div class="pm-item pm-item--dim pm-sub">Depreciations</div>
+              <div class="pm-item pm-item--dim pm-sub">MyTax Report</div>
+              <div class="pm-item pm-item--dim pm-sub">BAS Report</div>
+              <div class="pm-item pm-item--dim pm-sub">CGT Report</div>
+            </div>
+
+            <div class="pm-group">
+              <span class="pm-group-label">Account</span>
+              <div class="pm-item pm-item--dim">My Account</div>
+              <div class="pm-item pm-item--dim">Subscription</div>
+              <div class="pm-item pm-item--dim">Assistants</div>
+              <div class="pm-item pm-item--dim">Invite Users</div>
+            </div>
+
+            <span class="pm-count-note">20+ destinations total</span>
+          </div>
+
+          <!-- CENTER — Dashboard Content -->
+          <div class="pm-zone">
+            <div class="pm-zone-header">
+              <span class="pm-zone-label">Dashboard Content</span>
+              <div class="pm-zone-markers">
+                <span class="pm-marker">02</span>
+                <span class="pm-marker">03</span>
+              </div>
+            </div>
+
+            <div class="pm-center-cols">
+
+              <!-- Header row — flagged for problem 02 -->
+              <div class="pm-header">
+                Forecasted Tax widget &nbsp;·&nbsp; Actual Tax widget
+                <span class="pm-header-note">competing priorities ②</span>
+              </div>
+
+              <!-- Summary -->
+              <div class="pm-center-row">
+                <div class="pm-item" style="grid-column:span 2; font-size:11px;">
+                  Summary — donut chart (44% of tax payable) · Forecasted / Actual toggle
+                </div>
+              </div>
+
+              <!-- Tank cards — all same weight, flagged for problem 03 -->
+              <div class="pm-center-row">
+                <div class="pm-item">
+                  Property Tank
+                  <br><span style="font-size:10px;opacity:0.5;">income · expenses · interest · depreciation</span>
+                </div>
+                <div class="pm-item">
+                  Work Tank
+                  <br><span style="font-size:10px;opacity:0.5;">income · expenses · tax withheld</span>
+                </div>
+              </div>
+              <div class="pm-center-row">
+                <div class="pm-item">
+                  Sole Tank
+                  <br><span style="font-size:10px;opacity:0.5;">income · expenses · depreciation · business loss</span>
+                </div>
+                <div class="pm-item">
+                  Holdings Tank
+                  <br><span style="font-size:10px;opacity:0.5;">MV total · dividends · shares · crypto</span>
+                </div>
+              </div>
+              <div class="pm-center-row">
+                <div class="pm-item" style="grid-column:span 2; font-size:11px;">
+                  Other Tank &nbsp;·&nbsp; income · expenses · tax offsets · tax credit
+                </div>
+              </div>
+
+              <span class="pm-count-note">5 tanks · all equal visual weight ③</span>
+
+            </div>
+          </div>
+
+          <!-- RIGHT — Supporting Panel -->
+          <div class="pm-zone pm-zone--flagged">
+            <div class="pm-zone-header">
+              <span class="pm-zone-label">Supporting Panel</span>
+              <span class="pm-marker">04</span>
+            </div>
+            <div class="pm-panel-count">5 widgets · no hierarchy</div>
+            <div class="pm-panel-items">
+              <div class="pm-item">Latest News &amp; Tax Tips</div>
+              <div class="pm-item">Budgeting (month view)</div>
+              <div class="pm-item">Expert Advice CTA</div>
+              <div class="pm-item">Accountant widget</div>
+              <div class="pm-item pm-item--alert">Close Financial Year</div>
+            </div>
+            <span class="pm-count-note">All items carry equal visual weight</span>
+          </div>
+
+        </div>
+
+        <!-- ── Callout Legend ── -->
+        <div class="pm-callouts">
+          <div class="pm-callout">
+            <span class="pm-callout__num">01</span>
+            <span class="pm-callout__title">Navigation overload</span>
+            <p class="pm-callout__body">20+ possible destinations in the sidebar. Users need to understand the product structure before they can decide where to go.</p>
+          </div>
+          <div class="pm-callout">
+            <span class="pm-callout__num">02</span>
+            <span class="pm-callout__title">Competing priorities</span>
+            <p class="pm-callout__body">Tax status, tank data, budgeting, news and year-end actions share the same viewport with no clear hierarchy between them.</p>
+          </div>
+          <div class="pm-callout">
+            <span class="pm-callout__num">03</span>
+            <span class="pm-callout__title">Weak task hierarchy</span>
+            <p class="pm-callout__body">Primary tax tasks and secondary utilities receive similar visual emphasis. The system does not communicate what to focus on first.</p>
+          </div>
+          <div class="pm-callout">
+            <span class="pm-callout__num">04</span>
+            <span class="pm-callout__title">No clear next step</span>
+            <p class="pm-callout__body">The dashboard contains a lot of information, but gives limited guidance about what the user should actually do next.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Nav screenshots ── -->
+    <div class="gallery-section" data-reveal="up">
+      <div class="gallery-col-3">
+        <div class="img-cell">
+          <img src="TaxTankCase/nav-sidebar.png" alt="TaxTank navigation — default state" loading="lazy" />
+        </div>
+        <div class="img-cell">
+          <img src="TaxTankCase/nav-reports.png" alt="TaxTank navigation — reports expanded" loading="lazy" />
+        </div>
+        <div class="img-cell">
+          <img src="TaxTankCase/account-dropdown.png" alt="TaxTank account dropdown" loading="lazy" style="object-position:top center;" />
+        </div>
+      </div>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--tertiary-text);padding-top:4px;">Navigation default · Reports expanded (8 sub-items hidden) · Account dropdown</p>
+    </div>
+
+    <!-- ══ STEP 02 — USER JOURNEY ═════════════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-grid">
+
+        <div class="story-card-left">
+          <div class="story-card-left__content">
+            <span class="c-cap">Step 02</span>
+            <h2 class="c-h2">Then I mapped how a user actually <span class="acc">moves through it.</span></h2>
+          </div>
+        </div>
+
+        <div class="story-card-right">
+          <div class="rail-sm">
+            <span class="c-cap">Primary User Journey</span>
+            <p class="c-lead">The friction points in this journey were not invented. Users who couldn't find something or got stuck wrote emails directly to the tech team. Those emails became the input I used to identify where the product was failing — what couldn't be found, what was confusing, what blocked action.</p>
+            <p class="c-lead">Email support volume is a blunt but honest signal: if something generates repeated questions, the interface has not done its job.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Journey Map -->
+    <div class="gallery-section" data-reveal="up">
+      <div class="journey-wrap">
+        <div class="journey-map">
+
+          <div class="journey-step">
+            <span class="journey-step__num">01</span>
+            <span class="journey-step__title">Open Dashboard</span>
+            <div class="journey-divider"></div>
+            <div class="journey-row-wrap">
+              <div><div class="journey-row-label">Goal</div><div class="journey-cell">"What is my tax situation right now?"</div></div>
+              <div><div class="journey-row-label">Sees</div><div class="journey-cell">Two header widgets: Forecasted Tax and Actual Tax</div></div>
+              <div><div class="journey-row-label">User signal</div><div class="journey-cell journey-cell--risk">Emails asked: "which number do I look at — Forecasted or Actual?"</div></div>
+              <div><div class="journey-row-label">Emotion</div><div class="journey-cell journey-cell--emotion">Uncertain, scanning</div></div>
+              <div><div class="journey-row-label">Opportunity</div><div class="journey-cell journey-cell--opp">One clear tax status number, instantly readable</div></div>
+            </div>
+          </div>
+
+          <div class="journey-step">
+            <span class="journey-step__num">02</span>
+            <span class="journey-step__title">Read the Summary</span>
+            <div class="journey-divider"></div>
+            <div class="journey-row-wrap">
+              <div><div class="journey-row-label">Goal</div><div class="journey-cell">"Am I on track?"</div></div>
+              <div><div class="journey-row-label">Sees</div><div class="journey-cell">Donut chart showing 44%, Forecasted/Actual toggle</div></div>
+              <div><div class="journey-row-label">User signal</div><div class="journey-cell journey-cell--risk">Emails asked: "what does this percentage mean — is 44% good or bad?"</div></div>
+              <div><div class="journey-row-label">Emotion</div><div class="journey-cell journey-cell--emotion">Mildly confused</div></div>
+              <div><div class="journey-row-label">Opportunity</div><div class="journey-cell journey-cell--opp">Chart with trend line comparing current vs previous year</div></div>
+            </div>
+          </div>
+
+          <div class="journey-step">
+            <span class="journey-step__num">03</span>
+            <span class="journey-step__title">Review Tanks</span>
+            <div class="journey-divider"></div>
+            <div class="journey-row-wrap">
+              <div><div class="journey-row-label">Goal</div><div class="journey-cell">"What is each entity doing?"</div></div>
+              <div><div class="journey-row-label">Sees</div><div class="journey-cell">5 tank cards with equal visual weight, some locked/inactive</div></div>
+              <div><div class="journey-row-label">User signal</div><div class="journey-cell journey-cell--risk">Emails asked: "why do I see tanks I can't use — how do I get rid of them?"</div></div>
+              <div><div class="journey-row-label">Emotion</div><div class="journey-cell journey-cell--emotion">Overwhelmed</div></div>
+              <div><div class="journey-row-label">Opportunity</div><div class="journey-cell journey-cell--opp">Status badges + inactive tanks separated to "Explore" section</div></div>
+            </div>
+          </div>
+
+          <div class="journey-step">
+            <span class="journey-step__num">04</span>
+            <span class="journey-step__title">Find What Needs Attention</span>
+            <div class="journey-divider"></div>
+            <div class="journey-row-wrap">
+              <div><div class="journey-row-label">Goal</div><div class="journey-cell">"What do I need to do?"</div></div>
+              <div><div class="journey-row-label">Sees</div><div class="journey-cell">Right panel: 5 unrelated widgets, no priority order</div></div>
+              <div><div class="journey-row-label">User signal</div><div class="journey-cell journey-cell--risk">Emails asked: "what should I actually do in here — where do I start?"</div></div>
+              <div><div class="journey-row-label">Emotion</div><div class="journey-cell journey-cell--emotion">Stressed, avoidant</div></div>
+              <div><div class="journey-row-label">Opportunity</div><div class="journey-cell journey-cell--opp">Single queue: Required → Recommended → Review</div></div>
+            </div>
+          </div>
+
+          <div class="journey-step">
+            <span class="journey-step__num">05</span>
+            <span class="journey-step__title">Navigate to Action</span>
+            <div class="journey-divider"></div>
+            <div class="journey-row-wrap">
+              <div><div class="journey-row-label">Goal</div><div class="journey-cell">"Where do I go to fix this?"</div></div>
+              <div><div class="journey-row-label">Sees</div><div class="journey-cell">Flat sidebar with 8 items, Reports collapsed</div></div>
+              <div><div class="journey-row-label">User signal</div><div class="journey-cell journey-cell--risk">Emails asked: "where do I find my bank transactions / reports — I can't find them"</div></div>
+              <div><div class="journey-row-label">Emotion</div><div class="journey-cell journey-cell--emotion">Friction, hesitation</div></div>
+              <div><div class="journey-row-label">Opportunity</div><div class="journey-cell journey-cell--opp">Nav grouped by purpose: Tanks / Finance. Direct links from actions to destinations</div></div>
+            </div>
+          </div>
+
+          <div class="journey-step">
+            <span class="journey-step__num">06</span>
+            <span class="journey-step__title">Take Action</span>
+            <div class="journey-divider"></div>
+            <div class="journey-row-wrap">
+              <div><div class="journey-row-label">Goal</div><div class="journey-cell">"I've done what I needed to do"</div></div>
+              <div><div class="journey-row-label">Sees</div><div class="journey-cell">No feedback loop back to the dashboard after completing an action</div></div>
+              <div><div class="journey-row-label">User signal</div><div class="journey-cell journey-cell--risk">Emails asked: "I connected my bank / categorised transactions — did it work?"</div></div>
+              <div><div class="journey-row-label">Emotion</div><div class="journey-cell journey-cell--emotion">Uncertain about outcome</div></div>
+              <div><div class="journey-row-label">Opportunity</div><div class="journey-cell journey-cell--opp">Recent activity feed: "3 transactions categorised · Today"</div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ STEP 03 — CORE PROBLEM ════════════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-grid">
+
+        <div class="story-card-left">
+          <div class="story-card-left__content">
+            <span class="c-cap">Step 03</span>
+            <h2 class="c-h2">The product has all the information. The <span class="acc">interface doesn't help you understand it.</span></h2>
+          </div>
+        </div>
+
+        <div class="story-card-right">
+
+          <div class="rail-sm">
+            <span class="c-cap">Core Problem</span>
+            <p class="c-lead">TaxTank surfaces financial data across multiple entities and time periods. But the interface gives equal visual weight to almost everything — tax numbers, news articles, budgeting tools, CTA widgets and account settings — without guiding the user toward what matters right now.</p>
+            <p class="c-lead">The result is a product that requires prior knowledge to use. A user who already understands tax will find what they need. A user who is new or returning after weeks will not know where to look.</p>
+          </div>
+
+          <div class="problem-grid">
+            <div class="problem-card">
+              <span class="problem-card__num">Problem 01</span>
+              <span class="problem-card__title">No clear financial status</span>
+              <p class="problem-card__body">The tax position is split between "Forecasted Tax" and "Actual Tax" widgets with identical visual weight and no hierarchy. A user cannot immediately answer: am I owing more or less than expected?</p>
+              <span class="problem-card__evidence">Evidence → Header row, dashboard-old.png</span>
+            </div>
+            <div class="problem-card">
+              <span class="problem-card__num">Problem 02</span>
+              <span class="problem-card__title">13+ elements competing in the right panel</span>
+              <p class="problem-card__body">Latest News (3 articles), Budgeting (month view + breakdown), Expert Advice CTA, Accountant widget, and Close Financial Year button — all in one column, each with its own heading and CTA.</p>
+              <span class="problem-card__evidence">Evidence → Right column, dashboard-old.png</span>
+            </div>
+            <div class="problem-card">
+              <span class="problem-card__num">Problem 03</span>
+              <span class="problem-card__title">Active and inactive tanks are visually identical</span>
+              <p class="problem-card__body">A locked subscription tank and an active tank with real data sit in the same card grid at the same size. The only signal is a padlock icon. A user with 2 active tanks must process 5 cards equally.</p>
+              <span class="problem-card__evidence">Evidence → Tank grid, dashboard-old-inactive.png</span>
+            </div>
+            <div class="problem-card">
+              <span class="problem-card__num">Problem 04</span>
+              <span class="problem-card__title">Navigation has no priority or grouping</span>
+              <p class="problem-card__body">8 nav items at the same visual level. Bank Feeds — with 444 unprocessed items — sits in a secondary Utilities section. 8 report types are hidden behind a collapsed toggle with no indication they exist.</p>
+              <span class="problem-card__evidence">Evidence → Sidebar, nav-sidebar.png + nav-reports.png</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Before screenshots (annotated) -->
+    <div class="gallery-section" data-reveal="up">
+      <div class="before-after">
+        <div class="ba-panel">
+          <div class="ba-label-wrap">
+            <span class="ba-label ba-label--before">Before</span>
+            <span class="ba-note">Original dashboard — multiple competing priorities</span>
+          </div>
+          <div class="annotated-wrap">
+            <img src="TaxTankCase/dashboard-old.png" alt="Original TaxTank dashboard — before redesign" loading="lazy" />
+            <div class="callouts">
+              <div class="callout" style="top:7%;left:18%;">Two tax widgets, no clear priority</div>
+              <div class="callout" style="top:30%;right:2%;">5 unrelated right-panel widgets</div>
+              <div class="callout" style="top:55%;left:18%;">All tanks equal weight</div>
+              <div class="callout" style="top:20%;left:0%;">No action hierarchy in nav</div>
+            </div>
+          </div>
+        </div>
+        <div class="ba-panel">
+          <div class="ba-label-wrap">
+            <span class="ba-label ba-label--after">After</span>
+            <span class="ba-note">Redesign — one clear signal per zone</span>
+          </div>
+          <div class="annotated-wrap">
+            <img src="TaxTankCase/dashboard-new-2.png" alt="Redesigned TaxTank dashboard — after" loading="lazy" />
+            <div class="callouts">
+              <div class="callout callout--new" style="top:10%;left:18%;">Single hero metric: Estimated Tax</div>
+              <div class="callout callout--new" style="top:8%;right:2%;">Required → Recommended → Review</div>
+              <div class="callout callout--new" style="top:58%;left:18%;">Active / Trial / Inactive status system</div>
+              <div class="callout callout--new" style="top:42%;left:0%;">Tanks / Finance grouping</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ STEP 04 — DESIGN PRINCIPLES ═══════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="section-head">
+        <span class="c-cap">Step 04</span>
+        <h2 class="c-h2">Four principles shaped every decision that followed.</h2>
+      </div>
+      <div class="principles-grid" style="margin-top:32px;">
+        <div class="principle">
+          <span class="principle__num">01</span>
+          <h3 class="principle__title">Surface the <span class="acc">signal</span></h3>
+          <p class="principle__body">Show one clear number first. Everything else is supporting detail. If a user can't answer "what's my tax position?" in 3 seconds, the layout has failed.</p>
+        </div>
+        <div class="principle">
+          <span class="principle__num">02</span>
+          <h3 class="principle__title">Actions before <span class="acc">passive information</span></h3>
+          <p class="principle__body">If something needs doing, it appears before news, tips, or budgeting tools. Information that requires no response comes last.</p>
+        </div>
+        <div class="principle">
+          <span class="principle__num">03</span>
+          <h3 class="principle__title">One system, <span class="acc">many Tanks</span></h3>
+          <p class="principle__body">Every Tank follows the same card pattern. The UI should scale to 2 Tanks or 10 without redesigning anything — just populating an existing system.</p>
+        </div>
+        <div class="principle">
+          <span class="principle__num">04</span>
+          <h3 class="principle__title">Guide, don't <span class="acc">overwhelm</span></h3>
+          <p class="principle__body">Reduce visible choices per viewport. Reveal depth only when users actively navigate into it. The default state should feel calm, not like a cockpit.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ STEP 05 — PROBLEM → SOLUTION ══════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-grid">
+
+        <div class="story-card-left" style="min-height:280px;">
+          <div class="story-card-left__content">
+            <span class="c-cap">Step 05</span>
+            <h2 class="c-h2">Each problem had a <span class="acc">specific design answer.</span></h2>
+          </div>
+        </div>
+
+        <div class="story-card-right">
+          <div class="psm-wrap">
+            <div class="psm-header">
+              <span class="psm-header-cell">Problem</span>
+              <span class="psm-header-cell"></span>
+              <span class="psm-header-cell">Design Decision</span>
+              <span class="psm-header-cell">Why It Matters</span>
+            </div>
+            <div class="psm-row">
+              <div class="psm-problem">Tax status split across two equal-weight widgets</div>
+              <div class="psm-arrow">→</div>
+              <div class="psm-decision">Estimated Tax becomes the single hero metric</div>
+              <div class="psm-why">User orients in under 3 seconds. One number, one truth.</div>
+            </div>
+            <div class="psm-row">
+              <div class="psm-problem">No sense of whether the forecast is reliable</div>
+              <div class="psm-arrow">→</div>
+              <div class="psm-decision">Forecast accuracy bar + setup completeness progress</div>
+              <div class="psm-why">Contextualises the number without requiring financial knowledge.</div>
+            </div>
+            <div class="psm-row">
+              <div class="psm-problem">Right panel has 5 unrelated widgets with no hierarchy</div>
+              <div class="psm-arrow">→</div>
+              <div class="psm-decision">Restructured as Required → Recommended → Review queue</div>
+              <div class="psm-why">User always knows what needs attention and in what order.</div>
+            </div>
+            <div class="psm-row">
+              <div class="psm-problem">Active and inactive tanks carry identical visual weight</div>
+              <div class="psm-arrow">→</div>
+              <div class="psm-decision">Status badges + inactive tanks moved to "Explore other Tanks"</div>
+              <div class="psm-why">Reduces noise. Surfaces upsells as discovery, not interruption.</div>
+            </div>
+            <div class="psm-row">
+              <div class="psm-problem">Flat nav with no grouping or priority</div>
+              <div class="psm-arrow">→</div>
+              <div class="psm-decision">Nav split: Tanks / Finance groups, Settings at bottom</div>
+              <div class="psm-why">Matches user mental model: my entities vs my tools.</div>
+            </div>
+            <div class="psm-row">
+              <div class="psm-problem">No feedback after completing an action</div>
+              <div class="psm-arrow">→</div>
+              <div class="psm-decision">Recent activity feed with timestamped events</div>
+              <div class="psm-why">Closes the loop. User sees their work had an effect.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ STEP 06 — REDESIGN WALKTHROUGH ════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-grid">
+
+        <div class="story-card-left">
+          <div class="story-card-left__content">
+            <span class="c-cap">Step 06</span>
+            <h2 class="c-h2">Every decision <span class="acc">earned its place.</span></h2>
+          </div>
+        </div>
+
+        <div class="story-card-right">
+          <div class="rail-sm">
+            <span class="c-cap">Key redesign decisions</span>
+            <div class="bullets">
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Navigation grouped.</strong> TANKS (Work, Property, Sole, Holdings) and FINANCE (Money, Banks, Summary, Reports) become separate categories. Help and Settings move to the bottom. The user's mental model of "my entities vs my tools" is now visible in the nav.</span></div>
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Estimated Tax as hero.</strong> $14,356 payable — large, blue, leading. Taxable income, Total income, and Total expenses appear as supporting metrics in smaller cards beside it. Supporting, not competing.</span></div>
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Forecast accuracy bar.</strong> "4 of 5 setup steps complete · 87% data completeness" tells users how reliable the forecast is, and what's blocking 100%.</span></div>
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Tax position chart.</strong> Line graph comparing Current FY vs Previous FY (dashed). Income, Expenses, Tax Withheld, Tax Credits shown in the legend. The number now has context.</span></div>
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Your Tanks section.</strong> Each card shows Tank name, status badge (Active/Trial), taxable net income, income, expenses, setup progress, and a CTA. Consistent. Scannable.</span></div>
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Explore other Tanks.</strong> Inactive tanks separated below active ones — brief descriptions, "Learn more" links. Low pressure. Not blocking the main content.</span></div>
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Action panel — Needs your attention.</strong> Required (Connect bank), Recommended (Complete setup), Review (3 transactions need categories). Priority is explicit, not left for the user to infer.</span></div>
+              <div class="bullet"><span class="bullet__icon">→</span><span class="bullet__text"><strong style="color:var(--headline-text);">Recent activity.</strong> Time-stamped feed: "Bank feed updated · 2 mins ago", "3 expenses categorised · Today". Shows the product is live and the user's last actions had effect.</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Redesign full screenshots ── -->
+    <div class="gallery-section" data-reveal="up">
+      <div class="img-cell">
+        <img src="TaxTankCase/dashboard-new-1.png" alt="TaxTank redesign — Overview compact view" loading="lazy" />
+      </div>
+    </div>
+    <div class="gallery-section" data-reveal="up">
+      <div class="img-cell">
+        <img src="TaxTankCase/dashboard-new-2.png" alt="TaxTank redesign — Full dashboard with Tanks" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- ══ STEP 07 — SYSTEM THINKING ════════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-grid">
+
+        <div class="story-card-left" style="min-height:280px;">
+          <div class="story-card-left__content">
+            <span class="c-cap">Step 07</span>
+            <h2 class="c-h2">The redesign is a <span class="acc">scalable system,</span> not just one screen.</h2>
+          </div>
+        </div>
+
+        <div class="story-card-right">
+          <div class="rail-sm">
+            <span class="c-cap">System Thinking</span>
+            <p class="c-lead">Each component in the redesign was defined as a reusable pattern. If TaxTank adds a 6th Tank, a new report type, or a new action category, it fits the existing system without redesigning anything.</p>
+          </div>
+          <div class="system-grid">
+            <div class="system-card">
+              <span class="system-card__label">Component</span>
+              <span class="system-card__title">Tank Card</span>
+              <div class="system-card__items">
+                <div class="system-card__item">Tank name + icon</div>
+                <div class="system-card__item">Status badge (Active / Trial / Inactive)</div>
+                <div class="system-card__item">Taxable net income (primary metric)</div>
+                <div class="system-card__item">Income + Expenses rows</div>
+                <div class="system-card__item">Setup progress bar</div>
+                <div class="system-card__item">Direct CTA with action label</div>
+              </div>
+            </div>
+            <div class="system-card">
+              <span class="system-card__label">Component</span>
+              <span class="system-card__title">Action Item</span>
+              <div class="system-card__items">
+                <div class="system-card__item">Priority label (Required / Recommended / Review)</div>
+                <div class="system-card__item">Icon + title + description</div>
+                <div class="system-card__item">Action button (Connect / Continue / Review)</div>
+                <div class="system-card__item">Dismissible after completion</div>
+              </div>
+            </div>
+            <div class="system-card">
+              <span class="system-card__label">Component</span>
+              <span class="system-card__title">Metric Card</span>
+              <div class="system-card__items">
+                <div class="system-card__item">Label (all-caps, muted)</div>
+                <div class="system-card__item">Large value (primary hierarchy)</div>
+                <div class="system-card__item">Supporting context (% change, date)</div>
+                <div class="system-card__item">Hero variant uses accent colour</div>
+              </div>
+            </div>
+            <div class="system-card">
+              <span class="system-card__label">Component</span>
+              <span class="system-card__title">Activity Item</span>
+              <div class="system-card__items">
+                <div class="system-card__item">Icon (action type)</div>
+                <div class="system-card__item">Short label + timestamp</div>
+                <div class="system-card__item">Consistent vertical rhythm</div>
+              </div>
+            </div>
+            <div class="system-card">
+              <span class="system-card__label">Pattern</span>
+              <span class="system-card__title">Status Badges</span>
+              <div class="system-card__items">
+                <div class="system-card__item">Active — green</div>
+                <div class="system-card__item">Trial — orange</div>
+                <div class="system-card__item">Inactive — grey (moved to Explore)</div>
+                <div class="system-card__item">Required — amber (action panel)</div>
+              </div>
+            </div>
+            <div class="system-card">
+              <span class="system-card__label">Pattern</span>
+              <span class="system-card__title">Navigation Hierarchy</span>
+              <div class="system-card__items">
+                <div class="system-card__item">Top: Dashboard</div>
+                <div class="system-card__item">TANKS group — entity-level navigation</div>
+                <div class="system-card__item">FINANCE group — tool-level navigation</div>
+                <div class="system-card__item">Bottom: Help, Settings, Profile</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ EXPECTED IMPACT ════════════════════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-2col">
+        <div class="story-card-how">
+          <span class="c-cap" style="color:var(--case-accent);">Expected Impact</span>
+          <h2 class="c-h2" style="font-size:20px;">No post-launch data exists. These are design hypotheses, not proven outcomes.</h2>
+          <div class="hypothesis-badge" style="align-self:flex-start;">UX Hypothesis</div>
+        </div>
+        <div class="story-card-out">
+          <div class="impact-list">
+            <div class="impact-item">
+              <span class="impact-item__icon">⚡</span>
+              <span class="impact-item__text"><strong>Faster orientation.</strong> Users should be able to understand their tax position without scrolling — the hero metric surfaces it immediately.</span>
+            </div>
+            <div class="impact-item">
+              <span class="impact-item__icon">🧠</span>
+              <span class="impact-item__text"><strong>Reduced cognitive load.</strong> Fewer simultaneous decisions in the first viewport. One signal, supporting context, then depth.</span>
+            </div>
+            <div class="impact-item">
+              <span class="impact-item__icon">📋</span>
+              <span class="impact-item__text"><strong>Clearer next steps.</strong> The action panel replaces the passive widget stack. Users always know what to do and why.</span>
+            </div>
+            <div class="impact-item">
+              <span class="impact-item__icon">📈</span>
+              <span class="impact-item__text"><strong>Better retention signal.</strong> The recent activity feed gives users a sense of progress — their actions are acknowledged.</span>
+            </div>
+            <div class="impact-item">
+              <span class="impact-item__icon">♾️</span>
+              <span class="impact-item__text"><strong>Scalable foundation.</strong> New Tanks, reports, and action types slot into the system without requiring a redesign.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ REFLECTION ════════════════════════════════════════════════ -->
+    <section class="cs" data-reveal="up">
+      <div class="story-card-out" style="max-width:880px;margin:0 auto;">
+        <span class="c-cap" style="color:var(--case-accent);">Reflection</span>
+        <p class="c-lead">The most valuable part of this process was refusing to open a design tool until I had mapped the full product. A complex system like TaxTank can look like a UI problem — dense layout, busy sidebar, cluttered right panel — but the actual problem is information architecture. Redesigning individual screens without fixing the hierarchy would have made it look cleaner without making it easier to use.</p>
+        <div class="story-divider">
+          <p class="c-lead" style="color:var(--case-accent);font-style:italic;">FinTech dashboards carry a specific design responsibility: users come with anxiety about money. A clear, calm, prioritised interface is not just better UX — it is the product.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ OTHER CASES ════════════════════════════════════════════════ -->
+    <section class="cs other-cases-section" data-reveal="up">
+      <h2 class="c-h2" style="color:var(--headline-text);">Other cases</h2>
+      <div class="other-grid">
+        <a href="case-netology.html" class="other-card" data-case-card>
+          <div class="other-card__img">
+            <img src="NetoCase/Main_Top_Tittle.png" alt="Netology — EdTech activation" loading="lazy" />
+          </div>
+          <div class="other-card__meta">
+            <h3 class="other-card__title">How I increased activation by 17% and D7 retention from 21% to 40%.</h3>
+          </div>
+        </a>
+        <a href="case-tickron.html" class="other-card" data-case-card>
+          <div class="other-card__img">
+            <img src="MobileApp/Main_Top_Tittle.png" alt="Tickeron — Mobile redesign" loading="lazy" />
+          </div>
+          <div class="other-card__meta">
+            <h3 class="other-card__title">How user drop-off led us to redesign the entire mobile experience.</h3>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </div><!-- /.page -->
+
+  <!-- ── LinkedIn Banner ── -->
+  <div class="linkedin-banner-wrap" data-reveal="up">
+    <a href="https://www.linkedin.com/in/asmik-mikaelian-69164b322/" target="_blank" rel="noopener" class="linkedin-banner" data-case-card aria-label="View Asmik Mikaelian on LinkedIn">
+      <img src="LInkedIN.png" alt="Asmik Mikaelian — LinkedIn" />
+    </a>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer" data-reveal="fade">
+    <span class="site-footer__name">Asmik Mikaelian</span>
+    <div class="site-footer__links">
+      <a href="mailto:asmikpod@gmail.com" class="site-footer__link">asmikpod@gmail.com</a>
+    </div>
+    <span class="site-footer__copy">© 2026 Asmik Mikaelian</span>
+  </footer>
+
+  <script src="motion.js"></script>
+</body>
+</html>
